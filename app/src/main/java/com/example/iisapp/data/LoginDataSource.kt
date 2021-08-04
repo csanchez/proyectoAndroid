@@ -1,20 +1,34 @@
 package com.example.iisapp.data
 
 import com.example.iisapp.data.model.LoggedInUser
+import com.example.iisapp.data.model.UserCredentials
 import java.io.IOException
+import com.example.iisapp.rest.ApiClient
+import com.google.gson.annotations.SerializedName
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 class LoginDataSource {
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
-        try {
+     fun login(username: String, password: String): Result<LoggedInUser> {
+        return try {
             // TODO: handle loggedInUser authentication
-            val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Jane Doe")
-            return Result.Success(fakeUser)
+            val userCredentials = UserCredentials(username,password)
+
+            GlobalScope.launch (Dispatchers.Main) { ApiClient.login(userCredentials) }
+
+            val fakeUser = LoggedInUser("email.com", "Jane Doe","sadd123456","carlos","sacnhez","none","www.picture","adsadas")
+
+
+
+            Result.Success(fakeUser)
         } catch (e: Throwable) {
-            return Result.Error(IOException("Error logging in", e))
+            Result.Error(IOException("Error logging in", e))
         }
     }
 
