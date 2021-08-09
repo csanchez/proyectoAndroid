@@ -1,13 +1,16 @@
 package com.example.iisapp.data
 
+import android.util.Log
 import com.example.iisapp.data.model.LoggedInUser
 import com.example.iisapp.data.model.UserCredentials
+import com.example.iisapp.exceptions.LoginException
+import com.example.iisapp.exceptions.NetworkException
 import java.io.IOException
 import com.example.iisapp.rest.ApiClient
-import com.google.gson.annotations.SerializedName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 
 /**
@@ -15,21 +18,32 @@ import kotlinx.coroutines.launch
  */
 class LoginDataSource {
 
-     fun login(username: String, password: String): Result<LoggedInUser> {
-        return try {
+     suspend fun login(username: String, password: String, deviceId: String, deviceName: String): Result<Any> {// LoggedInUser?  { //Result<LoggedInUser>?
+         //try {
             // TODO: handle loggedInUser authentication
-            val userCredentials = UserCredentials(username,password)
+            val userCredentials = UserCredentials(username,password,deviceId,deviceName)
 
-            GlobalScope.launch (Dispatchers.Main) { ApiClient.login(userCredentials) }
+            //var result : LoggedInUser
 
-            val fakeUser = LoggedInUser("email.com", "Jane Doe","sadd123456","carlos","sacnhez","none","www.picture","adsadas")
+            //GlobalScope.launch(Dispatchers.Main) {
+                return ApiClient.login(userCredentials)
+            //}
 
+            //GlobalScope.launch(Dispatchers.Main) { ApiClient.login(userCredentials) }
+           //val result2 = LoggedInUser("email.com", "Jane Doe","sadd123456","carlos","sacnhez","none","www.picture","adsadas")
 
+            //Result.Success(result)
 
-            Result.Success(fakeUser)
-        } catch (e: Throwable) {
-            Result.Error(IOException("Error logging in", e))
+       /* }
+        catch (nE: NetworkException){
+            throw nE
         }
+        /*catch (le: LoginException){
+            throw le
+        }*/
+        catch (e: Throwable) {
+            throw IOException("Error logging in", e)
+        }*/
     }
 
     fun logout() {

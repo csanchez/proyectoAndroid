@@ -1,27 +1,26 @@
 package com.example.iisapp.rest
 
 
-import com.example.iisapp.data.model.LoggedInUser
 import com.example.iisapp.data.model.UserCredentials
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.util.Log
-import okhttp3.OkHttpClient
-import javax.net.ssl.HostnameVerifier
-import javax.net.ssl.SSLSession
-import android.graphics.Movie
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import javax.net.ssl.HttpsURLConnection
+import com.example.iisapp.exceptions.LoginException
 
+import com.example.iisapp.exceptions.NetworkException
+
+import org.json.JSONObject
+import java.net.SocketTimeoutException
+
+import com.example.iisapp.data.Result
 
 class ApiClient {
 
 
     companion object {
-        private const val baseUrl = "https://iis-notificaciones-api.herokuapp.com/api/"
-         var retrofit: Retrofit? = null
+        //private const val baseUrl = "https://iis-notificaciones-api.herokuapp.com/api/"
+        private const val baseUrl = "https://notificaciones.loca.lt/api/"
+        var retrofit: Retrofit? = null
 
 
         private fun getClient(): Retrofit? {
@@ -30,67 +29,102 @@ class ApiClient {
                 //val okHttpClient = builder .build()
 
 
-                val okHttpClient = OkHttpClient.Builder()
+                /*val okHttpClient = OkHttpClient.Builder()
                 okHttpClient.hostnameVerifier(HostnameVerifier { hostname, session -> //return true;
                     val hv: HostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier()
                     hv.verify("*.herokuapp.com", session)
-                })
-
-
-
-
+                })*/
                 retrofit = Retrofit.Builder()
                     .baseUrl(baseUrl)
-                    .client(okHttpClient.build())
+                    //.client(okHttpClient.build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
             }
             return retrofit
         }
 
-        suspend fun login(userCredentials: UserCredentials) : LoggedInUser? {
-            Log.d("LOGIN", userCredentials.username)
-            val call = ApiClient.getClient()?.create(ApiInterface::class.java)?.login(userCredentials)
-            var loggedInUser: LoggedInUser? = null // works
+        suspend fun login(userCredentials: UserCredentials) : Result<Any> { //Result<LoggedInUser?
 
-            call!!.enqueue(object : Callback<LoggedInUserResponse?> {
-                override fun onResponse(call: Call<LoggedInUserResponse?>?, response: Response<LoggedInUserResponse?>) {
-                    val loggedInUser = response.isSuccessful /// .body()?.loggedInUser
-                    Log.d("LOGIN", "Number of movies received: " + loggedInUser)
-                    //Log.d("LOGIN", "Number of movies received: " + loggedInUser?.name)
-                }
+            val parameters: HashMap<String, String> = HashMap()
+            parameters["user[rfc]"] = userCredentials.rfc;
+            parameters["user[password]"] = userCredentials.password;
 
-                override fun onFailure(call: Call<LoggedInUserResponse?>?, t: Throwable) {
-                    // Log error here since request failed
-                    Log.e("LOGIN", t.toString())
-                }
-            })
+            parameters["device[platform]"] = "android";
+            parameters["device[uuid]"] = userCredentials.deviceId;
+            parameters["device[model]"] = userCredentials.deviceName;
+            //val call = getClient()?.create(ApiInterface::class.java)?.login(parameters)
 
-            return loggedInUser
+            try {
+                //val call = getClient()?.create(ApiInterface::class.java)?.login(userCredentials.rfc,userCredentials.password)
+                val call = getClient()?.create(ApiInterface::class.java)?.login(parameters)
 
-           /* val loggedInUserResponse = call?.execute()?.body()
-            Log.d("LOGIN", loggedInUserResponse?.loggedInUser.toString())
-            if (call != null) {
+                Log.d("LOGIN", call?.isSuccessful.toString())
+                Log.d("LOGIN", call?.body().toString())
+                Log.d("LOGIN", call?.errorBody().toString())
 
-                Log.d("LOGIN", "User found")
-                Log.d("LOGIN", loggedInUserResponse?.loggedInUser.toString())
-                if(call.isExecuted){
+                Log.d("LOGIN", userCredentials.rfc)
+                Log.d("LOGIN", userCredentials.password)
+                Log.d("LOGIN", userCredentials.deviceId)
+                Log.d("LOGIN", userCredentials.deviceName)
+
+
+
+                return if(call?.isSuccessful == true) {
                     //show Recyclerview
+                    val loggedInUserResponse = call.body()
                     Log.d("LOGIN", "User found")
-                    Log.d("LOGIN", loggedInUserResponse?.loggedInUser.toString())
+                    Log.d("LOGIN", loggedInUserResponse!!.loggedInUser.toString())
 
+                    //return loggedInUserResponse?.loggedInUser //
+                    Result.Success(loggedInUserResponse.loggedInUser)
                 }else{
-                    Log.d("LOGIN", "error")
+                    val jObjError = JSONObject(call?.errorBody()?.string())
+                    Log.d("LOGIN",  jObjError.getString("message"))
+                    Result.Error(LoginException(jObjError.getString("message")))
+                    //throw LoginException(jObjError.getString("message"))
                 }
-            }else{
-                Log.d("LOGIN", "call is null")
+            }catch (ste: SocketTimeoutException){
+                //throw NetworkException("Hay un problema con el servidor, no hay respuesta")
+                Log.d("LOGIN", "Error en la red")
+                return Result.Error(NetworkException("Hay un problema con el servidor, no hay respuesta"))
+            }catch (e: Exception){
+                return Result.Error(NetworkException("ocurrio un error desconocido"))
             }
-            return loggedInUserResponse?.loggedInUser;*/
         }
     }
 
 
-    }
+
+    //var loggedInUser: LoggedInUser? = null // works
+
+
+
+    /*call!! .enqueue(object : Callback<LoggedInUserResponse?> {
+        override fun onResponse(call: Call<LoggedInUserResponse?>?, response: Response<LoggedInUserResponse?>) {
+            Log.d("LOGIN", "isSuccessful" + response.errorBody().toString())
+            if(response.isSuccessful()){
+                val loggedInUser = response.isSuccessful /// .body()?.loggedInUser
+                Log.d("LOGIN", "Number of movies received: " + loggedInUser)
+                //Log.d("LOGIN", "Number of movies received: " + loggedInUser?.name)
+            }else{
+                Log.d("LOGIN", "ocurrio un errir " )
+            }
+        }
+
+        override fun onFailure(call: Call<LoggedInUserResponse?>?, t: Throwable) {
+            // Log error here since request failed
+            Log.e("LOGIN", t.toString())
+        }
+    })*/
+
+    //return loggedInUser
+
+
+
+    //return Result.Error(NetworkException("Hay un problema con el servidor, No es posible hacer la peticion"))
+
+
+}
 
 
 

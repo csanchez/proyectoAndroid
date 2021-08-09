@@ -1,6 +1,8 @@
 package com.example.iisapp.data.model
 
 data class UserCredentials(
-    val username: String,
-    val password: String
+    val rfc: String,
+    val password: String,
+    val deviceId: String,
+    val deviceName: String
 )
