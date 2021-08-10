@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">IIS UNAM</string>
+    <string name="shared_preferences_name">IISSharedPreferences</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_rfc">RFC</string>
@@ -24,6 +26,17 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_notifications">Notificaciones</string>
 
+
+
+
+    <string name="welcome_text">Bienvenido</string>
+
+
+    <string name="saved_api_token">SavedApiToken</string>
+    <string name="saved_user_name">SavedUserName</string>
+    <string name="saved_user_rfc">SavedUserRFC</string>
+    <string name="saved_user_email">SavedUserEmail</string>
+    <string name="saved_user_logged_in">SavedUserLoggedIn</string>
 
 
 </resources>

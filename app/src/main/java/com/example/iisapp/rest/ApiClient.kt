@@ -13,6 +13,7 @@ import org.json.JSONObject
 import java.net.SocketTimeoutException
 
 import com.example.iisapp.data.Result
+import com.example.iisapp.data.ISSUtils
 
 class ApiClient {
 
@@ -62,10 +63,8 @@ class ApiClient {
                 Log.d("LOGIN", call?.body().toString())
                 Log.d("LOGIN", call?.errorBody().toString())
 
-                Log.d("LOGIN", userCredentials.rfc)
-                Log.d("LOGIN", userCredentials.password)
-                Log.d("LOGIN", userCredentials.deviceId)
-                Log.d("LOGIN", userCredentials.deviceName)
+
+
 
 
 
@@ -74,9 +73,9 @@ class ApiClient {
                     val loggedInUserResponse = call.body()
                     Log.d("LOGIN", "User found")
                     Log.d("LOGIN", loggedInUserResponse!!.loggedInUser.toString())
-
-                    //return loggedInUserResponse?.loggedInUser //
-                    Result.Success(loggedInUserResponse.loggedInUser)
+                    var loggedInUser=loggedInUserResponse!!.loggedInUser
+                    loggedInUser.apiToken=loggedInUserResponse!!.token
+                    Result.Success(loggedInUser)
                 }else{
                     val jObjError = JSONObject(call?.errorBody()?.string())
                     Log.d("LOGIN",  jObjError.getString("message"))
@@ -85,9 +84,11 @@ class ApiClient {
                 }
             }catch (ste: SocketTimeoutException){
                 //throw NetworkException("Hay un problema con el servidor, no hay respuesta")
-                Log.d("LOGIN", "Error en la red")
+                Log.d("LOGIN", "Error en la red "+ste.message)
                 return Result.Error(NetworkException("Hay un problema con el servidor, no hay respuesta"))
             }catch (e: Exception){
+                Log.d("LOGIN", "ocurrio un error desconocido "+e.message)
+                e.printStackTrace()
                 return Result.Error(NetworkException("ocurrio un error desconocido"))
             }
         }

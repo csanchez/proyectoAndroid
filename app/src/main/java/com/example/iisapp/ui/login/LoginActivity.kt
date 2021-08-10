@@ -1,12 +1,13 @@
 package com.example.iisapp.ui.login
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,7 +15,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
-import com.example.iisapp.NavigationActivity
+import com.example.iisapp.ui.NavigationActivity
 import com.example.iisapp.databinding.ActivityLoginBinding
 
 import com.example.iisapp.R
@@ -27,6 +28,7 @@ import java.lang.Exception
 import java.security.MessageDigest
 import android.text.InputFilter
 import android.text.InputFilter.AllCaps
+import com.example.iisapp.data.model.LoggedInUser
 
 
 class LoginActivity : AppCompatActivity() {
@@ -116,6 +118,9 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString(),getDeviceId(), getDeviceName())
             }
         }
+
+
+
     }
 
     /*@RequiresApi(Build.VERSION_CODES.KITKAT)
@@ -240,21 +245,41 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        //val welcome = getString(R.string.welcome)
-        //val displayName = model.displayName
-        // TODO : initiate successful logged in experience
-        //Toast.makeText(
-        //    applicationContext,
-        //    "$welcome $displayName",
-        //    Toast.LENGTH_LONG
-        //).show()
-        Log.d("LOGIN", "updateUiWithUser ")
-
+    private fun redirectToNavigationActivity(){
         val intent = Intent(this, NavigationActivity::class.java).apply {
             //putExtra(EXTRA_MESSAGE, message)
         }
         startActivity(intent)
+    }
+
+    //private fun updateUiWithUser(model: LoggedInUserView) {
+    private fun updateUiWithUser(model: LoggedInUser) {
+        val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name),Context.MODE_PRIVATE)
+        val edit: SharedPreferences.Editor = sharedPref.edit()
+
+        //edit.putString(getString(R.string.saved_api_token),  model.apiToken);
+        //edit.putBoolean(getString(R.string.saved_user_logged_in), true);
+        //edit.commit();
+        with (sharedPref.edit()) {
+            putString(getString(R.string.saved_api_token), model.apiToken)
+            putString(getString(R.string.saved_user_rfc), model.rfc)
+            putString(getString(R.string.saved_user_email), model.email)
+            putString(getString(R.string.saved_user_name), model.name)
+            putBoolean(getString(R.string.saved_user_logged_in), true)
+            commit()
+
+        }
+
+
+
+        val sharedPref2 =  getPreferences(Context.MODE_PRIVATE)
+        val userLoggedIn = sharedPref2.getBoolean(getString(R.string.saved_user_logged_in), false)
+
+        Log.d("LOGIN", "user login $userLoggedIn")
+
+        Toast.makeText(applicationContext, "¡"+getString(R.string.welcome_text)+" "+model.name+"!", Toast.LENGTH_SHORT).show()
+        redirectToNavigationActivity()
+
 
 
 

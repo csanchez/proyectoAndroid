@@ -16,8 +16,8 @@ data class LoggedInUser(
     @SerializedName("last_name") var lastName: String,
     @SerializedName("iis_role") var iisRole: String,
     @SerializedName("picture_url") var pictureUrl: String,
-    @SerializedName("api_token") var apiToken: String
-
+    //@SerializedName("api_token") var apiToken: String
+    var apiToken : String,
 
 ){
     override fun toString(): String {

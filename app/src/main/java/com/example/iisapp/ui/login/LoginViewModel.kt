@@ -11,6 +11,7 @@ import com.example.iisapp.data.LoginRepository
 import com.example.iisapp.data.Result
 
 import com.example.iisapp.R
+import com.example.iisapp.data.model.LoggedInUser
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
@@ -31,8 +32,8 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
             if (result is Result.Success) {
                 Log.d("LOGIN", "Success")
-                _loginResult.value =
-                    LoginResult(success = result.data?.let { LoggedInUserView(displayName = it.name) })
+                _loginResult.value =LoginResult(success = result.data?.let { it })
+               //old// _loginResult.value =LoginResult(success = result.data?.let { LoggedInUserView(displayName = it.name) })
             } else {
                 Log.d("LOGIN", "Error")
                 if (result is Result.Error) {
@@ -76,4 +77,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private fun isPasswordValid(password: String): Boolean {
         return password.length > 5
     }
+
+
 }
