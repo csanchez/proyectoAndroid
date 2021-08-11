@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1051826933746",
+    "project_id": "iis-unam-9576d",
+    "storage_bucket": "iis-unam-9576d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051826933746:android:29b0c82253fea6d411a56b",
+        "android_client_info": {
+          "package_name": "com.iis.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051826933746-jobca3q6hil82pgvpblnqokci7n46bm6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzU4qY0D8qH3mgblsPXJzmF11eQG0aK8g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051826933746-jobca3q6hil82pgvpblnqokci7n46bm6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
