@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -243,6 +244,14 @@ class LoginActivity : AppCompatActivity() {
         } else {
             manufacturer.uppercase()+ " " + model
         }
+    }
+
+    private fun getFCMToken(): String{
+        val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE)
+        var fcmToken = sharedPref.getString(getString(R.string.saved_fcm_token), "")
+
+        Log.w("LOGIN", "token recuperado $fcmToken")
+        return fcmToken
     }
 
     private fun redirectToNavigationActivity(){

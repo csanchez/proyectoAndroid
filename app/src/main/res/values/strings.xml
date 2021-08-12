@@ -37,6 +37,8 @@
     <string name="saved_user_rfc">SavedUserRFC</string>
     <string name="saved_user_email">SavedUserEmail</string>
     <string name="saved_user_logged_in">SavedUserLoggedIn</string>
+    <string name="saved_fcm_token">SavedUserFCMToken</string>
+
 
 
 </resources>

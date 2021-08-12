@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1051826933746",
-    "project_id": "iis-unam-9576d",
-    "storage_bucket": "iis-unam-9576d.appspot.com"
+    "project_number": "218429318381",
+    "project_id": "iis-unam-c2c39",
+    "storage_bucket": "iis-unam-c2c39.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1051826933746:android:29b0c82253fea6d411a56b",
+        "mobilesdk_app_id": "1:218429318381:android:4d790141e3cffa330018e4",
         "android_client_info": {
-          "package_name": "com.iis.app"
+          "package_name": "com.example.iisapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1051826933746-jobca3q6hil82pgvpblnqokci7n46bm6.apps.googleusercontent.com",
+          "client_id": "218429318381-h7htac91k4pvsfbd83gigsj8bn1v4lgp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCzU4qY0D8qH3mgblsPXJzmF11eQG0aK8g"
+          "current_key": "AIzaSyDo2yNbyUKMKkvclZ8F9zgQ33fVjv13DGM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1051826933746-jobca3q6hil82pgvpblnqokci7n46bm6.apps.googleusercontent.com",
+              "client_id": "218429318381-h7htac91k4pvsfbd83gigsj8bn1v4lgp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
