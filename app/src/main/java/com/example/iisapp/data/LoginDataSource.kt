@@ -18,10 +18,10 @@ import java.lang.Exception
  */
 class LoginDataSource {
 
-     suspend fun login(username: String, password: String, deviceId: String, deviceName: String): Result<Any> {// LoggedInUser?  { //Result<LoggedInUser>?
+     suspend fun login(userCredentials: UserCredentials): Result<Any> {// LoggedInUser?  { //Result<LoggedInUser>?
          //try {
             // TODO: handle loggedInUser authentication
-            val userCredentials = UserCredentials(username,password,deviceId,deviceName)
+           // val userCredentials = UserCredentials(username,password,deviceId,deviceName,fcmToken)
 
             //var result : LoggedInUser
 

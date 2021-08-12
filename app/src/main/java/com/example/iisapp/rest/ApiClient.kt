@@ -53,6 +53,9 @@ class ApiClient {
             parameters["device[platform]"] = "android";
             parameters["device[uuid]"] = userCredentials.deviceId;
             parameters["device[model]"] = userCredentials.deviceName;
+            parameters["device[token]"] = userCredentials.fcmToken;
+
+
             //val call = getClient()?.create(ApiInterface::class.java)?.login(parameters)
 
             try {

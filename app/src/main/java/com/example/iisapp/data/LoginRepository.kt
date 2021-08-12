@@ -1,7 +1,7 @@
 package com.example.iisapp.data
 
 import com.example.iisapp.data.model.LoggedInUser
-
+import com.example.iisapp.data.model.UserCredentials
 
 
 /**
@@ -29,10 +29,10 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-    suspend fun login(username: String, password: String, deviceId: String, deviceName: String):  Result<Any> { // Result<LoggedInUser>? {
+    suspend fun login(userCredentials: UserCredentials):  Result<Any> { // Result<LoggedInUser>? {
         // handle login
 
-        val result = dataSource.login(username, password,deviceId,deviceName)
+        val result = dataSource.login(userCredentials)
 
         if (result is Result.Success) {
             result.data?.let { setLoggedInUser(it) }

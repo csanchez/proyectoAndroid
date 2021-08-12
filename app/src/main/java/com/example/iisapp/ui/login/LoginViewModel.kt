@@ -12,6 +12,7 @@ import com.example.iisapp.data.Result
 
 import com.example.iisapp.R
 import com.example.iisapp.data.model.LoggedInUser
+import com.example.iisapp.data.model.UserCredentials
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
@@ -22,16 +23,17 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    fun login(username: String, password: String, deviceId: String, deviceName: String) {
+    fun login(userCredentials: UserCredentials) {
         // can be launched in a separate asynchronous job
 
         //val result = loginRepository.login(username, password,deviceId,deviceName)
-
+        Log.d("LOGINVM", "FCM TOKEN "+userCredentials.fcmToken)
         viewModelScope.launch {
-            val result = loginRepository.login(username, password,deviceId,deviceName)
+            //val result = loginRepository.login(username, password,deviceId,deviceName,fcmToken)
+            val result = loginRepository.login(userCredentials)
 
             if (result is Result.Success) {
-                Log.d("LOGIN", "Success")
+                Log.d("LOGIN VM", "Success")
                 _loginResult.value =LoginResult(success = result.data?.let { it })
                //old// _loginResult.value =LoginResult(success = result.data?.let { LoggedInUserView(displayName = it.name) })
             } else {

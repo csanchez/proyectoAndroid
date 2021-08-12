@@ -29,6 +29,7 @@ import java.security.MessageDigest
 import android.text.InputFilter
 import android.text.InputFilter.AllCaps
 import com.example.iisapp.data.model.LoggedInUser
+import com.example.iisapp.data.model.UserCredentials
 
 
 class LoginActivity : AppCompatActivity() {
@@ -43,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        getFCMToken()
 
 
         val username = binding.username
@@ -102,21 +103,25 @@ class LoginActivity : AppCompatActivity() {
             }
 
             setOnEditorActionListener { _, actionId, _ ->
+                val userCredentials = UserCredentials(username.text.toString(), password.text.toString(),getDeviceId(), getDeviceName(),getFCMToken())
                 when (actionId) {
+
                     EditorInfo.IME_ACTION_DONE ->
-                        loginViewModel.login(
-                            username.text.toString(),
-                            password.text.toString(),
-                            getDeviceId(),
-                            getDeviceName()
-                        )
+                        loginViewModel.login(userCredentials)
+//                        loginViewModel.login(
+//                            username.text.toString(),
+//                            password.text.toString(),
+//                            getDeviceId(),
+//                            getDeviceName()
+//                        )
                 }
                 false
             }
 
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString(),getDeviceId(), getDeviceName())
+                val userCredentials = UserCredentials(username.text.toString(), password.text.toString(),getDeviceId(), getDeviceName(),getFCMToken())
+                loginViewModel.login(userCredentials)
             }
         }
 
@@ -251,7 +256,7 @@ class LoginActivity : AppCompatActivity() {
         var fcmToken = sharedPref.getString(getString(R.string.saved_fcm_token), "")
 
         Log.w("LOGIN", "token recuperado $fcmToken")
-        return fcmToken
+        return fcmToken+""
     }
 
     private fun redirectToNavigationActivity(){
