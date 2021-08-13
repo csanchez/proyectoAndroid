@@ -23,23 +23,25 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
+    private val tag="LOGINVM"
+
     fun login(userCredentials: UserCredentials) {
         // can be launched in a separate asynchronous job
 
         //val result = loginRepository.login(username, password,deviceId,deviceName)
-        Log.d("LOGINVM", "FCM TOKEN "+userCredentials.fcmToken)
+        Log.d(tag, "FCM TOKEN "+userCredentials.fcmToken)
         viewModelScope.launch {
             //val result = loginRepository.login(username, password,deviceId,deviceName,fcmToken)
             val result = loginRepository.login(userCredentials)
 
             if (result is Result.Success) {
-                Log.d("LOGIN VM", "Success")
-                _loginResult.value =LoginResult(success = result.data?.let { it })
+                Log.d(tag, "Success")
+                _loginResult.value =LoginResult(success = result.data?.let { it as LoggedInUser })
                //old// _loginResult.value =LoginResult(success = result.data?.let { LoggedInUserView(displayName = it.name) })
             } else {
                 Log.d("LOGIN", "Error")
                 if (result is Result.Error) {
-                    Log.d("LOGIN", "Success")
+                    Log.d(tag, "Success")
                     _loginResult.value = LoginResult(error = result.exception?.let { result.exception.message })
                 }
 

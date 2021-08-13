@@ -16,24 +16,12 @@ interface ApiInterface {
 
         @FormUrlEncoded
         @POST("login/")
-        //suspend fun login(@Field("user[rfc]") rfc:String, @Field("user[password]") password:String): Response<LoggedInUserResponse>
         suspend fun login(@FieldMap fields: Map<String, String>): Response<LoggedInUserResponse>
 
-        //open fun login(@Body user: UserCredentials): Call<LoggedInUserResponse?>?
-        //suspend fun login(@FieldMap fields: Map<String, String> ): Call<LoggedInUserResponse?>
-        //suspend fun login(@Field("user[rfc]") rfc:String,@Field("user[password]") password:String  ): Call<LoggedInUserResponse?>
+        @FormUrlEncoded
+        @POST("devices/")
+        suspend fun registerDevice(@FieldMap fields: Map<String, String>): Response<DeviceRegisteredResponse>
 
-        //open fun getTopRatedMovies(@Query("api_key") apiKey: String?): Call<MoviesResponse?>?
-        //Call fun login(@Body user: UserCredentials): Response<LoggedInUserResponse?>?
 
-        /*@GET("movie/top_rated")
-        suspend fun getTopRatedMovies(@Query("api_key") apiKey: String): Call<MoviesResponse?>?
-
-        // suspend fun <MoviesResponse> getTopRatedMovies(@Query("api_key") String apiKey);
-
-        @GET("movie/{id}")
-        Call<MoviesResponse> getMovieDetails(@Path("id") int id, @Query("api_key") String
-
-        */
 
 }

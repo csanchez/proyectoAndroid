@@ -8,7 +8,7 @@ import com.example.iisapp.data.model.LoggedInUser
  */
 sealed class Result<out T : Any> {
 
-    data class Success<out T : Any>(val data: LoggedInUser?) : Result<T>()
+    data class Success<out T : Any>(val data: Any?) : Result<T>()
     data class Error(val exception: Exception) : Result<Nothing>()
 
     override fun toString(): String {

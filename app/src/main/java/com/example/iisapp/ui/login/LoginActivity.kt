@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
 
+    private val tag="LOGIN"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -255,7 +256,7 @@ class LoginActivity : AppCompatActivity() {
         val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE)
         var fcmToken = sharedPref.getString(getString(R.string.saved_fcm_token), "")
 
-        Log.w("LOGIN", "token recuperado $fcmToken")
+        Log.w(tag, "token recuperado $fcmToken")
         return fcmToken+""
     }
 
@@ -289,7 +290,7 @@ class LoginActivity : AppCompatActivity() {
         val sharedPref2 =  getPreferences(Context.MODE_PRIVATE)
         val userLoggedIn = sharedPref2.getBoolean(getString(R.string.saved_user_logged_in), false)
 
-        Log.d("LOGIN", "user login $userLoggedIn")
+        Log.d(tag, "user login $userLoggedIn")
 
         Toast.makeText(applicationContext, "¡"+getString(R.string.welcome_text)+" "+model.name+"!", Toast.LENGTH_SHORT).show()
         redirectToNavigationActivity()
@@ -301,7 +302,7 @@ class LoginActivity : AppCompatActivity() {
 
     //private fun showLoginFailed(@StringRes errorString: Int) {
     private fun showLoginFailed( errorString: String) {
-        Log.d("LOGIN", "showLoginFailed ")
+        Log.d(tag, "showLoginFailed ")
        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
 }

@@ -18,6 +18,8 @@ import com.google.firebase.messaging.FirebaseMessaging
 
 
 class SplashScreenActivity : AppCompatActivity() {
+
+    private val tag="SPLSA"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,7 +36,7 @@ class SplashScreenActivity : AppCompatActivity() {
         } else {
             //You won't be able to send notifications to this device
 
-            Log.w("FCM TOKEN", "Device doesn't have google play services")
+            Log.w(tag, "Device doesn't have google play services")
 
                 val builder = AlertDialog.Builder(this@SplashScreenActivity)
                 builder.apply {
@@ -70,7 +72,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
 
                 if (!task.isSuccessful) {
-                    Log.w("FCM TOKEN", "Fetching FCM registration token failed", task.exception)
+                    Log.w(tag, "Fetching FCM registration token failed", task.exception)
                     return@OnCompleteListener
                 }
 
@@ -79,7 +81,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
                 // Log and toast
                 //val msg = getString("valor", token)
-                Log.d("FCM TOKEN", ""+token)
+                Log.d(tag, "Token encontrad $token")
                 val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE)
                 val edit: SharedPreferences.Editor = sharedPref.edit()
                 with (sharedPref.edit()) {
@@ -98,12 +100,12 @@ class SplashScreenActivity : AppCompatActivity() {
         val status = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)
         // 2
         return if (status != ConnectionResult.SUCCESS) {
-            Log.e("FCM TOKEN", "Error")
+            Log.e(tag, "Sin servicios de Google Play")
             // ask user to update google play services and manage the error.
             false
         } else {
             // 3
-            Log.i("FCM TOKEN", "Google play services updated")
+            Log.i(tag, "Google play services updated")
             true
         }
     }

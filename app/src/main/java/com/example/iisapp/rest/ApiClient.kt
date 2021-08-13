@@ -14,6 +14,7 @@ import java.net.SocketTimeoutException
 
 import com.example.iisapp.data.Result
 import com.example.iisapp.data.ISSUtils
+import com.example.iisapp.data.model.Device
 
 class ApiClient {
 
@@ -22,6 +23,7 @@ class ApiClient {
         //private const val baseUrl = "https://iis-notificaciones-api.herokuapp.com/api/"
         private const val baseUrl = "https://notificaciones.loca.lt/api/"
         var retrofit: Retrofit? = null
+        val tag= "APIC"
 
 
         private fun getClient(): Retrofit? {
@@ -56,15 +58,14 @@ class ApiClient {
             parameters["device[token]"] = userCredentials.fcmToken;
 
 
-            //val call = getClient()?.create(ApiInterface::class.java)?.login(parameters)
 
             try {
                 //val call = getClient()?.create(ApiInterface::class.java)?.login(userCredentials.rfc,userCredentials.password)
                 val call = getClient()?.create(ApiInterface::class.java)?.login(parameters)
 
-                Log.d("LOGIN", call?.isSuccessful.toString())
-                Log.d("LOGIN", call?.body().toString())
-                Log.d("LOGIN", call?.errorBody().toString())
+                Log.d(tag, call?.isSuccessful.toString())
+                Log.d(tag, call?.body().toString())
+                Log.d(tag, call?.errorBody().toString())
 
 
 
@@ -74,27 +75,66 @@ class ApiClient {
                 return if(call?.isSuccessful == true) {
                     //show Recyclerview
                     val loggedInUserResponse = call.body()
-                    Log.d("LOGIN", "User found")
-                    Log.d("LOGIN", loggedInUserResponse!!.loggedInUser.toString())
+                    Log.d(tag, "User found")
+                    Log.d(tag, loggedInUserResponse!!.loggedInUser.toString())
                     var loggedInUser=loggedInUserResponse!!.loggedInUser
                     loggedInUser.apiToken=loggedInUserResponse!!.token
                     Result.Success(loggedInUser)
                 }else{
                     val jObjError = JSONObject(call?.errorBody()?.string())
-                    Log.d("LOGIN",  jObjError.getString("message"))
+                    Log.d(tag,  jObjError.getString("message"))
                     Result.Error(LoginException(jObjError.getString("message")))
                     //throw LoginException(jObjError.getString("message"))
                 }
             }catch (ste: SocketTimeoutException){
                 //throw NetworkException("Hay un problema con el servidor, no hay respuesta")
-                Log.d("LOGIN", "Error en la red "+ste.message)
+                Log.d(tag, "Error en la red "+ste.message)
                 return Result.Error(NetworkException("Hay un problema con el servidor, no hay respuesta"))
             }catch (e: Exception){
-                Log.d("LOGIN", "ocurrio un error desconocido "+e.message)
+                Log.d(tag, "ocurrio un error desconocido "+e.message)
                 e.printStackTrace()
                 return Result.Error(NetworkException("ocurrio un error desconocido"))
             }
         }
+
+        suspend fun registerDevice(userDevice: Device) : Result<Any> { //Result<LoggedInUser?
+
+            val parameters: HashMap<String, String> = HashMap()
+            parameters["device[platform]"] = userDevice.platform;
+            parameters["device[uuid]"] = userDevice.deviceId;
+            parameters["device[model]"] = userDevice.deviceName;
+            parameters["device[token]"] = userDevice.fcmToken;
+
+
+
+            try {
+                val call = getClient()?.create(ApiInterface::class.java)?.registerDevice(parameters)
+
+                Log.d(tag, call?.isSuccessful.toString())
+                Log.d(tag, call?.body().toString())
+                Log.d(tag, call?.errorBody().toString())
+
+                return if(call?.isSuccessful == true) {
+                    //show Recyclerview
+                    val deviceRegisteredResponse = call.body()
+                    Log.d(tag, deviceRegisteredResponse!!.message)
+                    Result.Success(deviceRegisteredResponse)
+                }else{
+                    val jObjError = JSONObject(call?.errorBody()?.string())
+                    Log.d(tag,  jObjError.getString("message"))
+                    Result.Error(LoginException(jObjError.getString("message")))
+                }
+            }catch (ste: SocketTimeoutException){
+                Log.d(tag, "Error en la red "+ste.message)
+                return Result.Error(NetworkException("Hay un problema con el servidor, no hay respuesta"))
+            }catch (e: Exception){
+                Log.d(tag, "ocurrio un error desconocido "+e.message)
+                e.printStackTrace()
+                return Result.Error(NetworkException("ocurrio un error desconocido"))
+            }
+        }
+
+
     }
 
 
