@@ -30,6 +30,10 @@ import android.text.InputFilter
 import android.text.InputFilter.AllCaps
 import com.example.iisapp.data.model.LoggedInUser
 import com.example.iisapp.data.model.UserCredentials
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.ktx.messaging
+import com.google.gson.annotations.SerializedName
 
 
 class LoginActivity : AppCompatActivity() {
@@ -267,6 +271,32 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun registerToFcmTopics(model: LoggedInUser){
+
+
+        val userType = model.userType
+        val position = model.position
+
+        Log.d(tag, "registerToFcmTopics all, $userType $position    ")
+        Log.d(tag, model.toString())
+
+        FirebaseMessaging.getInstance().subscribeToTopic("all")
+        FirebaseMessaging.getInstance().subscribeToTopic("prueba")
+        //FirebaseMessaging.getInstance().subscribeToTopic(userType)
+        //FirebaseMessaging.getInstance().subscribeToTopic(position)
+
+        FirebaseMessaging.getInstance().subscribeToTopic("prueba")
+            .addOnCompleteListener { task ->
+                var msg = "Suscrito"
+                if (!task.isSuccessful) {
+                    msg = "no \"Suscrito\""
+                }
+                Log.d(tag, msg)
+                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+            }
+
+     }
+
     //private fun updateUiWithUser(model: LoggedInUserView) {
     private fun updateUiWithUser(model: LoggedInUser) {
         val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name),Context.MODE_PRIVATE)
@@ -280,12 +310,26 @@ class LoginActivity : AppCompatActivity() {
             putString(getString(R.string.saved_user_rfc), model.rfc)
             putString(getString(R.string.saved_user_email), model.email)
             putString(getString(R.string.saved_user_name), model.name)
+
+            putString(getString(R.string.saved_user_iis_role), model.iisRole)
+            putString(getString(R.string.saved_user_picture_url), model.pictureUrl)
+            putString(getString(R.string.saved_user_user_type), model.userType)
+            putString(getString(R.string.saved_user_department), model.department)
+            putString(getString(R.string.saved_user_floor), model.floor)
+            putString(getString(R.string.saved_user_hall), model.hall)
+            putString(getString(R.string.saved_user_gender), model.gender)
+            putString(getString(R.string.saved_user_grade), model.grade)
+            putString(getString(R.string.saved_user_position), model.position)
+
+
+
+
             putBoolean(getString(R.string.saved_user_logged_in), true)
             commit()
 
         }
 
-
+        registerToFcmTopics(model)
 
         val sharedPref2 =  getPreferences(Context.MODE_PRIVATE)
         val userLoggedIn = sharedPref2.getBoolean(getString(R.string.saved_user_logged_in), false)

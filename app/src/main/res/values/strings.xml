@@ -20,6 +20,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="action_logout">Salir</string>
+
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -36,6 +38,18 @@
     <string name="saved_user_name">SavedUserName</string>
     <string name="saved_user_rfc">SavedUserRFC</string>
     <string name="saved_user_email">SavedUserEmail</string>
+
+    <string name="saved_user_iis_role">SavedUserIisRole</string>
+    <string name="saved_user_picture_url">SavedUserPictureUrl</string>
+    <string name="saved_user_user_type">SavedUserUserType</string>
+    <string name="saved_user_department">SavedUserDepartment</string>
+    <string name="saved_user_floor">SavedApiFloor</string>
+    <string name="saved_user_hall">SavedUserHall</string>
+    <string name="saved_user_gender">SavedUserGender</string>
+    <string name="saved_user_grade">SavedUserGrade</string>
+    <string name="saved_user_position">SavedUserPosition</string>
+
+
     <string name="saved_user_logged_in">SavedUserLoggedIn</string>
     <string name="saved_fcm_token">SavedUserFCMToken</string>
 

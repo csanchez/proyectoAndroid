@@ -25,6 +25,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE)
         var userLoggedIn = sharedPref.getBoolean(getString(R.string.saved_user_logged_in), false)
+
+        Log.w(tag, "usuario logeado? $userLoggedIn")
         val token = sharedPref.getString(getString(R.string.saved_api_token), "nada")
 
 

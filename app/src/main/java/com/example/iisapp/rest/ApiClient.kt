@@ -21,7 +21,7 @@ class ApiClient {
 
     companion object {
         //private const val baseUrl = "https://iis-notificaciones-api.herokuapp.com/api/"
-        private const val baseUrl = "https://notificaciones.loca.lt/api/"
+        private const val baseUrl = "https://notificaciones3.loca.lt/api/"
         var retrofit: Retrofit? = null
         val tag= "APIC"
 

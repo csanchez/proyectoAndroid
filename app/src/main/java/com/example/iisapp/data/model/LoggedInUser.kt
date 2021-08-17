@@ -16,7 +16,16 @@ data class LoggedInUser(
     @SerializedName("last_name") var lastName: String,
     @SerializedName("iis_role") var iisRole: String,
     @SerializedName("picture_url") var pictureUrl: String,
-    //@SerializedName("api_token") var apiToken: String
+
+    @SerializedName("user_type") var userType: String,
+    @SerializedName("department") var department: String,
+    @SerializedName("floor") var floor: String,
+    @SerializedName("hall") var hall: String,
+    @SerializedName("gender") var gender: String,
+    @SerializedName("grade") var grade: String,
+    @SerializedName("position") var position: String,
+
+
     var apiToken : String,
 
 ){
