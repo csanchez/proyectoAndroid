@@ -2,6 +2,8 @@ package com.example.iisapp.fcm
 
 import android.net.wifi.WifiManager
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
@@ -10,6 +12,7 @@ import com.example.iisapp.data.model.Device
 import com.example.iisapp.data.model.LoggedInUser
 import com.example.iisapp.rest.ApiClient
 import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -17,7 +20,61 @@ import java.lang.Exception
 import java.security.MessageDigest
 
 class IISFirebaseMessagingService : FirebaseMessagingService() {
-    val tag="IISFMS"
+    private val tag="IISFMS"
+
+    /**
+     * Called when message is received.
+     *
+     * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
+     */
+    // [START receive_message]
+    override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        // [START_EXCLUDE]
+        // There are two types of messages data messages and notification messages. Data messages are handled
+        // here in onMessageReceived whether the app is in the foreground or background. Data messages are the type
+        // traditionally used with GCM. Notification messages are only received here in onMessageReceived when the app
+        // is in the foreground. When the app is in the background an automatically generated notification is displayed.
+        // When the user taps on the notification they are returned to the app. Messages containing both notification
+        // and data payloads are treated as notification messages. The Firebase console always sends notification
+        // messages. For more see: https://firebase.google.com/docs/cloud-messaging/concept-options
+        // [END_EXCLUDE]
+
+        // TODO(developer): Handle FCM messages here.
+        // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+        Log.d(tag, "From: ${remoteMessage.from}")
+
+        // Check if message contains a data payload.
+        if (remoteMessage.data.isNotEmpty()) {
+            Log.d(tag, "Message data payload: ${remoteMessage.data}")
+            Toast.makeText(baseContext, "notificacion con data",Toast.LENGTH_LONG)
+            if (/* Check if data needs to be processed by long running job */ true) {
+                // For long-running tasks (10 seconds or more) use WorkManager.
+                //scheduleJob()
+
+            } else {
+                // Handle message within 10 seconds
+                //handleNow()
+            }
+        }
+
+        // Check if message contains a notification payload.
+        remoteMessage.notification?.let {
+            Log.d(tag, "Message Notification Body: ${it.body}")
+            /*Looper.prepare()
+            Handler().post(){
+                Toast.makeText(baseContext, "notificacion recibida",Toast.LENGTH_LONG)
+            }*/
+
+            Handler(Looper.getMainLooper()).post {
+                Toast.makeText(baseContext, "notificacion recibida", Toast.LENGTH_LONG).show()
+            }
+
+        }
+
+        // Also if you intend on generating your own notifications as a result of a received FCM
+        // message, here is where that should be initiated. See sendNotification method below.
+    }
+    // [END receive_message]
 
     // [START on_new_token]
     /**

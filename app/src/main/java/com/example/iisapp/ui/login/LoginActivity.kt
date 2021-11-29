@@ -113,12 +113,6 @@ class LoginActivity : AppCompatActivity() {
 
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(userCredentials)
-//                        loginViewModel.login(
-//                            username.text.toString(),
-//                            password.text.toString(),
-//                            getDeviceId(),
-//                            getDeviceName()
-//                        )
                 }
                 false
             }

@@ -29,7 +29,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         // can be launched in a separate asynchronous job
 
         //val result = loginRepository.login(username, password,deviceId,deviceName)
-        Log.d(tag, "FCM TOKEN "+userCredentials.fcmToken)
+       /* Log.d(tag, "FCM TOKEN "+userCredentials.fcmToken)
         viewModelScope.launch {
             //val result = loginRepository.login(username, password,deviceId,deviceName,fcmToken)
             val result = loginRepository.login(userCredentials)
@@ -47,9 +47,15 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
                 //_loginResult.value = LoginResult(error = R.string.login_failed)
             }
-        }
 
 
+
+        }*/
+
+        var loggedInUser= LoggedInUser("csanchez@sociales.unam.mx","Carlos sanchez",
+            "sapc8704025","carlos","sanchez","user","dasdas",
+            "user","computo","primer piso","C","male","licenciado","tec_acad","sadasdasd")
+        _loginResult.value =LoginResult(success = loggedInUser)
         /*if (result is Result.Success) {
             _loginResult.value =
                 LoginResult(success = result.data?.let { LoggedInUserView(displayName = it.name) })

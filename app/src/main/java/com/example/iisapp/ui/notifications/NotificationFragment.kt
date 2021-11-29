@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.iisapp.R
+import com.example.iisapp.data.model.IisNotification
 import com.example.iisapp.ui.notifications.placeholder.PlaceholderContent
 
 /**
@@ -39,7 +41,16 @@ class NotificationFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = NotificationRecyclerViewAdapter(PlaceholderContent.ITEMS)
+               // adapter = NotificationRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                adapter = NotificationRecyclerViewAdapter(IisNotification.data)
+                adapter.apply {
+                    //addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+                    var itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+                    itemDecoration.setDrawable(context.getDrawable(R.drawable.divider)!!)
+                    addItemDecoration(itemDecoration)
+                }
+
+
             }
         }
         return view

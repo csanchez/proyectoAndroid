@@ -111,4 +111,8 @@ class SplashScreenActivity : AppCompatActivity() {
             true
         }
     }
+
+    private fun notification(){
+     //intent.getStringExtra()
+    }
 }

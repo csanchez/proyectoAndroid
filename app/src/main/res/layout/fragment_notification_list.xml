@@ -10,4 +10,5 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".ui.notifications.NotificationFragment"
-    tools:listitem="@layout/fragment_notification" />
+    tools:listitem="@layout/fragment_notification"
+    android:divider="#ec1886"/>

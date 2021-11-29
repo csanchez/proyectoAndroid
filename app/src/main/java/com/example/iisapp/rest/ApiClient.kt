@@ -15,6 +15,7 @@ import java.net.SocketTimeoutException
 import com.example.iisapp.data.Result
 import com.example.iisapp.data.ISSUtils
 import com.example.iisapp.data.model.Device
+import com.example.iisapp.data.model.LoggedInUser
 
 class ApiClient {
 
@@ -46,6 +47,12 @@ class ApiClient {
             return retrofit
         }
 
+         /*fun login2(userCredentials: UserCredentials) : Result<LoggedInUser> {
+            var loggedInUser= LoggedInUser("csanchez@sociales.unam.mx","Carlos sanchez","sapc8704025",)
+
+            Result.Success(loggedInUser)
+
+        }*/
         suspend fun login(userCredentials: UserCredentials) : Result<Any> { //Result<LoggedInUser?
 
             val parameters: HashMap<String, String> = HashMap()

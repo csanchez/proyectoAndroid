@@ -10,7 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.iisapp.R
 import com.example.iisapp.databinding.FragmentHomeBinding
-
+import org.w3c.dom.Text
+//https://www.androidhive.info/2017/02/android-creating-gmail-like-inbox-using-recyclerview/
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
@@ -31,9 +32,25 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        //val textView: TextView = binding.textHome
+
+        val senderView: TextView = binding.sender
+        val dateView: TextView = binding.date
+        val titleView: TextView = binding.title
+        val messageView: TextView = binding.message
+        val initialsView: TextView = binding.initials
+
+
+       /* homeViewModel.text  .observe(viewLifecycleOwner, Observer {
             textView.text = it
+        })*/
+
+        homeViewModel.notification.observe(viewLifecycleOwner, Observer {
+            senderView.text = it.sender
+            dateView.text = it.date
+            titleView.text = it.title
+            messageView.text = it.message
+            initialsView.text = it.initials
         })
         return root
     }
