@@ -6,10 +6,7 @@ import com.example.iisapp.data.model.LoggedInUser
 
 import com.example.iisapp.data.model.UserCredentials
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FieldMap
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 interface ApiInterface {
@@ -22,6 +19,8 @@ interface ApiInterface {
         @POST("devices/")
         suspend fun registerDevice(@FieldMap fields: Map<String, String>): Response<DeviceRegisteredResponse>
 
+        @GET("tramites/")
+        suspend fun getTramites(@Query("tipo") tipo: String?,@Header("Authorization") token: String): Response<TramitesResponse>
 
 
 }

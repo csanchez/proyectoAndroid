@@ -27,4 +27,9 @@
         android:name="com.example.iisapp.ui.notifications.NotificationFragment"
         android:label="@string/menu_notifications"
         tools:layout="@layout/fragment_notification_list" />
+    <fragment
+        android:id="@+id/nav_tramites_personales"
+        android:name="com.example.iisapp.ui.tramites.TramitePersonalFragment"
+        android:label="@string/menu_tramites"
+        tools:layout="@layout/fragment_notification_list"/>
 </navigation>

@@ -20,5 +20,24 @@
             android:id="@+id/nav_notification"
             android:icon="@drawable/ic_menu_notifications"
             android:title="@string/menu_notifications" />
+
+        <item android:title="@string/menu_tramites">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_mis_solicitudes"
+                        android:icon="@drawable/ic_menu_notifications"
+                        android:title="@string/menu_mis_solicitudes" />
+                    <item
+                        android:id="@+id/nav_tramites_personales"
+                        android:icon="@drawable/ic_menu_notifications"
+                        android:title="@string/menu_tramites_personales" />
+                    <item
+                        android:id="@+id/nav_tramites_institucionales"
+                        android:icon="@drawable/ic_menu_notifications"
+                        android:title="@string/menu_tramites_institucionales" />
+                </group>
+            </menu>
+        </item>
     </group>
 </menu>

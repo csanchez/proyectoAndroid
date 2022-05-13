@@ -269,9 +269,9 @@ class LoginActivity : AppCompatActivity() {
 
 
         val userType = model.userType
-        val position = model.position
+        //val position = model.position
 
-        Log.d(tag, "registerToFcmTopics all, $userType $position    ")
+        //Log.d(tag, "registerToFcmTopics all, $userType $position    ")
         Log.d(tag, model.toString())
 
         FirebaseMessaging.getInstance().subscribeToTopic("all")
@@ -299,21 +299,24 @@ class LoginActivity : AppCompatActivity() {
         //edit.putString(getString(R.string.saved_api_token),  model.apiToken);
         //edit.putBoolean(getString(R.string.saved_user_logged_in), true);
         //edit.commit();
+        Log.d(tag,"token ${model.apiToken}")
         with (sharedPref.edit()) {
             putString(getString(R.string.saved_api_token), model.apiToken)
-            putString(getString(R.string.saved_user_rfc), model.rfc)
             putString(getString(R.string.saved_user_email), model.email)
-            putString(getString(R.string.saved_user_name), model.name)
-
             putString(getString(R.string.saved_user_iis_role), model.iisRole)
+            putString(getString(R.string.saved_user_role), model.role)
             putString(getString(R.string.saved_user_picture_url), model.pictureUrl)
             putString(getString(R.string.saved_user_user_type), model.userType)
+            putString(getString(R.string.saved_user_name), model.firstName+ " "+model.lastName)
+
+            /*putString(getString(R.string.saved_user_rfc), model.rfc)
+            putString(getString(R.string.saved_user_name), model.name)
             putString(getString(R.string.saved_user_department), model.department)
             putString(getString(R.string.saved_user_floor), model.floor)
             putString(getString(R.string.saved_user_hall), model.hall)
             putString(getString(R.string.saved_user_gender), model.gender)
             putString(getString(R.string.saved_user_grade), model.grade)
-            putString(getString(R.string.saved_user_position), model.position)
+            putString(getString(R.string.saved_user_position), model.position)*/
 
 
 
@@ -330,7 +333,7 @@ class LoginActivity : AppCompatActivity() {
 
         Log.d(tag, "user login $userLoggedIn")
 
-        Toast.makeText(applicationContext, "¡"+getString(R.string.welcome_text)+" "+model.name+"!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "¡"+getString(R.string.welcome_text)+" "+model.firstName+""+model.lastName +"!", Toast.LENGTH_SHORT).show()
         redirectToNavigationActivity()
 
 

@@ -27,6 +27,10 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_notifications">Notificaciones</string>
+    <string name="menu_tramites">Trámites</string>
+    <string name="menu_mis_solicitudes">Mis Solicitudes</string>
+    <string name="menu_tramites_personales">Persoanles</string>
+    <string name="menu_tramites_institucionales">Institucionales</string>
 
 
 
@@ -40,6 +44,8 @@
     <string name="saved_user_email">SavedUserEmail</string>
 
     <string name="saved_user_iis_role">SavedUserIisRole</string>
+    <string name="saved_user_role">SavedUserRole</string>
+
     <string name="saved_user_picture_url">SavedUserPictureUrl</string>
     <string name="saved_user_user_type">SavedUserUserType</string>
     <string name="saved_user_department">SavedUserDepartment</string>

@@ -83,7 +83,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
                 // Log and toast
                 //val msg = getString("valor", token)
-                Log.d(tag, "Token encontrad $token")
+                Log.d(tag, "Token encontrado $token")
                 val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE)
                 val edit: SharedPreferences.Editor = sharedPref.edit()
                 with (sharedPref.edit()) {
