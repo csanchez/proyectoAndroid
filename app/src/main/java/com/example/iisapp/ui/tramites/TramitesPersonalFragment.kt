@@ -1,6 +1,6 @@
 package com.example.iisapp.ui.tramites
 
-class TramitePersonalFragment : TramiteFragment() {
+class TramitesPersonalFragment : TramitesFragment() {
     override val tramiteType = "personal"
 
 }

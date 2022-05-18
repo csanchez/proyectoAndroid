@@ -2,6 +2,13 @@
     <string name="app_name">IIS UNAM</string>
     <string name="shared_preferences_name">IISSharedPreferences</string>
 
+
+    <!-- Strings related to navigation -->
+    <string name="navigation_mis_solicitudes">Mis Solicitudes</string>
+    <string name="navigation_tramite">Trámite</string>
+    <string name="navigation_tramites_personales">Trámites personales</string>
+    <string name="navigation_tramites_institucionales">Trámites istitucionales</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_rfc">RFC</string>
@@ -29,10 +36,8 @@
     <string name="menu_notifications">Notificaciones</string>
     <string name="menu_tramites">Trámites</string>
     <string name="menu_mis_solicitudes">Mis Solicitudes</string>
-    <string name="menu_tramites_personales">Persoanles</string>
+    <string name="menu_tramites_personales">Personales</string>
     <string name="menu_tramites_institucionales">Institucionales</string>
-
-
 
 
     <string name="welcome_text">Bienvenido</string>
@@ -59,6 +64,9 @@
     <string name="saved_user_logged_in">SavedUserLoggedIn</string>
     <string name="saved_fcm_token">SavedUserFCMToken</string>
 
+    <string name="tramite_departments">Departamentos responsables</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

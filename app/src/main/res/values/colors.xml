@@ -24,6 +24,12 @@
     <color name="bg_circle_default">#666666</color>
 
     <color name="iis_red">#a52e42</color>
-    <color name="iis_black">#2d2d2d</color>
+    <color name="iis_black">#343a40</color>
+
+
+
+    <color name="badge_success">#26c6da</color>
+
+
 
 </resources>

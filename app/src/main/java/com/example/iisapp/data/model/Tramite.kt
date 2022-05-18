@@ -12,6 +12,8 @@ data class Tramite (
     @SerializedName("instructions") var instructions: String,
     @SerializedName("tramite_type") var tramiteType: String,
     @SerializedName("status") var status: String,
+    @SerializedName("data") var data: List<Data>,
+    @SerializedName("departments") var departments: List<Department>
 
     )
 

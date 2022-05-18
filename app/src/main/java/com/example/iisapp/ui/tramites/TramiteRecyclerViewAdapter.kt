@@ -1,27 +1,19 @@
 package com.example.iisapp.ui.tramites
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.iisapp.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.iisapp.data.model.Tramite
-
+import com.example.iisapp.databinding.FragmentTramiteItemListBinding
 import com.example.iisapp.ui.notifications.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.iisapp.databinding.FragmentTramiteBinding
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class TramiteRecyclerViewAdapter(
-
-    private val values: List<Tramite>
-
-
-
-) : RecyclerView.Adapter<TramiteRecyclerViewAdapter.TramiteViewHolder>() {
+class TramiteRecyclerViewAdapter(private val values: List<Tramite>,private val onClickListener: OnClickListener) : RecyclerView.Adapter<TramiteRecyclerViewAdapter.TramiteViewHolder>() {
 
     /* private var values = listOf<IisNotification>()
          set(value) {
@@ -31,7 +23,7 @@ class TramiteRecyclerViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TramiteViewHolder {
 
         return TramiteViewHolder(
-            FragmentTramiteBinding.inflate(
+            FragmentTramiteItemListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -50,11 +42,17 @@ class TramiteRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: TramiteViewHolder, position: Int) {
         val item = values[position]
+
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(position)
+        }
         holder.bind(item)
 
         /*if(item.status=="seen"){
             holder.statusView.visibility = View.INVISIBLE
         }*/
+
+
 
 
     }
@@ -71,22 +69,25 @@ class TramiteRecyclerViewAdapter(
         }
     }*/
 
-    inner class TramiteViewHolder(binding: FragmentTramiteBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class TramiteViewHolder(binding: FragmentTramiteItemListBinding) : RecyclerView.ViewHolder(binding.root) {
 
         val statusView: TextView = binding.status
         val nameView: TextView = binding.name
         val descripcionView: TextView = binding.descripcion
-        // val dateView: TextView = binding.date
+
+
+        val context = binding.root.context
+        val departmentsList: RecyclerView = binding.tramiteItemListDepartment
+
+
 
         fun bind(tramite: Tramite) {
             //statusView.text = notification.status
             statusView.text = tramite.status
             nameView.text = tramite.name
             descripcionView.text = tramite.descripcion
-
-
-
+            departmentsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+            departmentsList.adapter = TramiteDepartmentsRecyclerViewAdapter(tramite.departments)
         }
 
 
@@ -94,6 +95,10 @@ class TramiteRecyclerViewAdapter(
         override fun toString(): String {
             return super.toString() + " '" + nameView.text + "'"
         }
+    }
+
+    class OnClickListener(val clickListener: (position: Int) -> Unit) {
+        fun onClick(position: Int) = clickListener(position)
     }
 
 }
