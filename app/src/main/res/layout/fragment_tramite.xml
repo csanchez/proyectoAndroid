@@ -1,35 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     tools:context=".ui.tramites.TramiteFragment">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:maxLines="1"
+            android:text="@string/tramite_name"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/iis_label"
+            android:textSize="@dimen/iis_labeL_size"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tramiteName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:paddingTop="10dp"
             android:paddingBottom="5dp"
             android:text="Nombre del tramite"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="#000"
-            android:textSize="17dp"/>
+            android:textSize="@dimen/title_text_size" />
 
         <TextView
-            android:id="@+id/descripcion"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:maxLines="1"
+            android:text="@string/tramite_descripcion"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/iis_label"
+            android:textSize="@dimen/iis_labeL_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tramiteDescripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:text="descripcion del tramite"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="#000"
-            android:textSize="16dp"/>
+            android:textSize="@dimen/normal_text_size" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:maxLines="1"
+            android:text="@string/tramite_instructions"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/iis_label"
+            android:textSize="@dimen/iis_labeL_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tramiteInstructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/tramite_instructions"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="#000"
+            android:textSize="@dimen/normal_text_size" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:maxLines="1"
+            android:text="@string/tramite_addition_info"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/iis_label"
+            android:textSize="@dimen/iis_labeL_size"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tramiteData"
+            android:layout_width="fill_parent"
+            android:layout_height="343dp"
+            android:orientation="vertical"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/fragment_tramite_data"
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:gravity="bottom|center">
+
+            <Button
+                android:id="@+id/registerToTramite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:text="@string/register_to_tramite" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
 

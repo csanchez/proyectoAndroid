@@ -1,10 +1,12 @@
 package com.example.iisapp.ui.tramites
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -13,9 +15,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iisapp.databinding.FragmentTramiteBinding
 import com.example.iisapp.R
+import com.example.iisapp.data.model.UserCredentials
 
 
 /**
@@ -28,7 +32,10 @@ class TramiteFragment : Fragment() {
     private val args: TramiteFragmentArgs by navArgs()
     private lateinit var tramitesViewModel: TramitesViewModel
     private lateinit var _binding: FragmentTramiteBinding
+
     private val binding get() = _binding!!
+    private val tagg="TRAMITES FRAG"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,38 +46,70 @@ class TramiteFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_tramite, container, false)
+        ): View? {
+            // Inflate the layout for this fragment
+            val view =  inflater.inflate(R.layout.fragment_tramite, container, false)
 
 
-        tramitesViewModel = ViewModelProvider(requireActivity(),TramitesViewModelFactory()).get(TramitesViewModel::class.java)
+            tramitesViewModel = ViewModelProvider(requireActivity(),TramitesViewModelFactory()).get(TramitesViewModel::class.java)
 
-        _binding = FragmentTramiteBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+            _binding = FragmentTramiteBinding.inflate(inflater, container, false)
+            val root: View = binding.root
 
-        tramitesViewModel.tramitesResult.observe(viewLifecycleOwner, Observer {
-            val tramitesState = it ?: return@Observer
+            val sharedPref = this.activity?.getSharedPreferences(getString(R.string.shared_preferences_name),
+                Context.MODE_PRIVATE)
+            val token = sharedPref?.getString(getString(R.string.saved_api_token),"")
+
+            tramitesViewModel.tramitesResult.observe(viewLifecycleOwner, Observer {
+                val tramitesState = it ?: return@Observer
 
 
-            if (tramitesState.success != null) {
-                Log.d(tag, " succcess")
-                    with(view) {
-                        val name = view.findViewById(R.id.tramiteName) as TextView
-                        val tramite =tramitesState.success[args.tramitePosition]
-                       // tramitesViewModel.getTramite(args.tramitePosition)
-                        name.text = tramite.name
 
-                    }
+                if (tramitesState.success != null) {
+                    Log.d(tagg, " succcess")
+                        with(view) {
+                            val tramiteName = view.findViewById(R.id.tramiteName) as TextView
+                            val tramiteDescripcion = view.findViewById(R.id.tramiteDescripcion) as TextView
+                            val tramiteInstructions = view.findViewById(R.id.tramiteInstructions) as TextView
+                            val tramite =tramitesState.success[args.tramitePosition]
+                            val dataList = view.findViewById(R.id.tramiteData) as RecyclerView
 
-            }
-        })
+                            Log.d(tagg, " data ${tramite.data }")
 
-        //val name = view.findViewById(R.id.tramiteName) as TextView
-        //val tramite = tramitesViewModel.getTramite(args.tramitePosition)
-        //name.text = tramite.name
-        return view
-    }
+
+                            tramiteName.text = tramite.name
+                            tramiteDescripcion.text = tramite.descripcion
+                            tramiteInstructions.text = tramite.instructions
+
+                            dataList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+                            dataList.adapter = TramiteDataRecyclerViewAdapter(tramite.data)
+
+                            val registerToTramite = view.findViewById(R.id.registerToTramite) as Button
+
+                            registerToTramite.setOnClickListener {
+                                //loading.visibility = View.VISIBLE
+                                Toast.makeText(requireActivity().applicationContext, "Registrando al tramite", Toast.LENGTH_SHORT).show()
+
+                                Log.d(tagg, " tramite status ${tramite }")
+
+                                tramitesViewModel.registerToTramite(tramite,"Bearer ${token}")
+
+                                //val userCredentials = UserCredentials(username.text.toString(), password.text.toString(),getDeviceId(), getDeviceName(),getFCMToken())
+                                //loginViewModel.login(userCredentials)
+                            }
+
+                        }
+
+                }
+            })
+
+
+
+            //val name = view.findViewById(R.id.tramiteName) as TextView
+            //val tramite = tramitesViewModel.getTramite(args.tramitePosition)
+            //name.text = tramite.name
+            return view
+        }
 
     companion object {
         /**

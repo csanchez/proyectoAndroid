@@ -5,9 +5,11 @@
 
     <!-- Strings related to navigation -->
     <string name="navigation_mis_solicitudes">Mis Solicitudes</string>
-    <string name="navigation_tramite">Trámite</string>
+    <string name="navigation_tramite">Registro al Trámite</string>
     <string name="navigation_tramites_personales">Trámites personales</string>
     <string name="navigation_tramites_institucionales">Trámites istitucionales</string>
+
+
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -64,7 +66,19 @@
     <string name="saved_user_logged_in">SavedUserLoggedIn</string>
     <string name="saved_fcm_token">SavedUserFCMToken</string>
 
+
+    <!-- Strings related to tramite -->
     <string name="tramite_departments">Departamentos responsables</string>
+    <string name="tramite_descripcion">Detalles del trámite</string>
+    <string name="tramite_name">Nombre</string>
+    <string name="tramite_instructions">Instrucciones</string>
+    <string name="tramite_addition_info">Información adicional</string>
+
+
+
+    <string name="register_to_tramite">Registrar solicitud al trámite</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

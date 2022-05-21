@@ -16,6 +16,8 @@ import com.example.iisapp.data.Result
 import com.example.iisapp.data.ISSUtils
 import com.example.iisapp.data.model.Device
 import com.example.iisapp.data.model.LoggedInUser
+import com.example.iisapp.data.model.Tramite
+import com.google.gson.Gson
 
 class ApiClient {
 
@@ -190,8 +192,54 @@ class ApiClient {
             }
         }
 
+        suspend fun registerToTramite(tramite: Tramite,token: String) : Result<Any> { //Result<LoggedInUser?
+
+            val parameters: HashMap<String, String> = HashMap()
+            parameters["tramite[id]"] = tramite.slug
+
+            val gson = Gson()
+            val dataToJson = gson.toJson(tramite.data)
+            Log.d(tag, "TO JSON DATA ${dataToJson}")
+
+            parameters["tramite[data]"] = dataToJson
+
+
+
+            try {
+                val call = getClient()?.create(ApiInterface::class.java)?.registerToTramite(parameters,token)
+
+
+                Log.d(tag,"Checnado resultado")
+                Log.d(tag, call?.isSuccessful.toString())
+                Log.d(tag, call?.body().toString())
+                Log.d(tag, call?.errorBody().toString())
+
+                return if(call?.isSuccessful == true) {
+                    //show Recyclerview
+                    val    tramiteRegisteredResponse = call.body()
+                    Log.d(tag, tramiteRegisteredResponse!!.message)
+
+                    var message = tramiteRegisteredResponse!!.message
+                    Result.Success(message)
+                }else{
+                    val jObjError = JSONObject(call?.errorBody()?.string())
+                    Log.d(tag,  jObjError.getString("message"))
+                    Result.Error(LoginException(jObjError.getString("message")))
+                }
+            }catch (ste: SocketTimeoutException){
+                Log.d(tag, "Error en la red "+ste.message)
+                return Result.Error(NetworkException("Hay un problema con el servidor, no hay respuesta"))
+            }catch (e: Exception){
+                Log.d(tag, "ocurrio un error desconocido "+e.message)
+                e.printStackTrace()
+                return Result.Error(NetworkException("ocurrio un error desconocido"))
+            }
+        }
+
 
     }
+
+
 
 
 

@@ -73,7 +73,7 @@ class TramiteRecyclerViewAdapter(private val values: List<Tramite>,private val o
 
         val statusView: TextView = binding.status
         val nameView: TextView = binding.name
-        val descripcionView: TextView = binding.descripcion
+        //val descripcionView: TextView = binding.descripcion
 
 
         val context = binding.root.context
@@ -85,7 +85,7 @@ class TramiteRecyclerViewAdapter(private val values: List<Tramite>,private val o
             //statusView.text = notification.status
             statusView.text = tramite.status
             nameView.text = tramite.name
-            descripcionView.text = tramite.descripcion
+            //descripcionView.text = tramite.descripcion
             departmentsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
             departmentsList.adapter = TramiteDepartmentsRecyclerViewAdapter(tramite.departments)
         }

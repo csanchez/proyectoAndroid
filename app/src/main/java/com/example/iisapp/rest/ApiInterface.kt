@@ -22,5 +22,8 @@ interface ApiInterface {
         @GET("tramites/")
         suspend fun getTramites(@Query("tipo") tipo: String?,@Header("Authorization") token: String): Response<TramitesResponse>
 
+        @FormUrlEncoded
+        @POST("tramites_users/")
+        suspend fun registerToTramite(@FieldMap fields: Map<String, String>,@Header("Authorization") token: String): Response<TramiteRegisteredResponse>
 
 }

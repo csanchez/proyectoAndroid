@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/tramiteDataLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="etiqueta del dato"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="#000"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/tramiteDataValue"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/iis_label"
+            android:padding="5dp"
+
+
+            android:ems="10"
+
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

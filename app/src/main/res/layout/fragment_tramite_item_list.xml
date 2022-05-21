@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+   >
 
     <!-- A CardView that contains a TextView -->
     <androidx.cardview.widget.CardView
@@ -16,7 +18,7 @@
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="2dp"
         card_view:cardElevation="4dp"
-        card_view:contentPadding="5dp"
+
         card_view:cardBackgroundColor="#E8E8E8"
         >
         <LinearLayout
@@ -24,9 +26,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-
-
-
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
             <TextView
                 android:id="@+id/name"
                 android:layout_width="fill_parent"
@@ -40,6 +45,14 @@
                 android:padding="5dp"
                 android:background="@color/iis_black"/>
 
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
+                >
 
             <TextView
                 android:id="@+id/status"
@@ -82,26 +95,44 @@
 
                 />
 
+        </LinearLayout>
 
 
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"
-                android:paddingTop="100dp"/>
 
 
-            <TextView
-                android:id="@+id/descripcion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:text="descripcion del tramite"
-                android:textAppearance="?attr/textAppearanceListItem"
-                android:textColor="#000"
-                android:textSize="12dp"
-                android:layout_marginTop="10dp"/>
+
+
+
+
+            <!--
+                        <View
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:background="@android:color/darker_gray"
+                            android:paddingTop="100dp"/>
+
+
+                         <TextView
+                            android:id="@+id/descripcion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:text="descripcion del tramite"
+                            android:textAppearance="?attr/textAppearanceListItem"
+                            android:textColor="#000"
+                            android:textSize="12dp"
+                            android:layout_marginTop="10dp"/>
+
+
+                        <Button
+                            android:id="@+id/register_to_tramite"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/register_to_tramite"
+                            android:onClick="sendMessage" />-->
+
 
         </LinearLayout>
 

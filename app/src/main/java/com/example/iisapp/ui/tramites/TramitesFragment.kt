@@ -75,7 +75,7 @@ open class TramitesFragment : Fragment() {
                         // adapter = NotificationRecyclerViewAdapter(PlaceholderContent.ITEMS)
                         adapter = TramiteRecyclerViewAdapter(tramitesState.success,
                             TramiteRecyclerViewAdapter.OnClickListener { position ->
-                                Toast.makeText(requireActivity().applicationContext, "Seleccionaste item #  $position}", Toast.LENGTH_SHORT).show()
+
                                 //val intent = Intent(context, TramiteActivity::class.java)
                                 //intent.putExtra("position", position)
                                 //startActivity(intent)
