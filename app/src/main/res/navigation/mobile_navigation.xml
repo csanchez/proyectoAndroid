@@ -18,6 +18,13 @@
         tools:layout="@layout/fragment_notification_list" />
 
     <fragment
+        android:id="@+id/nav_solicitudes"
+        android:name="com.example.iisapp.ui.solicitudes.SolicitudesFragment"
+        android:label="@string/navigation_solicitudes"
+        tools:layout="@layout/fragment_solicitudes_list">
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_tramites_personales"
         android:name="com.example.iisapp.ui.tramites.TramitesPersonalFragment"
         android:label="@string/navigation_tramites_personales"
@@ -44,4 +51,6 @@
             android:name="tramitePosition"
             app:argType="integer" />
     </fragment>
+
+
 </navigation>

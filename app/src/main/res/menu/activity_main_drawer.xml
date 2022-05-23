@@ -8,26 +8,27 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
-        <item
+        <!-- <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_slideshow" /> -->
         <item
             android:id="@+id/nav_notification"
             android:icon="@drawable/ic_menu_notifications"
             android:title="@string/menu_notifications" />
 
+        <item
+            android:id="@+id/nav_solicitudes"
+            android:icon="@drawable/ic_menu_notifications"
+            android:title="@string/menu_solicitudes" />
+
         <item android:title="@string/menu_tramites">
             <menu>
                 <group android:checkableBehavior="single">
-                    <item
-                        android:id="@+id/nav_mis_solicitudes"
-                        android:icon="@drawable/ic_menu_notifications"
-                        android:title="@string/menu_mis_solicitudes" />
                     <item
                         android:id="@+id/nav_tramites_personales"
                         android:icon="@drawable/ic_menu_notifications"

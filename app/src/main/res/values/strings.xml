@@ -4,10 +4,13 @@
 
 
     <!-- Strings related to navigation -->
-    <string name="navigation_mis_solicitudes">Mis Solicitudes</string>
+    <string name="navigation_solicitudes">Mis Solicitudes</string>
     <string name="navigation_tramite">Registro al Trámite</string>
     <string name="navigation_tramites_personales">Trámites personales</string>
     <string name="navigation_tramites_institucionales">Trámites istitucionales</string>
+
+
+
 
 
 
@@ -36,8 +39,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_notifications">Notificaciones</string>
-    <string name="menu_tramites">Trámites</string>
-    <string name="menu_mis_solicitudes">Mis Solicitudes</string>
+    <string name="menu_tramites">Trámites disponibles</string>
+    <string name="menu_solicitudes">Solicitudes a Trámites</string>
     <string name="menu_tramites_personales">Personales</string>
     <string name="menu_tramites_institucionales">Institucionales</string>
 
@@ -73,10 +76,14 @@
     <string name="tramite_name">Nombre</string>
     <string name="tramite_instructions">Instrucciones</string>
     <string name="tramite_addition_info">Información adicional</string>
-
-
-
     <string name="register_to_tramite">Registrar solicitud al trámite</string>
+
+
+    <!-- Strings related to solicitudes -->
+    <string name="solicitudes_progress">Avance del trámite</string>
+    <string name="started_at">Fecha de registro</string>
+
+
 
 
     <!-- TODO: Remove or change this placeholder text -->

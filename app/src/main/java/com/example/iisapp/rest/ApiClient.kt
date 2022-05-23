@@ -153,11 +153,6 @@ class ApiClient {
 
         suspend fun getTramites(tramiteType: String,token: String) : Result<Any> {
 
-            //val parameters: HashMap<String, String> = HashMap()
-            //parameters["tipo"] = tramiteType;
-
-
-
             try {
                 val call = getClient()?.create(ApiInterface::class.java)?.getTramites(tramiteType,token)
 
@@ -166,16 +161,10 @@ class ApiClient {
                 Log.d(tag, call?.errorBody().toString())
 
                 return if(call?.isSuccessful == true) {
-                    //show Recyclervie
-
-
-
-
                     val tramitesResponse = call.body()
                     Log.d(tag, "tramites found")
                     Log.d(tag, tramitesResponse!!.tramites.toString())
                     var tramites = tramitesResponse!!.tramites
-
                     Result.Success(tramites)
                 }else{
                     val jObjError = JSONObject(call?.errorBody()?.string())
@@ -221,6 +210,40 @@ class ApiClient {
 
                     var message = tramiteRegisteredResponse!!.message
                     Result.Success(message)
+                }else{
+                    val jObjError = JSONObject(call?.errorBody()?.string())
+                    Log.d(tag,  jObjError.getString("message"))
+                    Result.Error(LoginException(jObjError.getString("message")))
+                }
+            }catch (ste: SocketTimeoutException){
+                Log.d(tag, "Error en la red "+ste.message)
+                return Result.Error(NetworkException("Hay un problema con el servidor, no hay respuesta"))
+            }catch (e: Exception){
+                Log.d(tag, "ocurrio un error desconocido "+e.message)
+                e.printStackTrace()
+                return Result.Error(NetworkException("ocurrio un error desconocido"))
+            }
+        }
+
+
+
+        suspend fun getSolicitudes(token: String) : Result<Any> { //Result<LoggedInUser?
+
+            try {
+                val call = getClient()?.create(ApiInterface::class.java)?.getSolicitudes(token)
+
+
+                Log.d(tag,"Checnado resultado")
+                Log.d(tag, call?.isSuccessful.toString())
+                Log.d(tag, call?.body().toString())
+                Log.d(tag, call?.errorBody().toString())
+
+                return if(call?.isSuccessful == true) {
+                    val solicitudesResponse = call.body()
+                    Log.d(tag, "tramites found")
+                    Log.d(tag, solicitudesResponse!!.solicitudes.toString())
+                    var solicitudes = solicitudesResponse!!.solicitudes
+                    Result.Success(solicitudes)
                 }else{
                     val jObjError = JSONObject(call?.errorBody()?.string())
                     Log.d(tag,  jObjError.getString("message"))
