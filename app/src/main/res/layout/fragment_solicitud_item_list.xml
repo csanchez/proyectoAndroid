@@ -71,7 +71,6 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:text="@string/started_at"
-                    android:textAppearance="?attr/textAppearanceListItem"
                     android:textColor="@color/iis_label"
                     android:textSize="14dp"
                     android:textStyle="bold"

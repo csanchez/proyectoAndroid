@@ -11,12 +11,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.iisapp.R
 import com.example.iisapp.data.model.IisNotification
-import com.example.iisapp.ui.notifications.placeholder.PlaceholderContent
 
 /**
  * A fragment representing a list of Items.
  */
-class NotificationFragment : Fragment() {
+class NotificationsFragment : Fragment() {
 
     private var columnCount = 1
 
@@ -64,7 +63,7 @@ class NotificationFragment : Fragment() {
         // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            NotificationFragment().apply {
+            NotificationsFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }

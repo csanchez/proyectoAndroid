@@ -17,7 +17,7 @@ import com.example.iisapp.ui.tramites.TramiteRecyclerViewAdapter
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class SolicitudesRecyclerViewAdapter(private val values: List<Solicitud>, private val onClickListener: TramiteRecyclerViewAdapter.OnClickListener) : RecyclerView.Adapter<SolicitudesRecyclerViewAdapter.ViewHolder>() {
+class SolicitudesRecyclerViewAdapter(private val values: List<Solicitud>, private val onClickListener: SolicitudesRecyclerViewAdapter.OnClickListener) : RecyclerView.Adapter<SolicitudesRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 

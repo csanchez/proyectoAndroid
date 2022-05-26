@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="2">
+            <View
+                android:id="@+id/solicitud_condition_left_border_title"
+                android:layout_width="100dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="#2ebadc"/>
+            <TextView
+                android:id="@+id/solicitud_condition_title"
+                android:gravity="bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="Completado|no completado"
+                android:textColor="#2ebadc"/>
+            <View
+                android:id="@+id/solicitud_condition_rigth_border_title"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
+                android:layout_marginRight="5dp"
+                android:background="#2ebadc"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/solicitud_condition_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@drawable/topless_border">
+            <TextView
+                android:id="@+id/solicitud_condition_instruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:text="The top inset of the border is set to -3 to make it disappear and then it's covered with a line with text in the middle by using LinearLayout with two Views and one TextView"/>
+
+            <TextView
+                android:id="@+id/solicitud_condition_iis_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Esperando respuesta de ....."
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/solicitud_condition_completed_at"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Completado el"
+                android:visibility="visible"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

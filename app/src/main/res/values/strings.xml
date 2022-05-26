@@ -5,13 +5,10 @@
 
     <!-- Strings related to navigation -->
     <string name="navigation_solicitudes">Mis Solicitudes</string>
+    <string name="navigation_solicitud">Avance de la solicitud</string>
     <string name="navigation_tramite">Registro al Trámite</string>
     <string name="navigation_tramites_personales">Trámites personales</string>
     <string name="navigation_tramites_institucionales">Trámites istitucionales</string>
-
-
-
-
 
 
     <!-- Strings related to login -->
@@ -80,9 +77,20 @@
 
 
     <!-- Strings related to solicitudes -->
-    <string name="solicitudes_progress">Avance del trámite</string>
+    <string name="solicitudes_info">Datos de la solicitud</string>
+    <string name="solicitudes_tramite_info">Datos del trámite</string>
+    <string name="solicitudes_step_conditions_info">Condiciones de la solicitud</string>
+    <string name="solicitudes_progress">Avance de la solicitud</string>
+
+
+
+    <string name="current_step">Etapa actual</string>
     <string name="started_at">Fecha de registro</string>
 
+
+    <string name="solicitud_current_step_name">Nombre</string>
+    <string name="solicitud_current_step_description">Descripción</string>
+    <string name="solicitud_current_step_ninstructions">Indicaciones</string>
 
 
 

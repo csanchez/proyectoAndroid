@@ -9,8 +9,8 @@ data class Solicitud(
     @SerializedName("tipoTramite") var tipoTramite: String,
     @SerializedName("status") var status: String,
     @SerializedName("tramiteUserId") var tramiteUserId: String,
-    @SerializedName("startedAt") var startedAt: String
-
+    @SerializedName("startedAt") var startedAt: String,
+    @SerializedName("current_tramite_step_user") var currentStep: Step
 )
 
 

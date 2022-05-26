@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.solicitudes.SolicitudFragment">
+
+<!--
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.solicitudes.SolicitudFragment">
+ -->
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <com.example.iisapp.ui.components.TextViewLabel
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:text="@string/solicitudes_tramite_info"/>
+
+
+        <com.example.iisapp.ui.components.TextViewWithTitle
+            android:id="@+id/tramiteName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            app:title="@string/tramite_name"
+            app:body="Nombre del trámite"/>
+
+
+
+        <com.example.iisapp.ui.components.TextViewLabel
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:text="@string/current_step"/>
+
+
+        <com.example.iisapp.ui.components.TextViewWithTitle
+            android:id="@+id/solicitud_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            app:title="@string/solicitud_current_step_name"
+            app:body="Nombre de la etapa"
+            />
+
+        <com.example.iisapp.ui.components.TextViewWithTitle
+            android:id="@+id/solicitud_description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            app:title="@string/solicitud_current_step_description"
+            app:body="DSescripcion de la etapa"
+            />
+
+         <!-- <com.example.iisapp.ui.components.TextViewWithTitle
+            android:id="@+id/solicitud_instructions"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            app:title="@string/solicitud_current_step_ninstructions"
+            app:body="Indicaciones de la etapa"
+            /> -->
+
+
+        <com.example.iisapp.ui.components.TextViewLabel
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:text="@string/solicitudes_step_conditions_info"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/solicitud_conditions_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="LinearLayoutManager"
+            android:padding="5dp"
+            tools:listitem="@layout/fragment_solicitud_condition"
+            />
+
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -22,7 +22,7 @@
             android:text="@string/tramite_name"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="@color/iis_label"
-            android:textSize="@dimen/iis_labeL_size"
+            android:textSize="@dimen/iis_label_size"
             android:textStyle="bold" />
 
         <TextView
@@ -47,7 +47,7 @@
             android:text="@string/tramite_descripcion"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="@color/iis_label"
-            android:textSize="@dimen/iis_labeL_size"
+            android:textSize="@dimen/iis_label_size"
             android:textStyle="bold" />
 
         <TextView
@@ -70,7 +70,7 @@
             android:text="@string/tramite_instructions"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="@color/iis_label"
-            android:textSize="@dimen/iis_labeL_size"
+            android:textSize="@dimen/iis_label_size"
             android:textStyle="bold" />
 
         <TextView
@@ -93,7 +93,7 @@
             android:text="@string/tramite_addition_info"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="@color/iis_label"
-            android:textSize="@dimen/iis_labeL_size"
+            android:textSize="@dimen/iis_label_size"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

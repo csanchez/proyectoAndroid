@@ -67,19 +67,12 @@ class SolicitudesFragment : Fragment() {
                         }*/
                         // adapter = NotificationRecyclerViewAdapter(PlaceholderContent.ITEMS)
                         adapter = SolicitudesRecyclerViewAdapter(solicitudesState.success,
-                            TramiteRecyclerViewAdapter.OnClickListener { position ->
-                                Toast.makeText(context, "Click en solicitud", Toast.LENGTH_SHORT).show()
-                                //val intent = Intent(context, TramiteActivity::class.java)
-                                //intent.putExtra("position", position)
-                                //startActivity(intent)
+                            SolicitudesRecyclerViewAdapter.OnClickListener { position ->
+                                //Toast.makeText(context, "Click en solicitud", Toast.LENGTH_SHORT).show()
 
-                                /*if(tramiteType=="personal"){
-                                    var action = TramitesPersonalFragmentDirections.actionNavTramitesToNavTramite( position)
-                                    view.findNavController().navigate( action)
-                                }else{
-                                    var action = TramitesInstitucionalFragmentDirections.actionNavTramitesToNavTramite(position)
-                                    view.findNavController().navigate( action)
-                                }*/
+
+                                var action =  SolicitudesFragmentDirections.actionNavSolicitudesToNavSolicitud(position)
+                                view.findNavController().navigate(action)
 
 
                             }

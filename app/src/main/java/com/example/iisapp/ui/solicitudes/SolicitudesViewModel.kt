@@ -39,7 +39,10 @@ class SolicitudesViewModel(private val solicitudesRepository: SolicitudesReposit
             val result = solicitudesRepository.getSolicitudes(token)
 
             if (result is Result.Success) {
+
                 _solicitudesResult.value = SolicitudesResult(success = result.data?.let { it as List<Solicitud> })
+
+
                 _loading.value = false
             } else {
                 if (result is Result.Error) { _loading.value = false

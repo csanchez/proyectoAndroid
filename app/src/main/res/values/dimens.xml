@@ -17,7 +17,7 @@
     <dimen name="icon_text">22dp</dimen>
     <dimen name="timestamp">12dp</dimen>
     <dimen name="normal_text_size">12dp</dimen>
-    <dimen name="title_text_size">14dp</dimen>
+    <dimen name="title_text_size">16dp</dimen>
 
-    <dimen name="iis_labeL_size">12dp</dimen>
+    <dimen name="iis_label_size">12dp</dimen>
 </resources>
