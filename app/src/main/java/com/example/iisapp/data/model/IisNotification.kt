@@ -1,36 +1,22 @@
 package com.example.iisapp.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class IisNotification (
-    val id:Int,
-    val title:String,
-    val message:String,
-    val url:String,
-    val number:String,
-    val date:String,
-    val status:String,
-    val notificationType:String,
-    val originType:String,
-    val sender:String,
-    val initials:String
+    @SerializedName("id") var id: Int,
+    @SerializedName("userNotificationId") var userNotificationId: Int,
+    @SerializedName("title") var title: String,
+    @SerializedName("message") var message: String,
+    @SerializedName("url") var url: String,
+    @SerializedName("createdAt") var createdAt: String,
+    @SerializedName("status") var status: String,
 
-){
-    companion object{
-        val data
-            get() = listOf(
-                IisNotification(
-                    1,
-                    "Mensaje de la comunidad",
-                "lorem ipsum",
-                    "www.iis.unam.mx",
-                    "1",
-                    "29 nov 2021",
-                    "unseen",
-                    "alert",
-                    "direccion",
-                    "Direccion",
-                    "Dir"
+    @SerializedName("notificationType") var notificationType: String,
+    @SerializedName("originType") var originType: String,
+    @SerializedName("originName") var originName: String,
+    @SerializedName("originInitials") var originInitials: String,
+    @SerializedName("sender") var sender: String,
 
 
-        ))
-    }
-}
+
+)

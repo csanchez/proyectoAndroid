@@ -12,10 +12,25 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_notification"
+        android:id="@+id/nav_notifications"
         android:name="com.example.iisapp.ui.notifications.NotificationsFragment"
         android:label="@string/menu_notifications"
-        tools:layout="@layout/fragment_notification_list" />
+        tools:layout="@layout/fragment_notification_list" >
+        <action
+            android:id="@+id/action_nav_notifications_to_nav_notification"
+            app:destination="@id/nav_notification" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_notification"
+        android:name="com.example.iisapp.ui.notifications.NotificationFragment"
+        android:label="@string/menu_notification"
+        tools:layout="@layout/fragment_notification">
+        <argument
+            android:name="notificationPosition"
+            app:argType="integer" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_solicitudes"
@@ -31,11 +46,13 @@
         android:id="@+id/nav_solicitud"
         android:name="com.example.iisapp.ui.solicitudes.SolicitudFragment"
         android:label="@string/navigation_solicitud"
-        tools:layout="@layout/fragment_solicitudes_list">
+        tools:layout="@layout/fragment_solicitud">
         <argument
             android:name="solicitudPosition"
             app:argType="integer" />
     </fragment>
+
+
 
     <fragment
         android:id="@+id/nav_tramites_personales"

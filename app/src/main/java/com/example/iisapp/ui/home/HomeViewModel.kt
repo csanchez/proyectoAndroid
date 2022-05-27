@@ -15,6 +15,7 @@ class HomeViewModel : ViewModel() {
     private val _notification = MutableLiveData<IisNotification>().apply {
         value = IisNotification(
                 1,
+            2,
         "Mensaje para la comunidad académica del IIS-UNAM",
         "Instituto Investigaciones Sociales\n" +
                 "\t\n" +

@@ -52,9 +52,7 @@ class SolicitudFragment : Fragment() {
         _binding = FragmentSolicitudBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val sharedPref = this.activity?.getSharedPreferences(getString(R.string.shared_preferences_name),
-            Context.MODE_PRIVATE)
-        val token = sharedPref?.getString(getString(R.string.saved_api_token),"")
+
 
         solicitudViewModel.solicitudesResult.observe(viewLifecycleOwner, Observer {
             val solicitudesState = it ?: return@Observer

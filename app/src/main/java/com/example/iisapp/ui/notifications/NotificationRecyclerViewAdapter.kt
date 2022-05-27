@@ -7,31 +7,21 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.iisapp.R
 import com.example.iisapp.data.model.IisNotification
+import com.example.iisapp.databinding.FragmentNotificationItemListBinding
 
 import com.example.iisapp.ui.notifications.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.iisapp.databinding.FragmentNotificationBinding//  .ui.notifications.databinding.FragmentNotificationBinding
+import com.example.iisapp.ui.solicitudes.SolicitudesRecyclerViewAdapter
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class NotificationRecyclerViewAdapter(
-    //private val values: List<PlaceholderItem>
-    private val values: List<IisNotification>
+class NotificationRecyclerViewAdapter(private val values: List<IisNotification>, private val onClickListener: NotificationRecyclerViewAdapter.OnClickListener) : RecyclerView.Adapter<NotificationRecyclerViewAdapter.ViewHolder>() {
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-
-) : RecyclerView.Adapter<NotificationRecyclerViewAdapter.NotificationViewHolder>() {
-
-   /* private var values = listOf<IisNotification>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }*/
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
-
-        return NotificationViewHolder(
-            FragmentNotificationBinding.inflate(
+        return ViewHolder(
+            FragmentNotificationItemListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -40,21 +30,17 @@ class NotificationRecyclerViewAdapter(
 
     }
 
-    /*override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
 
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
 
-    }*/
-
-    override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
-        val item = values[position]
-        holder.bind(item)
-
-        if(item.status=="seen"){
-            holder.statusView.visibility = View.INVISIBLE
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(position)
         }
+
+        holder.bind(item)
 
 
     }
@@ -71,21 +57,29 @@ class NotificationRecyclerViewAdapter(
         }
     }*/
 
-    inner class NotificationViewHolder(binding: FragmentNotificationBinding) :
+    inner class ViewHolder(binding: FragmentNotificationItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        val statusView: TextView = binding.status
-        val senderView: TextView = binding.sender
-        val titleView: TextView = binding.title
-        val messageView: TextView = binding.message
+        val statusView: TextView = binding.notificationStatus
+        val senderView: TextView = binding.notificationSender
+        val titleView: TextView = binding.notificationTitle
+        val messageView: TextView = binding.notificationMessage
        // val dateView: TextView = binding.date
 
         fun bind(notification: IisNotification) {
-            //statusView.text = notification.status
+
             titleView.text = notification.title
             messageView.text = notification.message
             senderView.text = notification.sender
-         //   dateView.text = notification.date
+
+            if(notification.status == "unseen") {
+                statusView.text = "nuevo"
+            }else{
+                statusView.text = "visto"
+            }
+
+
+
 
 
         }
@@ -95,6 +89,10 @@ class NotificationRecyclerViewAdapter(
         override fun toString(): String {
             return super.toString() + " '" + senderView.text + "'"
         }
+    }
+
+    class OnClickListener(val clickListener: (position: Int) -> Unit) {
+        fun onClick(position: Int) = clickListener(position)
     }
 
 }

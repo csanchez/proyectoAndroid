@@ -1,6 +1,7 @@
 package com.example.iisapp.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +33,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //val textView: TextView = binding.textHome
+        Log.d("NOME", "EN HONE")
 
         val senderView: TextView = binding.sender
         val dateView: TextView = binding.date
@@ -47,10 +48,10 @@ class HomeFragment : Fragment() {
 
         homeViewModel.notification.observe(viewLifecycleOwner, Observer {
             senderView.text = it.sender
-            dateView.text = it.date
+            dateView.text = it.createdAt
             titleView.text = it.title
             messageView.text = it.message
-            initialsView.text = it.initials
+            initialsView.text = it.originInitials
         })
         return root
     }

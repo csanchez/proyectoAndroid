@@ -30,4 +30,7 @@ interface ApiInterface {
         @GET("tramites_users/")
         suspend fun getSolicitudes(@Header("Authorization") token: String): Response<SolicitudesResponse>
 
+        @GET("notifications/")
+        suspend fun getNotifications(@Header("Authorization") token: String): Response<NotificationsResponse>
+
 }

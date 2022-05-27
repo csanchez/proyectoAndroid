@@ -36,6 +36,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_notifications">Notificaciones</string>
+    <string name="menu_notification">Notificación</string>
+
     <string name="menu_tramites">Trámites disponibles</string>
     <string name="menu_solicitudes">Solicitudes a Trámites</string>
     <string name="menu_tramites_personales">Personales</string>
@@ -83,7 +85,6 @@
     <string name="solicitudes_progress">Avance de la solicitud</string>
 
 
-
     <string name="current_step">Etapa actual</string>
     <string name="started_at">Fecha de registro</string>
 
@@ -91,7 +92,6 @@
     <string name="solicitud_current_step_name">Nombre</string>
     <string name="solicitud_current_step_description">Descripción</string>
     <string name="solicitud_current_step_ninstructions">Indicaciones</string>
-
 
 
     <!-- TODO: Remove or change this placeholder text -->
