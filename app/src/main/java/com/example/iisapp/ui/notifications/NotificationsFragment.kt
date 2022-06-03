@@ -2,12 +2,15 @@ package com.example.iisapp.ui.notifications
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -47,7 +50,9 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationItemListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
+        val list: RecyclerView = view.findViewById(R.id.notifications_list)
+        //val progressBar: ProgressBar = view.findViewById(R.id.app_progress_bar)
+        //progressBar.visibility=View.VISIBLE
         // Set the adapter
         /*if (view is RecyclerView) {
             with(view) {
@@ -80,14 +85,39 @@ class NotificationsFragment : Fragment() {
             }
             if (notificationsState.success != null) {
                 Log.d(tagg, " succcess")
-                if (view is RecyclerView) {
-                    with(view) {
+                if (list is RecyclerView) {
+                    with(list) {
+
+                        /*Handler().postDelayed({
+                            // This method will be executed once the timer is over
+                            // Start your app main activity
+
+                            progressBar.visibility=View.GONE
+
+                            adapter = NotificationRecyclerViewAdapter(notificationsState.success,
+                                NotificationRecyclerViewAdapter.OnClickListener { position ->
+                                    var action =  NotificationsFragmentDirections.actionNavNotificationsToNavNotification(position)
+                                    view.findNavController().navigate(action)
+                                }
+                            )
+                        }, 1000)
+*/
+
+                        //progressBar.visibility=View.GONE
+
                         adapter = NotificationRecyclerViewAdapter(notificationsState.success,
                             NotificationRecyclerViewAdapter.OnClickListener { position ->
                                 var action =  NotificationsFragmentDirections.actionNavNotificationsToNavNotification(position)
                                 view.findNavController().navigate(action)
                             }
                         )
+
+
+                        val divider = DividerItemDecoration(context,DividerItemDecoration.VERTICAL)
+                        divider.setDrawable(ContextCompat.getDrawable(context,R.drawable.divider)!!)
+
+                        list.  addItemDecoration(divider)
+
                     }
                 }
 

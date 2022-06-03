@@ -9,6 +9,106 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         >
+
+
+
+        <LinearLayout
+            android:id="@+id/notification_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/notification_type"
+                android:gravity="bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:drawableLeft="@drawable/ic_announcement"
+                android:text=""
+                android:textColor="@color/black"/>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true">
+
+
+                    <TextView
+                        android:id="@+id/notification_sender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Direccion"
+                        android:textColor="@color/black"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true">
+
+                    <TextView
+                        android:id="@+id/notification_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="25 nov 2021"
+                        android:textColor="@color/black"
+                        android:textStyle="italic"/>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/notification_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="asdasdasdasdasdasdasfdasfdhasjkdhaskdhashdjhasdljhasjldhjkashdjkahsjdkhajshdjasd"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/notification_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="dasdasdasdasdasdasdasd"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
+ <!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
         <LinearLayout
             android:id="@+id/main"
             android:layout_width="match_parent"
@@ -23,12 +123,12 @@
                 android:layout_weight="1"
                 android:background="#2ebadc"/>
             <TextView
-                android:id="@+id/notification_status"
+                android:id="@+id/notification_type"
                 android:gravity="bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
-                android:text="Status"
+                android:text="Alerta"
                 android:textColor="#2ebadc"/>
             <View
                 android:id="@+id/notification_rigth_border_title"
@@ -111,4 +211,4 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
-</LinearLayout>
+</LinearLayout> -->

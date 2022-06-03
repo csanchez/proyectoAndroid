@@ -32,10 +32,10 @@ class NavigationActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarNavigation.toolbar)
 
-        binding.appBarNavigation.fab.setOnClickListener { view ->
+        /*binding.appBarNavigation.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
-        }
+        }*/
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_navigation)
@@ -43,7 +43,7 @@ class NavigationActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home,  R .id.nav_notifications, R.id.nav_solicitudes, R.id.nav_tramites_personales, R.id.nav_tramites_institucionales   //R.id.nav_gallery, R.id.nav_slideshow,
+                R .id.nav_notifications, R.id.nav_home,  R.id.nav_solicitudes, R.id.nav_tramites_personales, R.id.nav_tramites_institucionales   //R.id.nav_gallery, R.id.nav_slideshow,
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -64,10 +64,10 @@ class NavigationActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
-            R.id.action_settings -> {
+            /*R.id.action_settings -> {
                 Log.w(tag, "Action settins")
                 true
-            }
+            }*/
             R.id.action_logout -> {
                 val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE)
 

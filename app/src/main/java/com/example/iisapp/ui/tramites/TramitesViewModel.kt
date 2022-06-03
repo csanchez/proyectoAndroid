@@ -35,7 +35,7 @@ class TramitesViewModel (private val tramitesRepository: TramitesRepository) : V
     val failed: LiveData<String>
         get() = _failed
 
-    private val tag="LOGINVM"
+    private val tag="TRAMITESVM"
 
     init {
         _loading.value = true
