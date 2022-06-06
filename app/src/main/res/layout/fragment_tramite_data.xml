@@ -13,7 +13,7 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-        <TextView
+        <!-- <TextView
             android:id="@+id/tramiteDataLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,23 +21,22 @@
             android:text="etiqueta del dato"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="#000"
-            android:textSize="16dp"/>
+            android:textSize="16dp"/> -->
 
         <EditText
             android:id="@+id/tramiteDataValue"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/iis_label"
-            android:padding="5dp"
-
-
+            android:layout_height="match_parent"
             android:ems="10"
-
             android:hint="Username"
             android:inputType="textPersonName"
+            android:padding="5dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black" />
 
+
+            android:textColorHint="@color/iis_label"
+
+            android:theme="@style/MyEditTextTheme" />
 
 
     </LinearLayout>

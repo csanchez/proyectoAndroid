@@ -9,4 +9,15 @@
 
 
 
+    <style name="MyEditTextTheme">
+        <item name="colorControlNormal">#d32f2f</item>
+        <item name="colorControlActivated">#28a745</item>
+        <item name="colorControlHighlight">#f44336</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColorHint">#AA0000</item>
+    </style>
+
+
 </resources>

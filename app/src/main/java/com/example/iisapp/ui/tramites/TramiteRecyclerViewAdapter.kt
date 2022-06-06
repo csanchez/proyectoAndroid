@@ -71,10 +71,9 @@ class TramiteRecyclerViewAdapter(private val values: List<Tramite>,private val o
 
     inner class TramiteViewHolder(binding: FragmentTramiteItemListBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        val statusView: TextView = binding.status
-        val nameView: TextView = binding.name
-        //val descripcionView: TextView = binding.descripcion
-
+        //val statusView: TextView = binding.tramiteStatus
+        val nameView: TextView = binding.tramiteName
+        val descripcionView: TextView = binding.tramiteDescripcion
 
         val context = binding.root.context
         val departmentsList: RecyclerView = binding.tramiteItemListDepartment
@@ -82,10 +81,9 @@ class TramiteRecyclerViewAdapter(private val values: List<Tramite>,private val o
 
 
         fun bind(tramite: Tramite) {
-            //statusView.text = notification.status
-            statusView.text = tramite.status
+            //statusView.text = tramite.status
             nameView.text = tramite.name
-            //descripcionView.text = tramite.descripcion
+            descripcionView.text = tramite.descripcion
             departmentsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
             departmentsList.adapter = TramiteDepartmentsRecyclerViewAdapter(tramite.departments)
         }

@@ -12,6 +12,94 @@
         android:orientation="vertical"
         android:padding="10dp">
 
+        <com.example.iisapp.ui.components.TextViewLabel
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:text="@string/solicitudes_tramite_info"/>
+
+        <com.example.iisapp.ui.components.TextViewWithTitle
+            android:id="@+id/tramiteName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            app:title="@string/tramite_name"
+            app:body="Nombre del trámite"/>
+
+        <com.example.iisapp.ui.components.TextViewWithTitle
+            android:id="@+id/tramiteDescripcion"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            app:title="@string/tramite_descripcion"
+            app:body="Nombre del trámite"/>
+
+        <com.example.iisapp.ui.components.TextViewWithTitle
+            android:id="@+id/tramiteInstructions"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            app:title="@string/tramite_instructions"
+            app:body="Nombre del trámite"/>
+
+
+
+
+        <com.example.iisapp.ui.components.TextViewLabel
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:text="@string/tramite_addition_info"/>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tramiteData"
+            android:layout_width="fill_parent"
+            android:layout_height="343dp"
+            android:orientation="vertical"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/fragment_tramite_data"
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:gravity="bottom|center">
+
+            <Button
+                android:id="@+id/registerToTramite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:text="@string/register_to_tramite" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>
+
+<!--
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.tramites.TramiteFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
         <TextView
 
             android:layout_width="wrap_content"
@@ -128,3 +216,5 @@
 
 
 </FrameLayout>
+
+-->

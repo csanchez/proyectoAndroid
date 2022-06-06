@@ -68,13 +68,13 @@ class TramiteDataRecyclerViewAdapter(private val values: List<Data>) : RecyclerV
 
     inner class ViewHolder(binding: FragmentTramiteDataBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        val labelView  = binding.tramiteDataLabel as TextView
+        //val labelView  = binding.tramiteDataLabel as TextView
         val valueView  = binding.tramiteDataValue as EditText
 
 
 
         fun bind(data: Data) {
-            labelView.text = data.label
+            //labelView.text = data.label
             valueView.hint = "Introduce el valor de "+data.label
 
             valueView.addTextChangedListener(object : TextWatcher {

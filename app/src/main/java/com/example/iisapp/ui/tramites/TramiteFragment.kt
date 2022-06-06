@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.iisapp.databinding.FragmentTramiteBinding
 import com.example.iisapp.R
 import com.example.iisapp.data.model.UserCredentials
+import com.example.iisapp.ui.components.TextViewWithTitle
 
 
 /**
@@ -68,18 +69,18 @@ class TramiteFragment : Fragment() {
                 if (tramitesState.success != null) {
                     Log.d(tagg, " succcess")
                         with(view) {
-                            val tramiteName = view.findViewById(R.id.tramiteName) as TextView
-                            val tramiteDescripcion = view.findViewById(R.id.tramiteDescripcion) as TextView
-                            val tramiteInstructions = view.findViewById(R.id.tramiteInstructions) as TextView
+                            val tramiteName = view.findViewById(R.id.tramiteName) as TextViewWithTitle
+                            val tramiteDescripcion = view.findViewById(R.id.tramiteDescripcion) as TextViewWithTitle
+                            val tramiteInstructions = view.findViewById(R.id.tramiteInstructions) as TextViewWithTitle
                             val tramite =tramitesState.success[args.tramitePosition]
                             val dataList = view.findViewById(R.id.tramiteData) as RecyclerView
 
                             Log.d(tagg, " data ${tramite.data }")
 
 
-                            tramiteName.text = tramite.name
-                            tramiteDescripcion.text = tramite.descripcion
-                            tramiteInstructions.text = tramite.instructions
+                            tramiteName.setBody(tramite.name)
+                            tramiteDescripcion.setBody(tramite.descripcion)
+                            tramiteInstructions.setBody(tramite.instructions)
 
                             dataList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
                             dataList.adapter = TramiteDataRecyclerViewAdapter(tramite.data)

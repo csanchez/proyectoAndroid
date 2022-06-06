@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.iisapp.R
 import com.example.iisapp.databinding.FragmentTramiteItemListBinding
 
@@ -60,6 +62,12 @@ open class  TramitesFragment : Fragment() {
                     with(view) {
 
                         Log.d(tagg, " mostrara tramites")
+                        val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+                        divider.setDrawable(ContextCompat.getDrawable(context,R.drawable.divider)!!)
+
+                        view.addItemDecoration(divider)
+
+
                         adapter = TramiteRecyclerViewAdapter(tramitesState.success,
                             TramiteRecyclerViewAdapter.OnClickListener { position ->
                                 if(tramiteType=="personal"){
