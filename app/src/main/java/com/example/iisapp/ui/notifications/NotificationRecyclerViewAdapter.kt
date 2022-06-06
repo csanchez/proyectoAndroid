@@ -1,10 +1,12 @@
 package com.example.iisapp.ui.notifications
 
 import android.content.Context
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.iisapp.R
@@ -68,13 +70,18 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
         val senderView: TextView = binding.notificationSender
         val titleView: TextView = binding.notificationTitle
         val messageView: TextView = binding.notificationMessage
+       // val statusView: TextView = binding.notificationStatus
+        val mainLayout: LinearLayout = binding.notificationMainLayout
        // val dateView: TextView = binding.date
+
+
 
         fun bind(notification: IisNotification) {
 
             titleView.text = notification.title
             messageView.text = notification.message
             senderView.text = notification.sender
+            //statusView.text = notification.status
             //notificationTypeView.text = notification.notificationType
 
 
@@ -92,15 +99,12 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
 
                 }
             }
-           // val drawable = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_announcement) }
 
 
 
-            /*if(notification.status == "unseen") {
-                statusView.text = "nuevo"
-            }else{
-                statusView.text = "visto"
-            }*/
+           if(notification.status == "unseen") {
+               context?.resources?.let { it -> mainLayout.setBackgroundColor(it.getColor(R.color.info)) }
+            }
 
 
 

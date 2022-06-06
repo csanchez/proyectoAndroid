@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notification_main_layout"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginBottom="10dp">
+
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -11,32 +13,37 @@
         >
 
 
-
         <LinearLayout
             android:id="@+id/notification_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="10dp"
-            android:padding="10dp"
-            >
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/notification_type"
-                android:gravity="bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"
                 android:drawableLeft="@drawable/ic_announcement"
+                android:gravity="bottom"
                 android:text=""
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <!-- <TextView
+                android:id="@+id/notification_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="status"
+                android:textColor="@color/black" /> -->
 
 
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp">
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
 
 
                 <RelativeLayout
@@ -50,7 +57,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Direccion"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/black" />
 
                 </RelativeLayout>
 
@@ -66,13 +73,12 @@
                         android:layout_height="wrap_content"
                         android:text="25 nov 2021"
                         android:textColor="@color/black"
-                        android:textStyle="italic"/>
+                        android:textStyle="italic" />
 
                 </RelativeLayout>
 
 
             </RelativeLayout>
-
 
 
             <LinearLayout
@@ -84,17 +90,17 @@
                     android:id="@+id/notification_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="asdasdasdasdasdasdasfdasfdhasjkdhaskdhashdjhasdljhasjldhjkashdjkahsjdkhajshdjasd"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/notification_message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="dasdasdasdasdasdasdasd"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

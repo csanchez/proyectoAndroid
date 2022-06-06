@@ -1,7 +1,6 @@
 package com.example.iisapp.rest
 
 
-import com.example.iisapp.data.model.UserCredentials
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.util.Log
@@ -14,9 +13,7 @@ import java.net.SocketTimeoutException
 
 import com.example.iisapp.data.Result
 import com.example.iisapp.data.ISSUtils
-import com.example.iisapp.data.model.Device
-import com.example.iisapp.data.model.LoggedInUser
-import com.example.iisapp.data.model.Tramite
+import com.example.iisapp.data.model.*
 import com.google.gson.Gson
 
 class ApiClient {
@@ -277,6 +274,41 @@ class ApiClient {
                     Log.d(tag, notificationsResponse!!.notifications.toString())
                     var notifications = notificationsResponse!!.notifications
                     Result.Success(notifications)
+                }else{
+                    val jObjError = JSONObject(call?.errorBody()?.string())
+                    Log.d(tag,  jObjError.getString("message"))
+                    Result.Error(LoginException(jObjError.getString("message")))
+                }
+            }catch (ste: SocketTimeoutException){
+                Log.d(tag, "Error en la red "+ste.message)
+                return Result.Error(NetworkException("Hay un problema con el servidor, no hay respuesta"))
+            }catch (e: Exception){
+                Log.d(tag, "ocurrio un error desconocido "+e.message)
+                e.printStackTrace()
+                return Result.Error(NetworkException("ocurrio un error desconocido"))
+            }
+        }
+
+
+        suspend fun markAsSeen(id: Int,token: String) : Result<Any> {
+
+            val parameters: HashMap<String, String> = HashMap()
+            parameters["id"] = id.toString();
+
+
+
+            try {
+                val call = getClient()?.create(ApiInterface::class.java)?.markAsSeen(parameters,token)
+
+                Log.d(tag, call?.isSuccessful.toString())
+                Log.d(tag, call?.body().toString())
+                Log.d(tag, call?.errorBody().toString())
+
+                return if(call?.isSuccessful == true) {
+                    //show Recyclerview
+                    val notificationResponse = call.body()
+                    Log.d(tag, notificationResponse!!.message)
+                    Result.Success(notificationResponse.notification)
                 }else{
                     val jObjError = JSONObject(call?.errorBody()?.string())
                     Log.d(tag,  jObjError.getString("message"))

@@ -1,6 +1,7 @@
 package com.example.iisapp.ui.notifications
 
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -51,6 +52,10 @@ class NotificationFragment : Fragment() {
 
         Log.d(tagg,"Mostrando notificacion 1")
 
+        val sharedPref = this.activity?.getSharedPreferences(getString(R.string.shared_preferences_name),
+            Context.MODE_PRIVATE)
+        val token = sharedPref?.getString(getString(R.string.saved_api_token),"")
+
         notificationsViewModel.notificationsResult.observe(viewLifecycleOwner, Observer {
             val notificationsState = it ?: return@Observer
 
@@ -74,9 +79,15 @@ class NotificationFragment : Fragment() {
                     titleView.text = notification.title
                     messageView.text = notification.message
                     urlView.text = notification.url
+
+
+
+                    notificationsViewModel.markAsSeen(args.notificationPosition, "Bearer ${token}")
                 }
             }
         })
+
+
 
 
         return view

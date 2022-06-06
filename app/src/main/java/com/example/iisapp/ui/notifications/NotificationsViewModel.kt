@@ -1,9 +1,11 @@
 package com.example.iisapp.ui.notifications
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.iisapp.R
 import com.example.iisapp.data.NotificationsRepository
 import com.example.iisapp.data.Result
 import com.example.iisapp.data.SolicitudesRepository
@@ -16,6 +18,10 @@ class NotificationsViewModel (private val notificationsRepository: Notifications
 
     private val _notificationsResult = MutableLiveData<NotificationsResult>()
     val notificationsResult: LiveData<NotificationsResult> = _notificationsResult
+
+
+    private val _notificationResult = MutableLiveData<NotificationResult>()
+    val notificationResult: LiveData<NotificationResult> = _notificationResult
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean>
@@ -53,4 +59,41 @@ class NotificationsViewModel (private val notificationsRepository: Notifications
         }
     }
 
+    fun markAsSeen(position:Int, token: String){
+
+
+        //"seen".also { _notificationsResult.value?.success?.get(position)?.status = it }
+       // _notificationsResult.value?.success?.get(position)?.status = "seen"
+       // _notificationsResult.value?.success?.get(position)?.let { it.status ="seen" }
+
+
+        viewModelScope.launch {
+            _notificationsResult.value?.success?.get(position)?.let { it
+
+                val result = notificationsRepository.markAsSeen(it.userNotificationId, token)
+
+                if (result is Result.Success) {
+                    _notificationResult.value =
+                        NotificationResult(success = result.data?.let { it as IisNotification })
+                        it.status ="seen"
+                    //_notificationsResult.value?.success?.get(position)?.let { it.status ="seen" }
+
+                    _loading.value = false
+                } else {
+                    if (result is Result.Error) {
+                        _loading.value = false
+                        _notificationResult.value =
+                            NotificationResult(error = result.exception?.let { result.exception.message })
+                    }
+                }
+
+
+
+            }
+
+
+        }
+    }
+
 }
+

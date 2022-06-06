@@ -33,4 +33,9 @@ interface ApiInterface {
         @GET("notifications/")
         suspend fun getNotifications(@Header("Authorization") token: String): Response<NotificationsResponse>
 
+        @FormUrlEncoded
+        @PUT("mark-as-seen/")
+        suspend fun markAsSeen(@FieldMap fields: Map<String, String>,@Header("Authorization") token: String): Response<NotificationResponse>
+
+
 }

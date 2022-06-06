@@ -76,15 +76,30 @@ class NotificationsFragment : Fragment() {
             }
         }*/
 
+
+        if (notificationsViewModel.notificationsResult.value == null) {
+            Log.d(tagg, "Sin notificaciones")
+            val sharedPref = this.activity?.getSharedPreferences(getString(R.string.shared_preferences_name),
+                Context.MODE_PRIVATE)
+            val token = sharedPref?.getString(getString(R.string.saved_api_token),"")
+
+            notificationsViewModel.getNotifications("Bearer ${token}")
+        }
+
+
+
+
         notificationsViewModel.notificationsResult.observe(viewLifecycleOwner, Observer {
             val notificationsState = it ?: return@Observer
 
+
+
             if (notificationsState.error != null) {
                 //showLoginFailed(loginResult.error)
-                Log.d(tagg, "sin tramites")
+                Log.d(tagg, "error en notificaciones")
             }
             if (notificationsState.success != null) {
-                Log.d(tagg, " succcess")
+                Log.d(tagg, " con notificaciones")
                 if (list is RecyclerView) {
                     with(list) {
 
@@ -107,6 +122,9 @@ class NotificationsFragment : Fragment() {
 
                         adapter = NotificationRecyclerViewAdapter(notificationsState.success,
                             NotificationRecyclerViewAdapter.OnClickListener { position ->
+
+                                notificationsState.success[position]
+
                                 var action =  NotificationsFragmentDirections.actionNavNotificationsToNavNotification(position)
                                 view.findNavController().navigate(action)
                             }
@@ -116,7 +134,7 @@ class NotificationsFragment : Fragment() {
                         val divider = DividerItemDecoration(context,DividerItemDecoration.VERTICAL)
                         divider.setDrawable(ContextCompat.getDrawable(context,R.drawable.divider)!!)
 
-                        list.  addItemDecoration(divider)
+                        list.addItemDecoration(divider)
 
                     }
                 }
@@ -126,15 +144,29 @@ class NotificationsFragment : Fragment() {
         })
 
 
-        val sharedPref = this.activity?.getSharedPreferences(getString(R.string.shared_preferences_name),
-            Context.MODE_PRIVATE)
-        val token = sharedPref?.getString(getString(R.string.saved_api_token),"")
 
-        notificationsViewModel.getNotifications("Bearer ${token}")
         return view
     }
 
-    companion object {
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(tagg, "On STOP")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(tagg, "onDestroy")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d(tagg, "onDestroyView")
+    }
+
+
+        companion object {
 
         // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
