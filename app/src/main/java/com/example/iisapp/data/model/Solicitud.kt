@@ -10,7 +10,12 @@ data class Solicitud(
     @SerializedName("status") var status: String,
     @SerializedName("tramiteUserId") var tramiteUserId: String,
     @SerializedName("startedAt") var startedAt: String,
-    @SerializedName("current_tramite_step_user") var currentStep: Step
+    @SerializedName("current_tramite_step_user") var currentStep: Step,
+    @SerializedName("totalSteps") var totalSteps: Int,
+    @SerializedName("currentStep") var currentStepNumber: Int,
+    @SerializedName("progress") var progress: Int,
+
+
 )
 
 

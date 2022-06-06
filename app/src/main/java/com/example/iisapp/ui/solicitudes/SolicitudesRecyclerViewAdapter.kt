@@ -1,8 +1,10 @@
 package com.example.iisapp.ui.solicitudes
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.iisapp.data.model.Solicitud
@@ -44,10 +46,7 @@ class SolicitudesRecyclerViewAdapter(private val values: List<Solicitud>, privat
         val statusView = binding.status as TextView
         val nameView = binding.name as TextView
         val startedAtView = binding.startedAt as TextView
-
-
-        //val context = binding.root.context
-        //val departmentsList: RecyclerView = binding.tramiteItemListDepartment
+        val progressBar = binding.progressBar as ProgressBar
 
 
 
@@ -56,9 +55,12 @@ class SolicitudesRecyclerViewAdapter(private val values: List<Solicitud>, privat
             statusView.text = solicitud.status
             nameView.text = solicitud.tramiteName
             startedAtView.text = solicitud.startedAt
-            //descripcionView.text = tramite.descripcion
-            //departmentsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
-            //departmentsList.adapter = TramiteDepartmentsRecyclerViewAdapter(tramite.departments)
+
+            progressBar.progress = solicitud.progress
+
+            Log.d("Solicitudes",solicitud.totalSteps.toString())
+            Log.d("Solicitudes",solicitud.currentStepNumber.toString())
+            Log.d("Solicitudes",solicitud.progress.toString())
         }
 
 

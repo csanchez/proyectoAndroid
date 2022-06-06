@@ -11,9 +11,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.iisapp.R
 import com.example.iisapp.databinding.FragmentTramiteItemListBinding
 import com.example.iisapp.ui.placeholder.PlaceholderContent
@@ -61,11 +63,11 @@ class SolicitudesFragment : Fragment() {
                 // Set the adapter
                 if (view is RecyclerView) {
                     with(view) {
-                        /*layoutManager = when {
-                            columnCount <= 1 -> LinearLayoutManager(context)
-                            else -> GridLayoutManager(context, columnCount)
-                        }*/
-                        // adapter = NotificationRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                        val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+                        divider.setDrawable(ContextCompat.getDrawable(context,R.drawable.divider)!!)
+
+                        view.addItemDecoration(divider)
+
                         adapter = SolicitudesRecyclerViewAdapter(solicitudesState.success,
                             SolicitudesRecyclerViewAdapter.OnClickListener { position ->
                                 //Toast.makeText(context, "Click en solicitud", Toast.LENGTH_SHORT).show()

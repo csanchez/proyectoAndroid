@@ -85,6 +85,7 @@
     <string name="solicitudes_progress">Avance de la solicitud</string>
 
 
+    <string name="tramite_status">Estado de la solicitud</string>
     <string name="current_step">Etapa actual</string>
     <string name="started_at">Fecha de registro</string>
 

@@ -6,45 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.notifications.NotificationsFragment">
 
-    <!-- <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            >
-            <ProgressBar
-                android:id="@+id/app_progress_bar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-
-                android:layout_gravity="center_horizontal"
-                android:indeterminate="true"
-                android:visibility="visible"
-                anima
-                />
-        </FrameLayout>
 
 
-    </FrameLayout> -->
-
-    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notifications_list"
         android:name="com.example.iisapp.ui.notifications.NotificationsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layoutManager="LinearLayoutManager"
+        android:divider="#ec1886"
 
-        tools:listitem="@layout/fragment_notification_item_list"
-        android:divider="#ec1886"/>
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/fragment_notification_item_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
