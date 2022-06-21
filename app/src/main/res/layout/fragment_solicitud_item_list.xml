@@ -67,14 +67,15 @@
             android:layout_marginRight="10dp"
             />
 
+        <!-- android:background="@drawable/badge_primary" -->
         <TextView
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/badge_primary"
+
             android:text="Status"
             android:layout_marginRight="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12dp"/>
 
     </LinearLayout>

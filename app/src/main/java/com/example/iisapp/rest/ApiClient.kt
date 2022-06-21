@@ -324,6 +324,36 @@ class ApiClient {
             }
         }
 
+        suspend fun getNews(token: String) : Result<Any> {
+
+            try {
+                val call = getClient()?.create(ApiInterface::class.java)?.getNews(token)
+
+                Log.d(tag, call?.isSuccessful.toString())
+                Log.d(tag, call?.body().toString())
+                Log.d(tag, call?.errorBody().toString())
+
+                return if(call?.isSuccessful == true) {
+                    val newsResponse = call.body()
+                    Log.d(tag, "tramites found")
+                    Log.d(tag, newsResponse!!.news.toString())
+                    var tramites = newsResponse!!.news
+                    Result.Success(tramites)
+                }else{
+                    val jObjError = JSONObject(call?.errorBody()?.string())
+                    Log.d(tag,  jObjError.getString("message"))
+                    Result.Error(LoginException(jObjError.getString("message")))
+                }
+            }catch (ste: SocketTimeoutException){
+                Log.d(tag, "Error en la red "+ste.message)
+                return Result.Error(NetworkException("Hay un problema con el servidor, no hay respuesta"))
+            }catch (e: Exception){
+                Log.d(tag, "ocurrio un error desconocido "+e.message)
+                e.printStackTrace()
+                return Result.Error(NetworkException("ocurrio un error desconocido"))
+            }
+        }
+
 
     }
 

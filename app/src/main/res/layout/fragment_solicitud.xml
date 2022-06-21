@@ -59,21 +59,17 @@
             app:body="DSescripcion de la etapa"
             />
 
-         <!-- <com.example.iisapp.ui.components.TextViewWithTitle
-            android:id="@+id/solicitud_instructions"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="5dp"
-            app:title="@string/solicitud_current_step_ninstructions"
-            app:body="Indicaciones de la etapa"
-            /> -->
+
 
 
         <com.example.iisapp.ui.components.TextViewLabel
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            app:text="@string/solicitudes_step_conditions_info"/>
+            app:text="@string/solicitudes_step_conditions_info"
+            android:padding="5dp"/>
+
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/solicitud_conditions_list"

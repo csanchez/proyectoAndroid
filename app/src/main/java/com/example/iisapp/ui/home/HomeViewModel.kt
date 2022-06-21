@@ -3,48 +3,43 @@ package com.example.iisapp.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.iisapp.data.model.IisNotification
+import androidx.lifecycle.viewModelScope
+import com.example.iisapp.data.NewsRepository
 
-class HomeViewModel : ViewModel() {
+import com.example.iisapp.data.Result
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+import com.example.iisapp.data.model.New
+
+import kotlinx.coroutines.launch
+
+
+class HomeViewModel(private val newsRepository: NewsRepository) : ViewModel() {
+
+    private val _newsResult = MutableLiveData<NewsResult>()
+    val newsResult: LiveData<NewsResult> = _newsResult
+
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean>
+        get() = _loading
+
+    fun getNews( token: String ){
+
+
+        viewModelScope.launch {
+
+            val result = newsRepository.getNews (token)
+
+            if (result is Result.Success) {
+
+                _newsResult.value = NewsResult(success = result.data?.let { it as List<New> })
+
+
+                _loading.value = false
+            } else {
+                if (result is Result.Error) { _loading.value = false
+                    _newsResult.value = NewsResult(error = result.exception?.let { result.exception.message })
+                }
+            }
+        }
     }
-    val text: LiveData<String> = _text
-
-    private val _notification = MutableLiveData<IisNotification>().apply {
-        value = IisNotification(
-                1,
-            2,
-        "Mensaje para la comunidad académica del IIS-UNAM",
-        "Instituto Investigaciones Sociales\n" +
-                "\t\n" +
-                "sáb, 20 nov 8:22 (hace 9 días)\n" +
-                "\t\n" +
-                "para bcc: mí\n" +
-                "\n" +
-                "A las y los miembros de la comunidad académica del IIS-UNAM: \n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "En alcance a mi mensaje del pasado viernes 12, les hago llegar los datos de conexión de la sesión zoom para el homenaje a Julio Labastida Martín del Campo, el cual se llevará a cabo el próximo lunes 22 de noviembre a las 17:00 horas.\n" +
-                "\n" +
-                " \n" +
-                "\n" +
-                "En espera de que nos puedan acompañar, les mando un cordial saludo.\n" +
-                "\n" +
-                "\n" +
-                "El Director.",
-        "www.iis.unam.mx",
-        "1",
-        "29 nov 2021",
-        "unseen",
-        "alert",
-        "direccion",
-        "Direccion",
-        "Dir"
-        )
-    }
-    val notification: LiveData<IisNotification> = _notification
-
 }

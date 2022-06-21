@@ -37,5 +37,8 @@ interface ApiInterface {
         @PUT("mark-as-seen/")
         suspend fun markAsSeen(@FieldMap fields: Map<String, String>,@Header("Authorization") token: String): Response<NotificationResponse>
 
+        @GET("news/")
+        suspend fun getNews(@Header("Authorization") token: String): Response<NewsResponse>
+
 
 }

@@ -14,16 +14,18 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" /> -->
         <item
+            android:id="@+id/nav_home"
+            android:title="@string/menu_home" />
+
+
+        <item
             android:id="@+id/nav_notifications"
             android:title="@string/menu_notifications" />
 
         <item
-            android:id="@+id/nav_home"
-            android:title="@string/menu_home" />
-
-        <item
             android:id="@+id/nav_solicitudes"
             android:title="@string/menu_solicitudes" />
+
 
         <item android:title="@string/menu_tramites">
             <menu>
@@ -37,5 +39,8 @@
                 </group>
             </menu>
         </item>
+
+
+
     </group>
 </menu>
