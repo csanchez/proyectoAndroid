@@ -52,7 +52,7 @@ class SolicitudesRecyclerViewAdapter(private val values: List<Solicitud>, privat
 
         fun bind(solicitud: Solicitud) {
             //statusView.text = notification.status
-            statusView.text = solicitud.status
+            statusView.text = solicitud.getStatusName()
             nameView.text = solicitud.tramiteName
             startedAtView.text = solicitud.startedAt
 

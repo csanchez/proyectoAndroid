@@ -51,30 +51,7 @@ class NotificationsFragment : Fragment() {
         val root: View = binding.root
 
         val list: RecyclerView = view.findViewById(R.id.notifications_list)
-        //val progressBar: ProgressBar = view.findViewById(R.id.app_progress_bar)
-        //progressBar.visibility=View.VISIBLE
-        // Set the adapter
-        /*if (view is RecyclerView) {
-            with(view) {
 
-                Log.d(tagg,"Nostrara notificaciones")
-                Log.d(tagg,"${IisNotification.data}")
-                adapter = NotificationRecyclerViewAdapter(IisNotification.data,
-                    NotificationRecyclerViewAdapter.OnClickListener { position ->
-                        var action =  NotificationsFragmentDirections.actionNavNotificationsToNavNotification(position)
-                        view.findNavController().navigate(action)
-
-
-                    }
-                )
-                adapter.apply {
-                    //addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-                    var itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-                    itemDecoration.setDrawable(context.getDrawable(R.drawable.divider)!!)
-                    addItemDecoration(itemDecoration)
-                }
-            }
-        }*/
 
 
         if (notificationsViewModel.notificationsResult.value == null) {
@@ -102,23 +79,6 @@ class NotificationsFragment : Fragment() {
                 Log.d(tagg, " con notificaciones")
                 if (list is RecyclerView) {
                     with(list) {
-
-                        /*Handler().postDelayed({
-                            // This method will be executed once the timer is over
-                            // Start your app main activity
-
-                            progressBar.visibility=View.GONE
-
-                            adapter = NotificationRecyclerViewAdapter(notificationsState.success,
-                                NotificationRecyclerViewAdapter.OnClickListener { position ->
-                                    var action =  NotificationsFragmentDirections.actionNavNotificationsToNavNotification(position)
-                                    view.findNavController().navigate(action)
-                                }
-                            )
-                        }, 1000)
-*/
-
-                        //progressBar.visibility=View.GONE
 
                         adapter = NotificationRecyclerViewAdapter(notificationsState.success,
                             NotificationRecyclerViewAdapter.OnClickListener { position ->

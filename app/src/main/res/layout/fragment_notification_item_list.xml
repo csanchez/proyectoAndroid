@@ -21,15 +21,85 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <TextView
-                android:id="@+id/notification_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_announcement"
-                android:gravity="bottom"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <!--<TextView
+                    android:id="@+id/notification_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_announcement"
+                    android:gravity="bottom"
+                    android:text=""
+                    android:textColor="@color/black"
+                     />-->
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/notification_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_announcement"
+                        android:gravity="bottom"
+                        android:text=""
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        android:id="@+id/notification_sender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Direccion"
+                        android:textColor="@color/black"
+                        android:paddingLeft="30dp"/>
+
+                    <!-- <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true">
+
+                        <TextView
+                            android:id="@+id/notification_sender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Direccion"
+                            android:textColor="@color/black" />
+
+
+
+                    </RelativeLayout>-->
+
+                    <RelativeLayout
+                        android:id="@+id/rl_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true">
+
+                        <TextView
+                            android:id="@+id/notification_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="25 nov 2021"
+                            android:textColor="@color/black"
+                            android:textStyle="italic" />
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+
+
+
+            </LinearLayout>
+
+
 
             <!-- <TextView
                 android:id="@+id/notification_status"
@@ -39,46 +109,7 @@
                 android:textColor="@color/black" /> -->
 
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
 
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true">
-
-
-                    <TextView
-                        android:id="@+id/notification_sender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Direccion"
-                        android:textColor="@color/black" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rl_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true">
-
-                    <TextView
-                        android:id="@+id/notification_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="25 nov 2021"
-                        android:textColor="@color/black"
-                        android:textStyle="italic" />
-
-                </RelativeLayout>
-
-
-            </RelativeLayout>
 
 
             <LinearLayout

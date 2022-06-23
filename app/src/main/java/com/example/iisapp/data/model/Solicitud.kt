@@ -16,6 +16,22 @@ data class Solicitud(
     @SerializedName("progress") var progress: Int,
 
 
-)
+){
+    fun getStatusName(): String{
+
+        return when (this.status) {
+            "started" -> "Comenzado"
+            "processing" -> "En proceso"
+            "completed" -> "Completado"
+            "rejected" -> "Rechazado"
+            "canceled" -> "Cancelado"
+            else -> { // Note the block
+                "Sin información"
+            }
+        }
+
+
+    }
+}
 
 

@@ -79,7 +79,7 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
         fun bind(notification: IisNotification) {
 
             titleView.text = notification.title
-            messageView.text = notification.message
+            messageView.text = notification.message.substring(0,  100)+" ..."
             senderView.text = notification.sender
             //statusView.text = notification.status
             //notificationTypeView.text = notification.notificationType
@@ -103,7 +103,7 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
 
 
            if(notification.status == "unseen") {
-               context?.resources?.let { it -> mainLayout.setBackgroundColor(it.getColor(R.color.info)) }
+               context?.resources?.let { it -> mainLayout.setBackgroundColor(it.getColor(R.color.unread)) }
             }
 
 
