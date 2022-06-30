@@ -6,7 +6,7 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.solicitudes.SolicitudFragment">
+    tools:context="com.iis.app.ui.solicitudes.SolicitudFragment">
 
 
 
@@ -18,13 +18,13 @@
 
 
 
-        <com.example.iisapp.ui.components.TextViewLabel
+        <com.iis.app.ui.components.TextViewLabel
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             app:text="@string/solicitudes_tramite_info"/>
 
 
-        <com.example.iisapp.ui.components.TextViewWithTitle
+        <com.iis.app.ui.components.TextViewWithTitle
             android:id="@+id/tramiteName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -34,13 +34,13 @@
 
 
 
-        <com.example.iisapp.ui.components.TextViewLabel
+        <com.iis.app.ui.components.TextViewLabel
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             app:text="@string/current_step"/>
 
 
-        <com.example.iisapp.ui.components.TextViewWithTitle
+        <com.iis.app.ui.components.TextViewWithTitle
             android:id="@+id/solicitud_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             app:body="Nombre de la etapa"
             />
 
-        <com.example.iisapp.ui.components.TextViewWithTitle
+        <com.iis.app.ui.components.TextViewWithTitle
             android:id="@+id/solicitud_description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
 
 
 
-        <com.example.iisapp.ui.components.TextViewLabel
+        <com.iis.app.ui.components.TextViewLabel
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             app:text="@string/solicitudes_step_conditions_info"

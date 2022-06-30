@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    tools:context="com.iis.app.ui.notifications.NotificationsFragment">
 
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notifications_list"
-        android:name="com.example.iisapp.ui.notifications.NotificationsFragment"
+        android:name="com.iis.app.ui.notifications.NotificationsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#ec1886"

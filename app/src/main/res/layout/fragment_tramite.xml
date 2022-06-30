@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.tramites.TramiteFragment">
+    tools:context="com.iis.app.ui.tramites.TramiteFragment">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -12,12 +12,12 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <com.example.iisapp.ui.components.TextViewLabel
+        <com.iis.app.ui.components.TextViewLabel
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             app:text="@string/solicitudes_tramite_info"/>
 
-        <com.example.iisapp.ui.components.TextViewWithTitle
+        <com.iis.app.ui.components.TextViewWithTitle
             android:id="@+id/tramiteName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             app:title="@string/tramite_name"
             app:body="Nombre del trámite"/>
 
-        <com.example.iisapp.ui.components.TextViewWithTitle
+        <com.iis.app.ui.components.TextViewWithTitle
             android:id="@+id/tramiteDescripcion"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             app:title="@string/tramite_descripcion"
             app:body="Nombre del trámite"/>
 
-        <com.example.iisapp.ui.components.TextViewWithTitle
+        <com.iis.app.ui.components.TextViewWithTitle
             android:id="@+id/tramiteInstructions"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
 
 
 
-        <com.example.iisapp.ui.components.TextViewLabel
+        <com.iis.app.ui.components.TextViewLabel
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             app:text="@string/tramite_addition_info"/>

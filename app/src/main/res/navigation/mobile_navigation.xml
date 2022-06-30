@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.iisapp.ui.home.HomeFragment"
+        android:name="com.iis.app.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_notifications"
-        android:name="com.example.iisapp.ui.notifications.NotificationsFragment"
+        android:name="com.iis.app.ui.notifications.NotificationsFragment"
         android:label="@string/menu_notifications"
         tools:layout="@layout/fragment_notification_list" >
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/nav_notification"
-        android:name="com.example.iisapp.ui.notifications.NotificationFragment"
+        android:name="com.iis.app.ui.notifications.NotificationFragment"
         android:label="@string/menu_notification"
         tools:layout="@layout/fragment_notification">
         <argument
@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/nav_solicitudes"
-        android:name="com.example.iisapp.ui.solicitudes.SolicitudesFragment"
+        android:name="com.iis.app.ui.solicitudes.SolicitudesFragment"
         android:label="@string/navigation_solicitudes"
         tools:layout="@layout/fragment_solicitudes_list">
         <action
@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/nav_solicitud"
-        android:name="com.example.iisapp.ui.solicitudes.SolicitudFragment"
+        android:name="com.iis.app.ui.solicitudes.SolicitudFragment"
         android:label="@string/navigation_solicitud"
         tools:layout="@layout/fragment_solicitud">
         <argument
@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/nav_tramites_personales"
-        android:name="com.example.iisapp.ui.tramites.TramitesPersonalFragment"
+        android:name="com.iis.app.ui.tramites.TramitesPersonalFragment"
         android:label="@string/navigation_tramites_personales"
         tools:layout="@layout/fragment_tramite_list">
         <action
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_tramites_institucionales"
-        android:name="com.example.iisapp.ui.tramites.TramitesInstitucionalFragment"
+        android:name="com.iis.app.ui.tramites.TramitesInstitucionalFragment"
         android:label="@string/navigation_tramites_institucionales"
         tools:layout="@layout/fragment_tramite_list">
         <action
@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_tramite"
-        android:name="com.example.iisapp.ui.tramites.TramiteFragment"
+        android:name="com.iis.app.ui.tramites.TramiteFragment"
         android:label="@string/navigation_tramite"
         tools:layout="@layout/fragment_tramite">
         <argument

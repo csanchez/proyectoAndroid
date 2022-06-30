@@ -4,9 +4,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/list"
-        android:name="com.example.iisapp.ui.SolicitudesFragment"
+        android:name="notificaciones.ui.SolicitudesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".ui.solicitudes.SolicitudesFragment"
+        tools:context="com.iis.app.ui.solicitudes.SolicitudesFragment"
         tools:listitem="@layout/fragment_solicitud_item_list"/>
