@@ -1,5 +1,6 @@
 package com.iis.app.ui.tramites
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,7 +41,7 @@ class TramitesViewModel (private val tramitesRepository: TramitesRepository) : V
 
     fun getTramites( tramiteType:String,token: String ){
 
-
+        Log.d("TRAMITE",tramiteType)
         viewModelScope.launch {
             //val result = loginRepository.login(username, password,deviceId,deviceName,fcmToken)
             val result = tramitesRepository.getTramites(tramiteType,token)
@@ -48,6 +49,7 @@ class TramitesViewModel (private val tramitesRepository: TramitesRepository) : V
             if (result is Result.Success) {
 
                 _tramitesResult.value = TramitesResult(success = result.data?.let { it as List<Tramite> })
+
                 _loading.value = false
             } else {
                 if (result is Result.Error) {

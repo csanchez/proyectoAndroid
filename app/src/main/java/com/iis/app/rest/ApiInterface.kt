@@ -16,7 +16,10 @@ interface ApiInterface {
         suspend fun registerDevice(@FieldMap fields: Map<String, String>): Response<DeviceRegisteredResponse>
 
         @GET("tramites/")
-        suspend fun getTramites(@Query("tipo") tipo: String?,@Header("Authorization") token: String): Response<TramitesResponse>
+        suspend fun getTramites(@Query("tipoTramite" +
+                "" +
+                "" +
+                "") tipo: String?,@Header("Authorization") token: String): Response<TramitesResponse>
 
         @FormUrlEncoded
         @POST("tramites_users/")

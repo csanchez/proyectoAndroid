@@ -48,6 +48,18 @@ open class  TramitesFragment : Fragment() {
         _binding = FragmentTramiteItemListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val list: RecyclerView = view.findViewById(R.id.tramites_list)
+
+
+
+        //if (tramitesViewModel.tramitesResult.value == null) {
+            val sharedPref = this.activity?.getSharedPreferences(getString(R.string.shared_preferences_name),Context.MODE_PRIVATE)
+            val token = sharedPref?.getString(getString(R.string.saved_api_token),"")
+            tramitesViewModel.getTramites(this.tramiteType,"Bearer ${token}")
+        //
+        //
+        // }
+
         tramitesViewModel.tramitesResult.observe(viewLifecycleOwner, Observer {
             val tramitesState = it ?: return@Observer
 
@@ -55,23 +67,23 @@ open class  TramitesFragment : Fragment() {
             }
             if (tramitesState.success != null) {
 
-                if (view is RecyclerView) {
-                    with(view) {
+                if (list is RecyclerView) {
+                    with(list) {
 
                         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
                         divider.setDrawable(ContextCompat.getDrawable(context,R.drawable.divider)!!)
 
-                        view.addItemDecoration(divider)
+                        list.addItemDecoration(divider)
 
 
                         adapter = TramiteRecyclerViewAdapter(tramitesState.success,
                             TramiteRecyclerViewAdapter.OnClickListener { position ->
                                 if(tramiteType=="personal"){
                                     var action =TramitesPersonalFragmentDirections.actionNavTramitesToNavTramite( position)
-                                    view.findNavController().navigate( action)
+                                    list.findNavController().navigate( action)
                                 }else{
                                     var action =TramitesInstitucionalFragmentDirections.actionNavTramitesToNavTramite(position)
-                                    view.findNavController().navigate( action)
+                                    list.findNavController().navigate( action)
                                 }
                             }
                         )
@@ -81,13 +93,7 @@ open class  TramitesFragment : Fragment() {
             }
         })
 
-        val sharedPref = this.activity?.getSharedPreferences(getString(R.string.shared_preferences_name),Context.MODE_PRIVATE)
-        val token = sharedPref?.getString(getString(R.string.saved_api_token),"")
 
-
-
-
-        tramitesViewModel.getTramites(this.tramiteType,"Bearer ${token}")
 
         return view
     }

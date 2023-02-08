@@ -1,6 +1,7 @@
 package com.iis.app.rest
 
 
+import android.util.Log
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.iis.app.exceptions.LoginException
@@ -127,6 +128,8 @@ class ApiClient {
                 return if(call?.isSuccessful == true) {
                     val tramitesResponse = call.body()
                     var tramites = tramitesResponse!!.tramites
+
+                    //Log.d("TRAMITES",tramites.size.toString())
                     Result.Success(tramites)
                 }else{
                     val jObjError = JSONObject(call?.errorBody()?.string())

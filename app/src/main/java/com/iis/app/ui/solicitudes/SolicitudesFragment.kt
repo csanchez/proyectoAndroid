@@ -42,6 +42,16 @@ class SolicitudesFragment : Fragment() {
         _binding = FragmentTramiteItemListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val list: RecyclerView = view.findViewById(R.id.solicitudes_list)
+
+
+        if (solicitudesViewModel.solicitudesResult.value == null) {
+            val sharedPref = this.activity?.getSharedPreferences(getString(R.string.shared_preferences_name),
+                Context.MODE_PRIVATE)
+            val token = sharedPref?.getString(getString(R.string.saved_api_token),"")
+            solicitudesViewModel.getSolicitudes("Bearer ${token}")
+        }
+
         solicitudesViewModel.solicitudesResult.observe(viewLifecycleOwner, Observer {
             val solicitudesState = it ?: return@Observer
 
@@ -51,12 +61,12 @@ class SolicitudesFragment : Fragment() {
             if (solicitudesState.success != null) {
                 // updateUiWithUser(loginResult.success)
                 // Set the adapter
-                if (view is RecyclerView) {
-                    with(view) {
+                if (list is RecyclerView) {
+                    with(list) {
                         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
                         divider.setDrawable(ContextCompat.getDrawable(context,R.drawable.divider)!!)
 
-                        view.addItemDecoration(divider)
+                        list.addItemDecoration(divider)
 
                         adapter = SolicitudesRecyclerViewAdapter(solicitudesState.success,
                             SolicitudesRecyclerViewAdapter.OnClickListener { position ->
@@ -64,7 +74,7 @@ class SolicitudesFragment : Fragment() {
 
 
                                 var action =  SolicitudesFragmentDirections.actionNavSolicitudesToNavSolicitud(position)
-                                view.findNavController().navigate(action)
+                                list.findNavController().navigate(action)
 
 
                             }
@@ -77,10 +87,7 @@ class SolicitudesFragment : Fragment() {
             }
 
         })
-        val sharedPref = this.activity?.getSharedPreferences(getString(R.string.shared_preferences_name),
-            Context.MODE_PRIVATE)
-        val token = sharedPref?.getString(getString(R.string.saved_api_token),"")
-        solicitudesViewModel.getSolicitudes("Bearer ${token}")
+
 
         return view
     }

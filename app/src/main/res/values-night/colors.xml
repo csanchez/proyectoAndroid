@@ -30,11 +30,10 @@
 
 
 
-    <color name="colorGray2">#AEAEB2</color>
-    <color name="colorGray6">#F2F2F7</color>
+    <color name="colorGray2">#636366</color>
+    <color name="colorGray6">#1C1C1E</color>
 
-    <color name="contentBG">@color/white</color>
-
+    <color name="contentBG">@color/black</color>
 
 
 

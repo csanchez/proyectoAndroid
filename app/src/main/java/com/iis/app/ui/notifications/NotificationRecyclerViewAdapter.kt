@@ -64,29 +64,31 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
     inner class ViewHolder(binding: FragmentNotificationItemListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        val notificationTypeView: TextView = binding.notificationType
+        //val notificationTypeView: TextView = binding.notificationType
         val senderView: TextView = binding.notificationSender
         val titleView: TextView = binding.notificationTitle
-        val messageView: TextView = binding.notificationMessage
+        //val messageView: TextView = binding.notificationMessage
        // val statusView: TextView = binding.notificationStatus
-        val mainLayout: LinearLayout = binding.notificationMainLayout
-       // val dateView: TextView = binding.date
+       // val mainLayout: LinearLayout = binding.notificationMainLayout
+       val dateView: TextView = binding.notificationDate
 
 
 
         fun bind(notification: IisNotification) {
 
             titleView.text = notification.title
-            messageView.text = notification.message.substring(0,  100)+" ..."
+            //messageView.text = notification.message.substring(0,  100)+" ..."
             senderView.text = notification.sender
+            dateView.text = notification.createdAt
             //statusView.text = notification.status
             //notificationTypeView.text = notification.notificationType
 
-
+            /*
             val drawableAnnouncement = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_announcement) }
             val drwableMessage = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_message) }
             val drwableNote = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_note) }
             val drwableLabel = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_label_important) }
+
 
             val drawable = when (notification.notificationType) {
                 "alerta" ->         notificationTypeView.setCompoundDrawablesWithIntrinsicBounds(drawableAnnouncement, null, null, null)
@@ -97,12 +99,13 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
 
                 }
             }
+            */
 
 
 
-           if(notification.status == "unseen") {
+          /* if(notification.status == "unseen") {
                context?.resources?.let { it -> mainLayout.setBackgroundColor(it.getColor(R.color.unread)) }
-            }
+            }*/
 
 
 

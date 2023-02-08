@@ -10,4 +10,6 @@
     <declare-styleable name="TextViewLabel">
         <attr name="text" format="string" />
     </declare-styleable>
+
+
 </resources>
