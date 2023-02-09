@@ -13,11 +13,21 @@
         android:name="com.iis.app.ui.notifications.NotificationsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#ec1886"
-
+        android:visibility="gone"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/fragment_notification_item_list" />
+
+    <TextView
+        android:id="@+id/zero_notificaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zero_notificaciones"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="25dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

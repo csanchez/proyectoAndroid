@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.iis.app.R
-import com.iis.app.databinding.FragmentNotificationItemListBinding
+import com.iis.app.databinding.FragmentNotificationListBinding
 
 
 /**
@@ -23,7 +23,7 @@ import com.iis.app.databinding.FragmentNotificationItemListBinding
 class NotificationsFragment : Fragment() {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
-    private lateinit var _binding: FragmentNotificationItemListBinding
+    private lateinit var _binding: FragmentNotificationListBinding
     private val binding get() = _binding!!
 
 
@@ -39,14 +39,14 @@ class NotificationsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_notification_list, container, false)
+       // val view = inflater.inflate(R.layout.fragment_notification_list, container, false)
 
         notificationsViewModel = ViewModelProvider(requireActivity(), NotificationsViewModelFactory()).get(NotificationsViewModel::class.java)
 
-        _binding = FragmentNotificationItemListBinding.inflate(inflater, container, false)
+        _binding = FragmentNotificationListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val list: RecyclerView = view.findViewById(R.id.notifications_list)
+        val list: RecyclerView =  binding.notificationsList//view.findViewById(R.id.notifications_list)
 
 
 
@@ -70,6 +70,16 @@ class NotificationsFragment : Fragment() {
                 //showLoginFailed(loginResult.error)
             }
             if (notificationsState.success != null) {
+
+                if(notificationsState.success.size == 0){
+                    list.visibility = View.GONE
+                    binding.zeroNotificaciones.visibility = View.VISIBLE
+                }else{
+                    list.visibility = View.VISIBLE
+                    binding.zeroNotificaciones.visibility = View.GONE
+                }
+
+
                 if (list is RecyclerView) {
                     with(list) {
 
@@ -79,7 +89,7 @@ class NotificationsFragment : Fragment() {
                                 notificationsState.success[position]
 
                                 var action =  NotificationsFragmentDirections.actionNavNotificationsToNavNotification(position)
-                                view.findNavController().navigate(action)
+                                root.findNavController().navigate(action)
                             }
                         )
 
@@ -98,7 +108,7 @@ class NotificationsFragment : Fragment() {
 
 
 
-        return view
+        return root
     }
 
 

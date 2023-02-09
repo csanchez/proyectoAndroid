@@ -6,18 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/contentBG"
-    tools:context="com.iis.app.ui.tramites.TramitesFragment">
+    tools:context="com.iis.app.ui.tramites.TramitesFragment"
+    android:name="com.iis.app.ui.tramites.TramitesFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+
+
+
+   <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tramites_list"
-        android:name="com.iis.app.ui.tramites.TramitesFragment"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
         app:layoutManager="LinearLayoutManager"
-
+         android:visibility="gone"
         tools:listitem="@layout/fragment_tramite_item_list"
-        android:divider="#ec1886"/>
+        />
+
+    <TextView
+        android:id="@+id/zero_tramites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zero_tramites"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="25dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

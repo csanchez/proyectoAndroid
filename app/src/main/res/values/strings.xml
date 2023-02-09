@@ -77,6 +77,12 @@
     <string name="solicitud_current_step_description">Descripción</string>
 
 
+    <string name="zero_tramites">Sin Trámites para mostrar</string>
+    <string name="zero_solicitudes">Sin Solicitudes para mostrar</string>
+    <string name="zero_notificaciones">Sin Notificaciones para mostrar</string>
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
 
 
