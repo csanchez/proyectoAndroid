@@ -42,10 +42,12 @@ class SolicitudesConditionsRecyclerViewAdapter(private val values: List<Conditio
         val instructionsView: TextView = binding.solicitudConditionInstruction
         val iisRoleView: TextView = binding.solicitudConditionIisRole
         val completedAtView: TextView = binding.solicitudConditionCompletedAt
-        val linearLayoutView: LinearLayout = binding.solicitudConditionLinearLayout
+        val statusView: TextView = binding.solicitudStatus
+
+        /*val linearLayoutView: LinearLayout = binding.solicitudConditionLinearLayout
         val titleView: TextView = binding.solicitudConditionTitle
         val leftBorderView: View = binding.solicitudConditionLeftBorderTitle
-        val rigthBorderView: View = binding.solicitudConditionRigthBorderTitle
+        val rigthBorderView: View = binding.solicitudConditionRigthBorderTitle*/
 
 
 
@@ -58,22 +60,33 @@ class SolicitudesConditionsRecyclerViewAdapter(private val values: List<Conditio
             val iisRoleViewHeight = iisRoleView.height
 
             if(condition.completed){
-                iisRoleView.visibility = View.GONE
-                linearLayoutView.setBackgroundResource(R.drawable.condition_success_topless_border)
+                completedAtView.visibility = View.VISIBLE
+                completedAtView.text = condition.completedAt
+                //val color = ContextCompat.getColor(context!!, R.color.success)
+
+
+                val drawableCheck = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_check_cirle) }
+                statusView.setCompoundDrawablesWithIntrinsicBounds(drawableCheck, null, null, null)
+                /*linearLayoutView.setBackgroundResource(R.drawable.condition_success_topless_border)
                 titleView.text = "Completado"
-                val color = ContextCompat.getColor(context!!, R.color.success)
+
                 titleView.setTextColor(  color )//
                 leftBorderView.setBackgroundColor(color)
-                rigthBorderView.setBackgroundColor(color)
+                rigthBorderView.setBackgroundColor(color)*/
             }else{
-                completedAtView.visibility = View.GONE
-                iisRoleView.text = "Esperando respuesta de: ${condition.iisRole}"
-                linearLayoutView.setBackgroundResource(R.drawable.condition_not_success_topless_border)
+                iisRoleView.visibility = View.VISIBLE
+                iisRoleView.text = condition.iisRole
+                //val color = ContextCompat.getColor(context!!, R.color.not_success)
+
+                val drawableCheck = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_not_check_fill) }
+                statusView.setCompoundDrawablesWithIntrinsicBounds(drawableCheck, null, null, null)
+
+                /*linearLayoutView.setBackgroundResource(R.drawable.condition_not_success_topless_border)
                 titleView.text = "Sin Completar"
-                val color = ContextCompat.getColor(context!!, R.color.not_success)
+
                 titleView.setTextColor(  color )//
                 leftBorderView.setBackgroundColor(color)
-                rigthBorderView.setBackgroundColor(color)
+                rigthBorderView.setBackgroundColor(color)*/
 
             }
 
