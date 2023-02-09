@@ -65,6 +65,7 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
         RecyclerView.ViewHolder(binding.root) {
 
         //val notificationTypeView: TextView = binding.notificationType
+        val initialsView: TextView = binding.notificationInitials
         val senderView: TextView = binding.notificationSender
         val titleView: TextView = binding.notificationTitle
         //val messageView: TextView = binding.notificationMessage
@@ -75,7 +76,7 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
 
 
         fun bind(notification: IisNotification) {
-
+            initialsView.text = notification.originInitials
             titleView.text = notification.title
             //messageView.text = notification.message.substring(0,  100)+" ..."
             senderView.text = notification.sender

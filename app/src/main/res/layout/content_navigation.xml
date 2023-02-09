@@ -16,14 +16,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></View>
 
-    <View
+    <!--<View
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/contentBG"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTop"
         app:layout_constraintEnd_toEndOf="@+id/guidelineRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop2"></View>
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop2"></View> -->
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -76,14 +76,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guidelineBottom"></View>
 
-    <View
+    <!-- <View
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/contentBG"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottom2"
         app:layout_constraintEnd_toEndOf="@+id/guidelineRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineBottom"></View>
+        app:layout_constraintTop_toTopOf="@+id/guidelineBottom"></View> -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLeft"
@@ -101,20 +101,91 @@
         app:layout_constraintGuide_end="15dp"
         />
 
-    <fragment
-        android:id="@+id/nav_host_fragment_content_navigation"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="@+id/guidelineBottom"
+        app:layout_constraintBottom_toBottomOf="@+id/guidelineBottom2"
         app:layout_constraintLeft_toLeftOf="@+id/guidelineLeft"
         app:layout_constraintRight_toRightOf="@+id/guidelineRight"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineTop"
-        app:navGraph="@navigation/mobile_navigation"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop2"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="10dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineTop3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.055" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineBottom3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.945" />
 
 
-        />
+
+            <View
+                android:id="@+id/topView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/contentBG"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineTop3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                ></View>
+
+            <fragment
+                android:id="@+id/nav_host_fragment_content_navigation"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/topView"
+                app:layout_constraintBottom_toTopOf="@id/BottomView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/mobile_navigation"
+
+
+
+
+
+                />
+
+            <View
+                android:id="@+id/BottomView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/contentBG"
+                app:layout_constraintTop_toTopOf="@id/guidelineBottom3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                ></View>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+         <!-- -->
+
+    </androidx.cardview.widget.CardView>
+
 
 
 

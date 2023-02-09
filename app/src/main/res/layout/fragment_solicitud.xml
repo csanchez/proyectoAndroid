@@ -7,91 +7,247 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/contentBG"
-    tools:context="com.iis.app.ui.solicitudes.SolicitudFragment">
-
-<ScrollView
-
-    android:id="@+id/scrollView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    tools:context="com.iis.app.ui.solicitudes.SolicitudFragment"
+    android:padding="5dp">
 
 
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineCenter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@+id/guidelineCenter"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Estado"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textSize="@dimen/small_text_size"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="# Solicitud"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textSize="@dimen/small_text_size"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha de registro"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textSize="@dimen/small_text_size"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/secondColumn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="@+id/guidelineCenter"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="asdasdas"
+                            android:textSize="@dimen/small_text_size"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/numSol"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:text="Sasd"
+                            android:textSize="@dimen/small_text_size"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/startedAt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:text="Sasd"
+                            android:textSize="@dimen/small_text_size"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-        <com.iis.app.ui.components.TextViewLabel
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            app:text="@string/solicitudes_tramite_info"/>
-
-
-        <com.iis.app.ui.components.TextViewWithTitle
-            android:id="@+id/tramiteName"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            app:title="@string/tramite_name"
-            app:body="Nombre del trámite"/>
-
-
-
-        <com.iis.app.ui.components.TextViewLabel
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            app:text="@string/current_step"/>
-
-
-        <com.iis.app.ui.components.TextViewWithTitle
-            android:id="@+id/solicitud_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            app:title="@string/solicitud_current_step_name"
-            app:body="Nombre de la etapa"
-            />
-
-        <com.iis.app.ui.components.TextViewWithTitle
-            android:id="@+id/solicitud_description"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="5dp"
-            app:title="@string/solicitud_current_step_description"
-            app:body="DSescripcion de la etapa"
-            />
 
 
 
 
-        <com.iis.app.ui.components.TextViewLabel
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            app:text="@string/solicitudes_step_conditions_info"
-            android:padding="5dp"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
 
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/secondColumn"
+                android:paddingTop="5dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/solicitud_conditions_list"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layoutManager="LinearLayoutManager"
-            android:padding="5dp"
-            tools:listitem="@layout/fragment_solicitud_condition"
-            />
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+
+                    android:background="@android:color/darker_gray"/>
+
+                <TextView
+                    android:id="@+id/tramite_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre del tramite"
+                    android:paddingTop="15dp"
+                    android:textSize="@dimen/title_text_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/departments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Departamentos"
+                    android:textSize="@dimen/small_text_size"/>
+
+                <TextView
+                    android:id="@+id/etapa_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre de la etapa"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/small_text_size"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/circle"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/circle_fill"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/solicitud_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="Dir"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        tools:ignore="RtlCompat" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/etapa_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre de la etapa"
+                    android:textSize="@dimen/small_text_size"
+                    android:paddingTop="20dp"/>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/solicitud_conditions_list"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="LinearLayoutManager"
+                    android:padding="5dp"
+                    tools:listitem="@layout/fragment_solicitud_condition"
+                    />
+
+            </LinearLayout>
 
 
 
-    </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

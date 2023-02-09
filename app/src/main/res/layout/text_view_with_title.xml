@@ -17,7 +17,7 @@
             <View
                 android:id="@+id/text_view_with_title_left_border_title"
                 android:layout_width="100dp"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_weight="1"
                 android:background="#2ebadc"/>
             <TextView
@@ -31,7 +31,7 @@
             <View
                 android:id="@+id/text_view_with_title_rigth_border_title"
                 android:layout_width="wrap_content"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_marginRight="5dp"
                 android:background="#2ebadc"/>
         </LinearLayout>

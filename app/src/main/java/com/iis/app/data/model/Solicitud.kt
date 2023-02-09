@@ -1,5 +1,6 @@
 package com.iis.app.data.model
 
+import android.util.Log
 import com.google.gson.annotations.SerializedName
 
 data class Solicitud(
@@ -8,6 +9,7 @@ data class Solicitud(
     @SerializedName("tramiteName") var tramiteName: String,
     @SerializedName("tipoTramite") var tipoTramite: String,
     @SerializedName("status") var status: String,
+    @SerializedName("statusName") var statusName: String,
     @SerializedName("tramiteUserId") var tramiteUserId: String,
     @SerializedName("startedAt") var startedAt: String,
     @SerializedName("current_tramite_step_user") var currentStep: Step,
@@ -15,23 +17,13 @@ data class Solicitud(
     @SerializedName("currentStep") var currentStepNumber: Int,
     @SerializedName("progress") var progress: Int,
 
-
-){
-    fun getStatusName(): String{
-
-        return when (this.status) {
-            "started" -> "Comenzado"
-            "processing" -> "En proceso"
-            "completed" -> "Completado"
-            "rejected" -> "Rechazado"
-            "canceled" -> "Cancelado"
-            else -> { // Note the block
-                "Sin información"
-            }
-        }
+    @SerializedName("departments") var departments: String,
+    @SerializedName("departmentInitial") var departmentInitial: String,
+    @SerializedName("departmentColor") var departmentColor: String,
+    @SerializedName("tramiteUserNumber") var tramiteUserNumber: String
 
 
-    }
-}
+
+)
 
 

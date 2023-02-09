@@ -17,6 +17,15 @@
     <color name="iis_black">#343a40</color>
     <color name="iis_label">#A9A9A9</color>
 
+    <!-- colores para estado de solicitudes -->
+
+    <color name="status_0">#17a2b8</color>
+    <color name="status_1">#007bff</color>
+    <color name="status_2">#28a745</color>
+    <color name="status_3">#ffc107</color>
+    <color name="status_4">#dc3545</color>
+
+
 
 
 
