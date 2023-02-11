@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
+import com.iis.app.data.model.Condition
+import com.iis.app.data.model.Solicitud
+import com.iis.app.data.model.Step
 import com.iis.app.databinding.FragmentSolicitudBinding
 
 
@@ -72,7 +75,17 @@ class SolicitudFragment : Fragment() {
                     val solicitudDescriptionView: TextView =  binding.etapaDescription
                     val dataList: RecyclerView =  binding.solicitudConditionsList
 
-                    val solicitud =solicitudesState.success[args.solicitudPosition]
+                    val emptyStep = Step("","","",listOf<Condition>())
+                    var solicitud = Solicitud(-1,"","","","","","","", emptyStep,0,0,0,"","","","")
+
+
+
+                    if (args.solicitudPosition==-1){
+                         solicitud =solicitudesState.success[solicitudesState.success.size-1]
+                    }else{
+                         solicitud =solicitudesState.success[args.solicitudPosition]
+                    }
+
                     val currentStep = solicitud.currentStep
                     val conditions = currentStep.conditions
 

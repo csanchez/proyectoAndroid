@@ -58,12 +58,12 @@
     <string name="tramite_descripcion">Detalles del trámite</string>
     <string name="tramite_name">Nombre</string>
     <string name="tramite_instructions">Instrucciones</string>
-    <string name="tramite_addition_info">Información adicional</string>
+    <string name="tramite_addition_info">Información requerida</string>
     <string name="register_to_tramite">Registrar solicitud al trámite</string>
 
 
     <!-- Strings related to solicitudes -->
-    <string name="solicitudes_tramite_info">Datos del trámite</string>
+    <string name="solicitudes_tramite_info">Descripción</string>
     <string name="solicitudes_step_conditions_info">Condiciones de la solicitud</string>
     <string name="solicitudes_progress">Avance de la solicitud</string>
 

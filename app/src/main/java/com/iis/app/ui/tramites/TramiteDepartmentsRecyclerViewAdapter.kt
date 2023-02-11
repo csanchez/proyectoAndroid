@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.iis.app.data.model.Department
 import com.iis.app.databinding.FragmentTramiteItemListDepartmentBinding
 
-class TramiteDepartmentsRecyclerViewAdapter(private val values: List<Department>) : RecyclerView.Adapter<TramiteDepartmentsRecyclerViewAdapter.ViewHolder>() {
+class TramiteDepartmentsRecyclerViewAdapter(private val values: List<Department>,private val onClickListener: TramiteDepartmentsRecyclerViewAdapter.OnClickListener) : RecyclerView.Adapter<TramiteDepartmentsRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -32,7 +32,9 @@ class TramiteDepartmentsRecyclerViewAdapter(private val values: List<Department>
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
 
-
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(position)
+        }
         holder.bind(item)
 
         /*if(item.status=="seen"){
@@ -77,5 +79,9 @@ class TramiteDepartmentsRecyclerViewAdapter(private val values: List<Department>
         override fun toString(): String {
             return super.toString()// + " '" + nameView.text + "'"
         }
+    }
+
+    class OnClickListener(val clickListener: (position: Int) -> Unit) {
+        fun onClick(position: Int) = clickListener(position)
     }
 }

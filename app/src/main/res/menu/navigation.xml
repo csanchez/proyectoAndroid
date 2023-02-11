@@ -8,8 +8,16 @@
         app:showAsAction="never" /> -->
     <item
         android:id="@+id/action_logout"
+        android:icon="@drawable/common_full_open_on_phone"
         android:orderInCategory="99"
         android:title="@string/action_logout"
-        app:showAsAction="never"
-        />
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_add_solicitud"
+        android:orderInCategory="99"
+        android:title="Registrar solicitud"
+        android:visible="false"
+        app:showAsAction="never" />
+
 </menu>

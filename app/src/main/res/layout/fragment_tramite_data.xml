@@ -32,10 +32,7 @@
             android:inputType="textPersonName"
             android:padding="5dp"
             android:textColor="@color/black"
-
-
             android:textColorHint="@color/iis_label"
-
             android:theme="@style/MyEditTextTheme" />
 
 

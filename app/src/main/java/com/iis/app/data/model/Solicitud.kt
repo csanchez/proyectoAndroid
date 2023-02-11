@@ -4,8 +4,8 @@ import android.util.Log
 import com.google.gson.annotations.SerializedName
 
 data class Solicitud(
-    @SerializedName("tramiteId") var tramiteSlug: Int,
-    @SerializedName("tramiteSlug") var tramiteId: String,
+    @SerializedName("tramiteId") var tramiteId: Int,
+    @SerializedName("tramiteSlug") var tramiteSlug: String,
     @SerializedName("tramiteName") var tramiteName: String,
     @SerializedName("tipoTramite") var tipoTramite: String,
     @SerializedName("status") var status: String,

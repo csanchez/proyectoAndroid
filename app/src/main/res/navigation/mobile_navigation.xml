@@ -80,6 +80,10 @@
         <argument
             android:name="tramitePosition"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_nav_tramite_to_nav_solicitud"
+            app:destination="@id/nav_solicitud" />
+
     </fragment>
 
 

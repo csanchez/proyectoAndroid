@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_margin="5dp"
     app:cardCornerRadius="20dp"
-    app:cardElevation="10dp"
+    app:cardElevation="1dp"
     android:layout_height="wrap_content">
 
 
@@ -25,7 +25,6 @@
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:text="Departamento"
-                android:textAppearance="?attr/textAppearanceListItem"
                 android:textColor="@color/white"
                 android:textSize="12dp"
                 android:padding="5dp"

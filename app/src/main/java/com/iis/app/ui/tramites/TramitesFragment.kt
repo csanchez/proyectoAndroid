@@ -89,7 +89,7 @@ open class  TramitesFragment : Fragment() {
                         list.addItemDecoration(divider)
 
 
-                        adapter = TramiteRecyclerViewAdapter(tramitesState.success,
+                        adapter = TramiteRecyclerViewAdapter(tramitesState.success,tramiteType,
                             TramiteRecyclerViewAdapter.OnClickListener { position ->
                                 if(tramiteType=="personal"){
                                     var action =TramitesPersonalFragmentDirections.actionNavTramitesToNavTramite( position)

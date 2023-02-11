@@ -66,7 +66,7 @@ class NavigationActivity : AppCompatActivity() {
                 true
             }*/
             R.id.action_logout -> {
-                val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE)
+                val sharedPref =  getSharedPreferences(getString(R.string.shared_preferences_name), MODE_PRIVATE)
 
                 with (sharedPref.edit()) {
                     clear()
