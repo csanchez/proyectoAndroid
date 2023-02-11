@@ -87,4 +87,14 @@
     </fragment>
 
 
+    <fragment
+        android:id="@+id/nav_calendar"
+        android:name="com.iis.app.ui.spaces.CalendarFragment"
+        android:label="@string/navigation_calendar"
+        tools:layout="@layout/fragment_calendar">
+
+
+    </fragment>
+
+
 </navigation>

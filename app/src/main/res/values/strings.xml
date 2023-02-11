@@ -9,6 +9,7 @@
     <string name="navigation_tramite">Registro al Trámite</string>
     <string name="navigation_tramites_personales">Trámites personales</string>
     <string name="navigation_tramites_institucionales">Trámites istitucionales</string>
+    <string name="navigation_calendar">Calendario</string>
 
 
     <!-- Strings related to login -->
@@ -29,6 +30,12 @@
     <string name="menu_home">Inicio</string>
     <string name="menu_notifications">Notificaciones</string>
     <string name="menu_notification">Notificación</string>
+
+    <string name="menu_spaces">Espacios</string>
+    <string name="menu_calendar">Calendario</string>
+
+
+
 
     <string name="menu_tramites">Trámites disponibles</string>
     <string name="menu_solicitudes">Solicitudes a Trámites</string>
@@ -80,10 +87,14 @@
     <string name="zero_tramites">Sin Trámites para mostrar</string>
     <string name="zero_solicitudes">Sin Solicitudes para mostrar</string>
     <string name="zero_notificaciones">Sin Notificaciones para mostrar</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
 
+
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="forward"><![CDATA[->]]></string>
 
 </resources>
