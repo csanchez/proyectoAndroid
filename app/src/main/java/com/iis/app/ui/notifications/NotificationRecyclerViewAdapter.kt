@@ -61,8 +61,7 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
         }
     }*/
 
-    inner class ViewHolder(binding: FragmentNotificationItemListBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: FragmentNotificationItemListBinding) : RecyclerView.ViewHolder(binding.root) {
 
         //val notificationTypeView: TextView = binding.notificationType
         val initialsView: TextView = binding.notificationInitials

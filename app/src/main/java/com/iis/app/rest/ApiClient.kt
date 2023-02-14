@@ -266,39 +266,35 @@ class ApiClient {
         }
 
 
+        suspend fun getReservations(token: String) : Result<Any> {
+
+            try {
+                val call = getClient()?.create(ApiInterface::class.java)?.getReservations(token)
+
+                return if(call?.isSuccessful == true) {
+                    val reservationsResponse = call.body()
+                    var reservations = reservationsResponse!!.reservations
+                    Result.Success(reservations)
+                }else{
+                    val jObjError = JSONObject(call?.errorBody()?.string())
+                    Result.Error(LoginException(jObjError.getString("message")))
+                }
+            }catch (ste: SocketTimeoutException){
+                return Result.Error(NetworkException("Hay un problema con el servidor, no hay respuesta"))
+            }catch (e: Exception){
+                e.printStackTrace()
+                return Result.Error(NetworkException("ocurrio un error desconocido"))
+            }
+        }
+
+
     }
 
 
 
 
 
-    //var loggedInUser: LoggedInUser? = null // works
 
-
-
-    /*call!! .enqueue(object : Callback<LoggedInUserResponse?> {
-        override fun onResponse(call: Call<LoggedInUserResponse?>?, response: Response<LoggedInUserResponse?>) {
-            Log.d("LOGIN", "isSuccessful" + response.errorBody().toString())
-            if(response.isSuccessful()){
-                val loggedInUser = response.isSuccessful /// .body()?.loggedInUser
-                Log.d("LOGIN", "Number of movies received: " + loggedInUser)
-                //Log.d("LOGIN", "Number of movies received: " + loggedInUser?.name)
-            }else{
-                Log.d("LOGIN", "ocurrio un errir " )
-            }
-        }
-
-        override fun onFailure(call: Call<LoggedInUserResponse?>?, t: Throwable) {
-            // Log error here since request failed
-            Log.e("LOGIN", t.toString())
-        }
-    })*/
-
-    //return loggedInUser
-
-
-
-    //return Result.Error(NetworkException("Hay un problema con el servidor, No es posible hacer la peticion"))
 
 
 }

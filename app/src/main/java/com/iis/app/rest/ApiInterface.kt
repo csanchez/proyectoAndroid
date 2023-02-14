@@ -39,5 +39,8 @@ interface ApiInterface {
         @GET("news/")
         suspend fun getNews(@Header("Authorization") token: String): Response<NewsResponse>
 
+        @GET("reservations/")
+        suspend fun getReservations(@Header("Authorization") token: String): Response<ReservationsResponse>
+
 
 }
