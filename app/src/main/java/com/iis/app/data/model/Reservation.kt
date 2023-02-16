@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class Reservation(
     @SerializedName("start_date") var startDate: String,
-    @SerializedName("start_date") var endDate: String,
-    @SerializedName("start_date") var startTime: String,
+    @SerializedName("end_date") var endDate: String,
+    @SerializedName("start_time") var startTime: String,
     @SerializedName("end_time") var endTime: String,
     @SerializedName("title") var title: String,
     @SerializedName("name") var name: String,

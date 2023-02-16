@@ -266,10 +266,11 @@ class ApiClient {
         }
 
 
-        suspend fun getReservations(token: String) : Result<Any> {
+        suspend fun getReservations(start: String,end: String,space: String,user: String,event: String,service: String, requireEquipo: String,token: String) : Result<Any> {
 
+            Log.d("API CLIENT ", "getReservations")
             try {
-                val call = getClient()?.create(ApiInterface::class.java)?.getReservations(token)
+                val call = getClient()?.create(ApiInterface::class.java)?.getReservations(start,end,space,user,event,service,requireEquipo,token)
 
                 return if(call?.isSuccessful == true) {
                     val reservationsResponse = call.body()

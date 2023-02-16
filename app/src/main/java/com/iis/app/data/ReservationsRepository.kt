@@ -10,10 +10,10 @@ class ReservationsRepository(val dataSource: ReservationsDataSource)  {
 
 
 
-    suspend fun getReservations(token: String):  Result<Any> {
+    suspend fun getReservations(start: String,end: String,space: String,user: String,event: String,service: String, requireEquipo: String,token: String):  Result<Any> {
         // handle login
 
-        val result = dataSource.getReservations(token)
+        val result = dataSource.getReservations(start,end,space,user,event,service,requireEquipo,token)
 
         if (result is Result.Success) {
             result.data?.let { setReservations(it as List<Reservation>) }

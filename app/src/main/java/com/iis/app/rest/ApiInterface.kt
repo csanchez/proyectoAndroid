@@ -16,10 +16,7 @@ interface ApiInterface {
         suspend fun registerDevice(@FieldMap fields: Map<String, String>): Response<DeviceRegisteredResponse>
 
         @GET("tramites/")
-        suspend fun getTramites(@Query("tipoTramite" +
-                "" +
-                "" +
-                "") tipo: String?,@Header("Authorization") token: String): Response<TramitesResponse>
+        suspend fun getTramites(@Query("tipoTramite") tipo: String?,@Header("Authorization") token: String): Response<TramitesResponse>
 
         @FormUrlEncoded
         @POST("tramites_users/")
@@ -40,7 +37,15 @@ interface ApiInterface {
         suspend fun getNews(@Header("Authorization") token: String): Response<NewsResponse>
 
         @GET("reservations/")
-        suspend fun getReservations(@Header("Authorization") token: String): Response<ReservationsResponse>
+        suspend fun getReservations(@Query("start") start: String,
+                                    @Query("end") end: String,
+                                    @Query("space") space: String,
+                                    @Query("user") user: String,
+                                    @Query("event") event: String,
+                                    @Query("service") service: String,
+                                    @Query("require_equip") requireEquipo: String,
+                                    @Header("Authorization") token: String): Response<ReservationsResponse>
+
 
 
 }
