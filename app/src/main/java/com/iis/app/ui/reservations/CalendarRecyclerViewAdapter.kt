@@ -8,67 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.shape.MaterialShapeDrawable
-import com.google.android.material.shape.RelativeCornerSize
-import com.google.android.material.shape.RoundedCornerTreatment
-import com.google.android.material.shape.ShapeAppearanceModel
 import com.iis.app.R
-import com.iis.app.databinding.CalendarCellBinding
 
- /*
-class CalendarRecyclerViewAdapter(private val daysOfMonth: ArrayList<String>, private val onItemListener: CalendarRecyclerViewAdapter.OnClickListener) : RecyclerView.Adapter<CalendarRecyclerViewAdapter.CalendarViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
-
-
-        return CalendarViewHolder(
-            CalendarCellBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-    }
-
-
-
-    override fun onBindViewHolder(holder: CalendarRecyclerViewAdapter.CalendarViewHolder, position: Int) {
-        val item = daysOfMonth[position]
-
-
-
-
-        holder.bind(item)
-
-
-    }
-
-    override fun getItemCount(): Int {
-        return daysOfMonth.count()
-    }
-
-
-
-    inner class CalendarViewHolder(binding: CalendarCellBinding) :  RecyclerView.ViewHolder(binding.root) {
-        val dayOfMonth: TextView = binding.cellDayText
-
-        fun bind(dayOfMonthValue: String) {
-            dayOfMonth.text = dayOfMonthValue
-
-        }
-
-
-
-
-    }
-
-    class OnClickListener(val clickListener: (position: Int) -> Unit) {
-        fun onClick(position: Int) = clickListener(position)
-    }
-
-}*/
 
 
 
@@ -86,7 +28,7 @@ internal class CalendarRecyclerViewAdapter(
         val inflater = LayoutInflater.from(parent.context)
         val view: View = inflater.inflate(R.layout.calendar_cell, parent, false)
         val layoutParams = view.layoutParams
-        layoutParams.height = (parent.height * 0.166666666).toInt()
+        layoutParams.height = (parent.height * 0.15).toInt()
         context = parent.context
         return CalendarViewHolder(view, onItemListener)
     }

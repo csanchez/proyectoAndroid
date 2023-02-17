@@ -24,6 +24,7 @@ import com.iis.app.ui.solicitudes.SolicitudesFragmentDirections
 import com.iis.app.ui.solicitudes.SolicitudesRecyclerViewAdapter
 import com.iis.app.ui.solicitudes.SolicitudesViewModel
 import com.iis.app.ui.solicitudes.SolicitudesViewModelFactory
+import com.iis.app.ui.tramites.TramitesPersonalFragmentDirections
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -53,7 +54,7 @@ class CalendarFragment : Fragment(), CalendarRecyclerViewAdapter.OnItemListener 
 
     //private var selectedDate: LocalDate? = null
 
-    private val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 7)
+    //private val layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 7)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,7 +83,7 @@ class CalendarFragment : Fragment(), CalendarRecyclerViewAdapter.OnItemListener 
 
         monthYearText =  binding.monthYearTV
         calendarRecyclerView =  binding.calendarRecyclerView
-        calendarRecyclerView!!.layoutManager = layoutManager
+        calendarRecyclerView!!.layoutManager = GridLayoutManager(context, 7)
         //setMonthView()
 
 
@@ -252,10 +253,20 @@ class CalendarFragment : Fragment(), CalendarRecyclerViewAdapter.OnItemListener 
 
     override fun onItemClick(position: Int, dayText: String?) {
 
-        if (dayText != "") {
-            //val message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate!!)
-            //Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-        }
+
+
+
+        //if (dayText != "") {
+             dayText?.let {
+                // var selectedDate = reservationsViewModel.getSelectedDate().withDayOfMonth(it.toInt())
+                //val message = "Selected Date " + selectedDate// + " " + monthYearFromDate(selectedDate!!)
+                //Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+                var action = CalendarFragmentDirections.actionNavCalendarToNavCalendarDay(it.toInt())
+                binding.root.findNavController().navigate( action)
+
+            }
+
+        //}
     }
 
 

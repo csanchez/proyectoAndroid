@@ -94,6 +94,20 @@
         tools:layout="@layout/fragment_calendar">
 
 
+        <action
+            android:id="@+id/action_nav_calendar_to_nav_calendar_day"
+            app:destination="@id/nav_calendar_day" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_calendar_day"
+        android:name="com.iis.app.ui.reservations.CalendarDayFragment"
+        android:label="@string/navigation_calendar"
+        tools:layout="@layout/fragment_calendar_day">
+        <argument
+            android:name="dayNumber"
+            app:argType="integer" />
+
     </fragment>
 
 

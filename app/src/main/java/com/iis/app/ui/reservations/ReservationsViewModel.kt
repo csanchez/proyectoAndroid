@@ -35,10 +35,28 @@ class ReservationsViewModel(private val reservationsRepository: ReservationsRepo
     val failed: LiveData<String>
         get() = _failed
 
-    private val tag="NOTIFICATIONSVM"
+    private val tag="ReservationsVM"
 
     init {
         _loading.value = true
+    }
+
+     fun filterEvents(selectedDate: LocalDate): ArrayList<Reservation> {
+        var filteredEvents: ArrayList<Reservation> = ArrayList()
+
+
+         reservationsResult.value?.success?.forEach{
+
+             if (it.startDate.substring(0,2).toInt() == selectedDate.dayOfMonth) {
+                 Log.d(tag,selectedDate.toString()+ " - "+ it.name)
+                 filteredEvents.add(it)
+             }
+         }
+         return filteredEvents
+    }
+
+    fun getSelectedDate(): LocalDate? {
+        return selectedDate.value
     }
 
 
