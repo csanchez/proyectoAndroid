@@ -1,20 +1,21 @@
 package com.iis.app.ui.reservations
 
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RectShape
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.iis.app.R
 import com.iis.app.databinding.FragmentCalendarDayBinding
 import java.time.LocalDate
 
@@ -47,10 +48,10 @@ class CalendarDayFragment: Fragment() {
         _binding = FragmentCalendarDayBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        initHours()
+       /* initHours()
         val hoursList: RecyclerView  = binding.hoursRecyclerView
         hoursList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
-        hoursList.adapter = HourRecyclerView(hours)
+        hoursList.adapter = HourRecyclerView(hours) */
 
         val daySelected = args.dayNumber
 
@@ -77,11 +78,42 @@ class CalendarDayFragment: Fragment() {
     private fun filterEvents(selectedDate: LocalDate){
         val eventsList = reservationsViewModel.filterEvents(selectedDate)
 
-        calendarRecyclerView =  binding.eventsDayContainer
+
+
+
+
+        // now bitmap holds the updated pixels
+
+        // set bitmap as background to ImageView
+
+        /*var image = binding.eventCanvas
+
+
+        val width = 1000
+        val height = 2000
+        val parms = FrameLayout.LayoutParams(width, height)
+        image.layoutParams = FrameLayout.LayoutParams(3000, 5000)
+
+        //layout.layoutParams.width = 20000000;
+        image.requestLayout();*/
+
+        //image.background = BitmapDrawable(resources, bitmap)
+
+        var drawView: ReservationCustomView = ReservationCustomView(eventsList,requireContext(),null,0);
+        drawView.setBackgroundColor(Color.WHITE);
+       // drawView.setLayoutParams(FrameLayout.LayoutParams(500, 900))
+
+        binding.eventCanvas.addView(drawView)
+
+        binding.root.invalidate()
+        binding.eventCanvas.invalidate();
+        binding.root.invalidate()
+
+        /*calendarRecyclerView =  binding.eventsDayContainer
         calendarRecyclerView!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         val calendarAdapter = CalendarDayEventsRecyclerAdapter(eventsList!!) //daysInMonth?.let { CalendarRecyclerViewAdapter(it,showDaysOfMonth!!, this) }
-        calendarRecyclerView!!.adapter = calendarAdapter
+        calendarRecyclerView!!.adapter = calendarAdapter*/
 
 
         /*val parentLayout: FrameLayout =   binding.eventsDayContainer

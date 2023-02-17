@@ -18,75 +18,270 @@
 
     </TextView>
 
-    <HorizontalScrollView
-        android:id="@+id/scrollViewH"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectedDayTextView">
 
-
-        <ScrollView
-            android:id="@+id/scrollViewV"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guidelineCenter"
+
+            <ScrollView
+                android:id="@+id/scrollViewV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.widget.HorizontalScrollView
+                    android:id="@+id/scrollViewH"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.15" />
+                    android:fillViewport="true"
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/hoursRecyclerView"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    app:layoutManager="LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-
-
-                    app:layout_constraintEnd_toStartOf="@+id/guidelineCenter"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:listitem="@layout/hour_cell" />
-
-                <!--<FrameLayout
-                    android:id="@+id/eventsDayContainer"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/guidelineCenter"
-                    app:layout_constraintTop_toTopOf="parent" /> -->
+                    app:layout_constraintStart_toStartOf="parent"
+                    >
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/eventsDayContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layoutManager="GridLayoutManager"
-                    tools:listitem="@layout/event_calendar_day"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/guidelineCenter"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        <!-- <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guidelineCenter"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.15" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/hoursRecyclerView"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+
+                            tools:listitem="@layout/hour_cell"
+                            app:layoutManager="LinearLayoutManager"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guidelineCenter"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                             /> -->
+
+                        <FrameLayout
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+                            <!-- app:layout_constraintStart_toEndOf="@+id/hoursRecyclerView" -->
+
+                        <FrameLayout
+
+                            android:id="@+id/eventCanvas"
+                            android:layout_width="500dp"
+                            android:layout_height="900dp"
+                            android:background="@color/info">
+
+                        </FrameLayout>
+                            <!--
+
+                            <Button
+                            android:layout_width="500dp"
+                            android:layout_height="900dp"
+                            android:text="jlkasjdkljaskldjkalsjkldasj">
+
+                        </Button>
+
+                            <FrameLayout
+
+                                android:id="@+id/eventCanvas"
+                                android:layout_width="500dp"
+                                android:layout_height="900dp"
+                                android:background="@color/info">
+
+                            </FrameLayout>
+
+                            <FrameLayout
+
+                                android:id="@+id/eventCanvas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/info">
+
+                            </FrameLayout>
+
+                            <Button
+                                android:layout_width="500dp"
+                                android:layout_height="900dp"
+                                android:text="jlkasjdkljaskldjkalsjkldasj">
+
+                            </Button>
+
+                            <FrameLayout
+
+                            android:id="@+id/eventCanvas"
+                            android:layout_width="50dp"
+                            android:layout_height="90dp"
+                            android:background="@color/info">
+
+                        </FrameLayout>
+
+                            <ImageView
+                                android:id="@+id/eventCanvas"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                            </ImageView>-->
+
+                        </FrameLayout>
 
 
-        </ScrollView>
 
 
-    </HorizontalScrollView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </android.widget.HorizontalScrollView>
+
+
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/eventsDayContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layoutManager="GridLayoutManager"
+                        tools:listitem="@layout/event_calendar_day"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+                        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+
+<!--
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/selectedDayTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="DIA DSELECCIONADO"
+        android:textSize="@dimen/title_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectedDayTextView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineCenter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.15" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hoursRecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutManager="LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+
+                app:layout_constraintEnd_toStartOf="@+id/guidelineCenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/hour_cell" />
+
+            <ScrollView
+                android:id="@+id/scrollViewV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guidelineCenter"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.widget.HorizontalScrollView
+                    android:id="@+id/scrollViewH"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    >
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <Button
+                            android:layout_width="500dp"
+                            android:layout_height="900dp"
+                            android:text="jlkasjdkljaskldjkalsjkldasj"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </Button>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </android.widget.HorizontalScrollView>
+
+
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+-->
