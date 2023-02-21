@@ -1,5 +1,6 @@
 package com.iis.app.ui.reservations
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -11,9 +12,11 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.iis.app.R
 import com.iis.app.data.model.Reservation
+import com.iis.app.ui.TextRect
 
 
 //class ReservationCustomView @JvmOverloads constructor( context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0 ) : View(context, attrs, defStyleAttr){
+@SuppressLint("ViewConstructor")
 class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList<Reservation>, context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr){
     var paint: Paint = Paint()
     var textPaint: Paint = Paint()
@@ -53,10 +56,7 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
         paint.color = ContextCompat.getColor(context, R.color.colorGray2)
         paint.style = Paint.Style.FILL
 
-        textPaint.color = ContextCompat.getColor(context, R.color.white)
-        textPaint.style = Paint.Style.FILL
-        textPaint.textSize = 50F
-        textPaint.textAlign = Paint.Align.CENTER
+
     }
 
     private fun fillHours(){
@@ -102,26 +102,44 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
     }
 
     private fun fillEvents(eventsList:  ArrayList<Reservation>){
+
+        val leftOrigin = 180
         val width = 200
         val spaceBetweenEvents = 10
-        var left = 180
-        var right =  left+width
 
+
+
+        var left = leftOrigin
+        var right =  left+width
+        var rect = Rect(0, 0, 0, 0)
 
         eventsList.forEach{
-            val startRect = findHour(it.startTime)!!.rect
-            val endRect = findHour(it.endTime)!!.rect
-            val rect = Rect(left, startRect.top, right, endRect.top)
-            drawableReservations.add(DrawableReservation(it,rect ))
-            Log.d("CALENDAR DAY", rect.toString())
-            left= right+spaceBetweenEvents
+
+            //dibujamos el rectangulo actual
+
+
+            if( intersectsInTime(it,drawableReservations)){
+                left= right+spaceBetweenEvents
+            }else{
+                left= leftOrigin
+            }
+
             right = left+width
+
+            rect = Rect(left, findHour(it.startTime)!!.rect.top, right, findHour(it.endTime)!!.rect.top)
+            drawableReservations.add(DrawableReservation(it,rect ))
+
+
+
             finalCanvasW+=width+spaceBetweenEvents
+
+
         }
         finalCanvasW+=100
     }
 
     private fun drawLines(canvas: Canvas){
+
         drawableHours.forEach{
             paint.color = ContextCompat.getColor(context, R.color.colorGray6)
             canvas.drawLine(it.rect.left.toFloat(),it.rect.bottom.toFloat(),finalCanvasW.toFloat(),it.rect.bottom.toFloat(),paint)
@@ -130,28 +148,57 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
     }
     
     private fun drawHours(canvas: Canvas){
+
+        textPaint.color = ContextCompat.getColor(context, R.color.white)
+        textPaint.style = Paint.Style.FILL
+        textPaint.textSize = 50F
+        textPaint.textAlign = Paint.Align.CENTER
+
+
         drawableHours.forEach{
             paint.color = ContextCompat.getColor(context, R.color.colorGray2)
             canvas.drawRect(it.rect, paint)
             paint.color = ContextCompat.getColor(context, R.color.white)
             canvas.drawLine(it.rect.left.toFloat(),it.rect.bottom.toFloat(),it.rect.right.toFloat(),it.rect.bottom.toFloat(),paint)
             canvas.drawText(it.hour, it.rect.centerX().toFloat(), it.rect.centerY().toFloat() ,textPaint)
+
+
         }
 
 
     }
 
+    private fun intersectsInTime(reservation:Reservation,drawnRectangles:  ArrayList<DrawableReservation>) :Boolean{
+        //var intersects = false
+
+
+        drawnRectangles.forEach {
+            if(reservation.startTime < it.reservation.endTime && reservation.endTime > it.reservation.startTime ){
+               return true
+            }
+
+        }
+
+
+        return false
+    }
 
     private fun drawEvents(canvas: Canvas){
+        textPaint.color = ContextCompat.getColor(context, R.color.white)
+        textPaint.style = Paint.Style.FILL
+        textPaint.textSize = 30F
+        textPaint.textAlign = Paint.Align.LEFT
+
+        //var drawnRectangles = ArrayList<ReservationCustomView.DrawableReservation>()
 
         drawableReservations.forEach{
-            Log.d("ReservationCustomView","color ---"+it.reservation.color+"---")
-            paint.color = Color.parseColor("#14C38E") // Color.parseColor(it.reservation.color)
-            val colorCOde:String = it.reservation.color.trim()
             paint.color = Color.parseColor(it.reservation.color.trim())
             canvas.drawRect(it.rect, paint)
-
-           // canvas.drawText(it.hour, it.rect.centerX().toFloat(), it.rect.centerY().toFloat() ,textPaint)
+            var textRect = TextRect(textPaint)
+            //textRect.prepare(it.reservation.name, it.rect.right - it.rect.left,    it.rect.bottom - it.rect.top)
+            //TODO filtrar por tipo de usuario para mostrar los datos
+            textRect.prepare(it.reservation.spaceName+": Horario reservado", it.rect.right - it.rect.left,    it.rect.bottom - it.rect.top)
+            textRect.draw(canvas,   it.rect.left, it.rect.top);
         }
     }
 
@@ -162,50 +209,11 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
 
 
 
-
-    /*private fun measureDimension(desiredSize: Int, measureSpec: Int): Int {
-        var result: Int
-        val specMode = MeasureSpec.getMode(measureSpec)
-        val specSize = MeasureSpec.getSize(measureSpec)
-        if (specMode == MeasureSpec.EXACTLY) {
-            result = specSize
-        } else {
-            result = desiredSize
-            if (specMode == MeasureSpec.AT_MOST) {
-                result = Math.min(result, specSize)
-            }
-        }
-        if (result < desiredSize) {
-            Log.e("ChartView", "The view is too small, the content might get cut")
-        }
-        return result
-    }
-
-
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        Log.v("Chart onMeasure w", MeasureSpec.toString(widthMeasureSpec))
-        Log.v("Chart onMeasure h", MeasureSpec.toString(heightMeasureSpec))
-        val desiredWidth = suggestedMinimumWidth + paddingLeft + paddingRight
-        val desiredHeight = suggestedMinimumHeight + paddingTop + paddingBottom
-        Log.v("Chart desiredWidth", desiredWidth.toString()+" -"+ measureDimension(desiredWidth, widthMeasureSpec).toString())
-        Log.v("Chart desiredHeight", desiredHeight.toString()+" - "+  measureDimension(desiredHeight, heightMeasureSpec).toString())
-
-        Log.v("Chart finalCanvasW", finalCanvasW.toString())
-        Log.v("Chart finalCanvasH", finalCanvasH.toString())
-
-        setMeasuredDimension(
-            990, //measureDimension(desiredWidth, widthMeasureSpec),
-            1520 //measureDimension(desiredHeight, heightMeasureSpec)
-        )
-    } */
-
-
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         Log.v("ReservationCustomView","onMeasure ")
-        Log.v("ReservationCustomView","onMeasure w " +MeasureSpec.toString(widthMeasureSpec))
-        Log.v("ReservationCustomView"," onMeasure h "+ MeasureSpec.toString(heightMeasureSpec))
+
         // new width you want
-        val newWid = 500
+        val newWid = 1500
 
         // new height you want
         val newht = 2600
@@ -213,6 +221,9 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
         val wS = MeasureSpec.getSize(widthMeasureSpec)
         val hM = MeasureSpec.getMode(heightMeasureSpec)
         val hS = MeasureSpec.getSize(heightMeasureSpec)
+
+        Log.v("ReservationCustomView","onMeasure wS " +MeasureSpec.toString(widthMeasureSpec))
+        Log.v("ReservationCustomView"," onMeasure hS "+ MeasureSpec.toString(heightMeasureSpec))
 
         // Measure Width custom view
         val width: Int = if (wM == MeasureSpec.EXACTLY) {
@@ -261,7 +272,7 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
     inner class DrawableHour(val hour: String, val rect: Rect)
 
     //inner class DrawableReservation(reservation: Reservation, rect: Rect){
-    inner class DrawableReservation(val reservation: Reservation, val rect: Rect)
+    inner class DrawableReservation(val reservation: Reservation, val rect: Rect, drawn: Boolean=false)
 
 }
 

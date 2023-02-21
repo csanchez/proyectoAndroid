@@ -256,17 +256,15 @@ class CalendarFragment : Fragment(), CalendarRecyclerViewAdapter.OnItemListener 
 
 
 
-        //if (dayText != "") {
-             dayText?.let {
-                // var selectedDate = reservationsViewModel.getSelectedDate().withDayOfMonth(it.toInt())
-                //val message = "Selected Date " + selectedDate// + " " + monthYearFromDate(selectedDate!!)
-                //Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+
+        dayText?.let {
+            if (it != "") {
                 var action = CalendarFragmentDirections.actionNavCalendarToNavCalendarDay(it.toInt())
                 binding.root.findNavController().navigate( action)
 
             }
+        }
 
-        //}
     }
 
 
