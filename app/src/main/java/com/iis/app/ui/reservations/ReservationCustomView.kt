@@ -8,6 +8,9 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.util.Log
+import android.view.MotionEvent
+import android.view.MotionEvent.*
+import android.view.ScaleGestureDetector
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.iis.app.R
@@ -29,6 +32,18 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
     var finalCanvasH = 0
     var finalCanvasW = 0
 
+    private var detector: ScaleGestureDetector = ScaleGestureDetector(context, ScaleListener())
+    private var dragging: Boolean = false // May be unnecessary
+
+    private var scaleFactor: Float = 1F
+    private val MIN_ZOOM: Float = 0.5f
+    private val MAX_ZOOM: Float = 2f
+
+    private var initX: Float = 0f // See onTouchEvent
+    private var initY: Float = 0f // See onTouchEvent
+
+    private var canvasX: Float = 0f // x-coord of canvas center
+    private var canvasY: Float = 0f // y-coord of canvas center
 
     init {
 
@@ -37,14 +52,21 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
     }
 
     override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        canvas.save()
         initPaints()
+        canvas.scale(scaleFactor, scaleFactor)//,initX,initY)
+
+        //if(canvasX > 0 && canvasY > 0)
+            canvas.translate(canvasX, canvasY)
 
 
         drawLines(canvas )
         drawHours(canvas)
         drawEvents(canvas)
 
-
+        //canvas.translate(500F, 500F)
+        //canvas.restore()
 
     }
 
@@ -262,8 +284,118 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
 
 
 
+    /*// When the user pinches the view, zoom in, when they reverse pinch the view, zoom out
+    private val scaleGestureDetector = ScaleGestureDetector(context, object :
+        ScaleGestureDetector.SimpleOnScaleGestureListener() {
+        override fun onScale(detector: ScaleGestureDetector?): Boolean {
+            Log.d("scaleGestureDetector")
+            detector?.let {
+                scaleFactor *= detector.scaleFactor
+                scaleFactor = Math.max(MIN_ZOOM, Math.min(scaleFactor, MAX_ZOOM))
+                //scaleX *= detector.scaleFactor
+                //scaleY *= detector.scaleFactor
+                invalidate()
+            }
+            return true
+        }
+    }) */
+
+    private inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+        override fun onScale(detector: ScaleGestureDetector): Boolean {
+            // Self-explanatory
+            //Log.d("onScale", detector.scaleFactor.toString())
+            scaleFactor *= detector.scaleFactor
+            // If scaleFactor is less than 0.5x, default to 0.5x as a minimum. Likewise, if
+            //  scaleFactor is greater than 10x, default to 10x zoom as a maximum.
+            scaleFactor = Math.max(MIN_ZOOM, Math.min(scaleFactor, MAX_ZOOM))
+            Log.d("onScale scaleFactor", scaleFactor.toString())
+            invalidate() // Re-draw the canvas
+
+            return true
+        }
+    }
+
+    /*
+        https://github.com/arjunr00/android-pan-zoom-canvas/blob/master/app/src/main/java/com/arjunraghavan/android/pannablezoomablecanvas/PanZoomCanvasView.kt
+        https://github.com/husaynhakeem/android-playground/blob/master/GesturesSample/app/src/main/java/com/husaynhakeem/gesturessample/DrawingCanvas.kt
+
+        https://proandroiddev.com/detecting-touch-gestures-in-android-f8eb4a4faf98
+     */
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        // Handle the different types of actions
+        Log.d("onTouchEvent", event?.actionMasked.toString())
+        when (event?.action) {
+
+            ACTION_DOWN -> {
+                // Might not be necessary; check out later
+                dragging = true
+                // We want to store the coords of the user's finger as it is before they move
+                //  in order to calculate dx and dy
+                initX =event.x
+                initY = event.y
+            }
+            ACTION_MOVE -> {
+                // Self explanatory; the difference in x- and y-coords between successive calls to
+                //  onTouchEvent
+                val dx: Float = event.x - initX
+                val dy: Float = event.y - initY
+
+                Log.d("TOUCHEVENT", "Direction" + "dx: $dx, dy: $dy")
+
+               // if (dragging) {
+                    // Move the canvas dx units right and dy units down
+                    // dx and dy are divided by scaleFactor so that panning speeds are consistent
+                    //  with the zoom level
 
 
+                    var factorX =  dx/scaleFactor
+                    var factorY =  dy/scaleFactor
+                    Log.d("TOUCHEVENT", "movement canvas" + "factorX: $factorX, factorY: $factorY")
+
+                    if (canvasX <= 0)
+                        canvasX += factorX
+                    if (canvasY <= 0)
+                        canvasY += factorY
+
+                    if (canvasX > 0)
+                        canvasX = 0F
+                    if (canvasY > 0)
+                        canvasY = 0F
+                    //canvasY *= -1
+                    //canvasX *= -1
+
+                    invalidate() // Re-draw the canvas
+
+                    // Change initX and initY to the new x- and y-coords
+                    initX =event.x
+                    initY = event.y
+               // }
+            }
+            ACTION_POINTER_UP -> {
+                // This sets initX and initY to the position of the pointer finger so that the
+                //  screen doesn't jump when it's lifted with the main finger still down
+                initX = x
+                initY = y
+            }
+            ACTION_UP -> dragging = false // Again, may be unnecessary
+
+
+
+        }
+
+        // Let the scale gesture detector analyze the event. If a scale gesture is detected, `onScale()` is invoked
+        //scaleGestureDetector.onTouchEvent(event)
+        detector.onTouchEvent(event)
+
+        val x = event?.x
+        val y = event?.y
+        Log.d("TOUCHEVENT", "x: $x, y: $y,initY: $initX, initY," + "canvasX: $canvasX, canvasY: $canvasY")
+        // Data pertaining to fingers for responsiveness and stuff
+        Log.d("TOUCHEVENT", "Action: ${event?.action?.and(MotionEvent.ACTION_MASK)}\n")
+
+        return true
+    }
 
 
 
