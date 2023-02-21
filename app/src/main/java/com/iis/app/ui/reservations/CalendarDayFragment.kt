@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RectShape
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -100,14 +101,23 @@ class CalendarDayFragment: Fragment() {
         //image.background = BitmapDrawable(resources, bitmap)
 
         var drawView: ReservationCustomView = ReservationCustomView(eventsList,requireContext(),null,0);
+        //var drawView: ReservationCustomView = binding.eventCanvas
         drawView.setBackgroundColor(Color.WHITE);
-       // drawView.setLayoutParams(FrameLayout.LayoutParams(500, 900))
+
+        var width = drawView.measuredWidth
+        var height = drawView.measuredHeight
+        Log.d("medidas",width.toString()+"  "+height.toString())
+        //drawView.setLayoutParams(FrameLayout.LayoutParams(500, 900))
 
         binding.eventCanvas.addView(drawView)
 
         binding.root.invalidate()
         binding.eventCanvas.invalidate();
         binding.root.invalidate()
+
+         width = drawView.measuredWidth
+         height = drawView.measuredHeight
+        Log.d("medidas",width.toString()+"  "+height.toString())
 
         /*calendarRecyclerView =  binding.eventsDayContainer
         calendarRecyclerView!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
