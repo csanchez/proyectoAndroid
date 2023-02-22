@@ -12,5 +12,6 @@
     <dimen name="iis_label_size">14dp</dimen>
 
     <dimen name="status_corner_radius">20dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

@@ -10,6 +10,7 @@
     <string name="navigation_tramites_personales">Trámites personales</string>
     <string name="navigation_tramites_institucionales">Trámites istitucionales</string>
     <string name="navigation_calendar">Calendario</string>
+    <string name="navigation_my_reservations">Mis reservaciones</string>
 
 
     <!-- Strings related to login -->
@@ -33,6 +34,8 @@
 
     <string name="menu_spaces">Espacios</string>
     <string name="menu_calendar">Calendario</string>
+    <string name="menu_my_reservations">Mis Reservaciones</string>
+
 
 
 

@@ -110,5 +110,17 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_my_reservtions"
+        android:name="com.iis.app.ui.reservations.MyReservationsFragment"
+        android:label="@string/navigation_my_reservations"
+        tools:layout="@layout/fragment_my_reservations">
+
+
+        <!-- <action
+            android:id="@+id/action_nav_calendar_to_nav_calendar_day"
+            app:destination="@id/nav_calendar_day" /> -->
+    </fragment>
+
 
 </navigation>
