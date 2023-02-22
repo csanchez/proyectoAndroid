@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/contentBG"
+    android:background="@color/contentBG2"
     tools:context="com.iis.app.ui.solicitudes.SolicitudFragment"
     android:padding="5dp">
 
@@ -53,6 +53,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:textSize="@dimen/small_text_size"
                         android:paddingTop="2dp"
+
                         android:paddingBottom="2dp"/>
 
                     <TextView
@@ -62,6 +63,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:textSize="@dimen/small_text_size"
                         android:paddingTop="2dp"
+
                         android:paddingBottom="2dp"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -70,6 +72,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:textSize="@dimen/small_text_size"
                         android:paddingTop="2dp"
+
                         android:paddingBottom="2dp"/>
 
                 </LinearLayout>
@@ -106,6 +109,7 @@
                             android:paddingRight="5dp"
                             android:text="asdasdas"
                             android:textSize="@dimen/small_text_size"
+                            android:textColor="@color/white"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -123,6 +127,7 @@
                             android:paddingBottom="2dp"
                             android:text="Sasd"
                             android:textSize="@dimen/small_text_size"
+                            android:textColor="@color/textColor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -140,6 +145,7 @@
                             android:paddingBottom="2dp"
                             android:text="Sasd"
                             android:textSize="@dimen/small_text_size"
+                            android:textColor="@color/textColor"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -181,6 +187,7 @@
                     android:text="Nombre del tramite"
                     android:paddingTop="15dp"
                     android:textSize="@dimen/title_text_size"
+                    android:textColor="@color/textColor"
                     android:textStyle="bold" />
 
                 <TextView
@@ -188,6 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Departamentos"
+
                     android:textSize="@dimen/small_text_size"/>
 
                 <TextView
@@ -198,6 +206,7 @@
                     android:textAlignment="center"
                     android:textSize="@dimen/small_text_size"
                     android:paddingTop="20dp"
+                    android:textColor="@color/textColor"
                     android:paddingBottom="20dp"/>
 
                 <RelativeLayout
@@ -237,6 +246,7 @@
                     android:orientation="vertical"
                     app:layoutManager="LinearLayoutManager"
                     android:padding="5dp"
+                    android:textColor="@color/textColor"
                     tools:listitem="@layout/fragment_solicitud_condition"
                     />
 

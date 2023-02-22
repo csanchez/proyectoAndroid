@@ -2,6 +2,7 @@ package com.iis.app.ui.tramites
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.iis.app.R
 import com.iis.app.databinding.FragmentTramiteListBinding
+import com.iis.app.ui.LoadingViewSingleton
 
 
 /**
@@ -91,19 +93,23 @@ open class  TramitesFragment : Fragment() {
 
                         adapter = TramiteRecyclerViewAdapter(tramitesState.success,tramiteType,
                             TramiteRecyclerViewAdapter.OnClickListener { position ->
-                                if(tramiteType=="personal"){
-                                    var action =TramitesPersonalFragmentDirections.actionNavTramitesToNavTramite( position)
-                                    root.findNavController().navigate( action)
-                                }else{
-                                    var action =TramitesInstitucionalFragmentDirections.actionNavTramitesToNavTramite(position)
-                                    root.findNavController().navigate( action)
+                                if( !LoadingViewSingleton.isShow()){
+                                    if(tramiteType=="personal"){
+                                        var action =TramitesPersonalFragmentDirections.actionNavTramitesToNavTramite( position)
+                                        root.findNavController().navigate( action)
+                                    }else{
+                                        var action =TramitesInstitucionalFragmentDirections.actionNavTramitesToNavTramite(position)
+                                        root.findNavController().navigate( action)
+                                    }
                                 }
+
                             }
                         )
                     }
                 }
 
-
+                val handler = Handler()
+                handler.postDelayed({ LoadingViewSingleton.hide() }, LoadingViewSingleton.time)
             }
         })
 
@@ -113,18 +119,11 @@ open class  TramitesFragment : Fragment() {
     }
 
 
-
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            TramitesFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
+    override fun onResume() {
+        super.onResume()
+        LoadingViewSingleton.show()
     }
+
+
+
 }

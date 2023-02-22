@@ -52,7 +52,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Esperando respuesta de ....."
                 android:textSize="@dimen/small_text_size"
-                android:textColor="@color/black"
+                android:textColor="@color/textColor"
                 android:visibility="gone" />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Completado el"
-                android:textColor="@color/black"
+                android:textColor="@color/textColor"
                 android:visibility="gone" />
 
             <TextView
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="The top inset of the border is set to -3 to make it disappear and then it's covered with a line with text in the middle by using LinearLayout with two Views and one TextView"
-                android:textColor="@color/black" />
+                android:textColor="@color/textColor" />
 
 
         </LinearLayout>

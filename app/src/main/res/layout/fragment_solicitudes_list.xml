@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/contentBG"
+    android:background="@color/contentBG2"
     tools:context="com.iis.app.ui.solicitudes.SolicitudesFragment">
 
 <androidx.recyclerview.widget.RecyclerView
@@ -29,6 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/textColor"
         android:textSize="25dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

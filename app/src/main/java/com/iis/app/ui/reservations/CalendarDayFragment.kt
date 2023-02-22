@@ -49,10 +49,7 @@ class CalendarDayFragment: Fragment() {
         _binding = FragmentCalendarDayBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-       /* initHours()
-        val hoursList: RecyclerView  = binding.hoursRecyclerView
-        hoursList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
-        hoursList.adapter = HourRecyclerView(hours) */
+
 
         val daySelected = args.dayNumber
 
@@ -82,34 +79,19 @@ class CalendarDayFragment: Fragment() {
 
 
 
-
-        // now bitmap holds the updated pixels
-
-        // set bitmap as background to ImageView
-
-        /*var image = binding.eventCanvas
-
-
-        val width = 1000
-        val height = 2000
-        val parms = FrameLayout.LayoutParams(width, height)
-        image.layoutParams = FrameLayout.LayoutParams(3000, 5000)
-
-        //layout.layoutParams.width = 20000000;
-        image.requestLayout();*/
-
-        //image.background = BitmapDrawable(resources, bitmap)
-
         var drawView: ReservationCustomView = ReservationCustomView(eventsList,requireContext(),null,0);
-        //var drawView: ReservationCustomView = binding.eventCanvas
-        drawView.setBackgroundColor(Color.WHITE);
 
-        var width = drawView.measuredWidth
+        //var drawView: ReservationCustomView = binding.eventCanvas
+        //drawView.setBackgroundColor(Color.WHITE);
+
+        binding.eventCanvas.addView(drawView)
+
+       /* var width = drawView.measuredWidth
         var height = drawView.measuredHeight
         Log.d("medidas",width.toString()+"  "+height.toString())
         //drawView.setLayoutParams(FrameLayout.LayoutParams(500, 900))
 
-        binding.eventCanvas.addView(drawView)
+
 
         binding.root.invalidate()
         binding.eventCanvas.invalidate();
@@ -117,22 +99,9 @@ class CalendarDayFragment: Fragment() {
 
          width = drawView.measuredWidth
          height = drawView.measuredHeight
-        Log.d("medidas",width.toString()+"  "+height.toString())
-
-        /*calendarRecyclerView =  binding.eventsDayContainer
-        calendarRecyclerView!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
-        val calendarAdapter = CalendarDayEventsRecyclerAdapter(eventsList!!) //daysInMonth?.let { CalendarRecyclerViewAdapter(it,showDaysOfMonth!!, this) }
-        calendarRecyclerView!!.adapter = calendarAdapter*/
+        Log.d("medidas",width.toString()+"  "+height.toString()) */
 
 
-        /*val parentLayout: FrameLayout =   binding.eventsDayContainer
-        eventsList.forEach{
-            Log.d("list",it.name)
-            val textView = View.inflate(context, R.layout.event_calendar_day, null) as androidx.constraintlayout.widget.ConstraintLayout
-
-            parentLayout.addView(textView);
-        }*/
     }
 
 

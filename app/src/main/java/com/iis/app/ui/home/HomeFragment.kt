@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.iis.app.R
 import com.iis.app.databinding.FragmentHomeBinding
+import com.iis.app.ui.LoadingViewSingleton
 
 
 //https://www.androidhive.info/2017/02/android-creating-gmail-like-inbox-using-recyclerview/
@@ -113,5 +114,10 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LoadingViewSingleton.hide()
     }
 }

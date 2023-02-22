@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_navigation">
+    tools:showIn="@layout/app_bar_navigation"
+    android:id="@+id/contentParent"
+    android:animateLayoutChanges="true">
+
+
+
 
     <View
         android:layout_width="0dp"
@@ -14,16 +19,11 @@
         app:layout_constraintBottom_toTopOf="@+id/guidelineTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></View>
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!--<View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/contentBG"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTop"
-        app:layout_constraintEnd_toEndOf="@+id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop2"></View> -->
+
+
+    </View>
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -44,7 +44,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorGray6"
+        android:background="@color/contentBG"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,14 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guidelineBottom"></View>
 
-    <!-- <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/contentBG"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineBottom2"
-        app:layout_constraintEnd_toEndOf="@+id/guidelineRight"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineBottom"></View> -->
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineLeft"
@@ -104,6 +97,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/contentCardView"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="0dp"
@@ -114,7 +108,11 @@
         app:layout_constraintTop_toTopOf="@+id/guidelineTop2"
         card_view:cardCornerRadius="2dp"
         card_view:cardElevation="10dp"
+
         >
+
+
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -140,7 +138,7 @@
                 android:id="@+id/topView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/contentBG"
+                android:background="@color/contentBG2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/guidelineTop3"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +154,7 @@
                 app:layout_constraintBottom_toTopOf="@id/BottomView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-
+                android:background="@color/contentBG2"
 
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/mobile_navigation"
@@ -171,12 +169,14 @@
                 android:id="@+id/BottomView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/contentBG"
+                android:background="@color/contentBG2"
                 app:layout_constraintTop_toTopOf="@id/guidelineBottom3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 ></View>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -187,6 +187,19 @@
     </androidx.cardview.widget.CardView>
 
 
+    <com.iis.app.ui.LoadingView
+        android:id="@+id/contentLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="100dp"
+        >
+
+    </com.iis.app.ui.LoadingView>
 
 
 

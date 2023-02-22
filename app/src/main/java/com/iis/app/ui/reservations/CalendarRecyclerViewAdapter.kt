@@ -3,6 +3,7 @@ package com.iis.app.ui.reservations
 
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,6 +84,7 @@ internal class CalendarRecyclerViewAdapter(
         }
 
         override fun onClick(view: View) {
+            Log.d("onClick",view.toString())
             onItemListener.onItemClick(adapterPosition, dayOfMonth.text as String)
         }
     }

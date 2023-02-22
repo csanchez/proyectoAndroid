@@ -1,31 +1,44 @@
 package com.iis.app.ui
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import com.google.android.material.navigation.NavigationView
+import android.view.MotionEvent
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.navigation.NavigationView
 import com.iis.app.R
 import com.iis.app.databinding.ActivityNavigationBinding
+
 
 class NavigationActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityNavigationBinding
     private val tag="NAVACT"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+
+
+
+
+
+
+
 
         setSupportActionBar(binding.appBarNavigation.toolbar)
 
@@ -40,11 +53,13 @@ class NavigationActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R .id.nav_notifications, R.id.nav_home,  R.id.nav_solicitudes, R.id.nav_tramites_personales, R.id.nav_tramites_institucionales, R.id.nav_calendar   //R.id.nav_gallery, R.id.nav_slideshow,
+                R .id.nav_notifications, R.id.nav_home,  R.id.nav_solicitudes, R.id.nav_tramites_personales, R.id.nav_tramites_institucionales, R.id.nav_calendar
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        LoadingViewSingleton.setView(findViewById<LoadingView?>(R.id.contentLoading) )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -82,5 +97,8 @@ class NavigationActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
+
 
 }

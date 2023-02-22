@@ -31,9 +31,15 @@
 
 
     <color name="colorGray2">#636366</color>
-    <color name="colorGray6">#1C1C1E</color>
+    <color name="colorGray6">@color/black</color>
+    <!-- <color name="colorGray6">#1C1C1E</color> -->
 
     <color name="contentBG">@color/black</color>
+    <color name="contentBG2">@color/iis_black</color>
+
+
+
+    <color name="textColor">@color/white</color>
 
 
 

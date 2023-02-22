@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/contentBG"
+    android:background="@color/contentBG2"
     tools:context="com.iis.app.ui.tramites.TramitesFragment"
     android:name="com.iis.app.ui.tramites.TramitesFragment">
 

@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="Direccion"
-                android:textColor="@color/black"
+                android:textColor="@color/textColor"
                 android:textSize="15dp"/>
 
             <TextView
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="2dp"
                 android:text="20 nov 2021"
-                android:textColor="@color/black"
+                android:textColor="@color/textColor"
                 android:textSize="15dp"/>
 
             <TextView
@@ -62,7 +62,7 @@
 
                 android:paddingTop="2dp"
                 android:text="asdasdasdasdasdasdasfdasfdhasjkdhaskdhashdjhasdljhasjldhjkashdjkahsjdkhajshdjasd"
-                android:textColor="@color/black" />
+                android:textColor="@color/textColor" />
 
 
         </LinearLayout>

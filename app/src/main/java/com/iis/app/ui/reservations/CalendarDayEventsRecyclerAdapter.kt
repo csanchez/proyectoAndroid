@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.iis.app.R
 import com.iis.app.data.model.Reservation
 
-
+/*
 internal class CalendarDayEventsRecyclerAdapter(
     private val events: ArrayList<Reservation>
 ) :
@@ -50,9 +50,9 @@ internal class CalendarDayEventsRecyclerAdapter(
         val eventTextView: TextView
 
         init {
-            eventTextView = itemView.findViewById(R.id.eventName)
+           // eventTextView = itemView.findViewById(R.id.eventName)
         }
 
 
-    }
-}
+     }
+}*/

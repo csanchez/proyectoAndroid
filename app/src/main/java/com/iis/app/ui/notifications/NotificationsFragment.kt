@@ -2,6 +2,7 @@ package com.iis.app.ui.notifications
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.iis.app.R
 import com.iis.app.databinding.FragmentNotificationListBinding
+import com.iis.app.ui.LoadingView
+import com.iis.app.ui.LoadingViewSingleton
 
 
 /**
@@ -85,11 +88,15 @@ class NotificationsFragment : Fragment() {
 
                         adapter = NotificationRecyclerViewAdapter(notificationsState.success,
                             NotificationRecyclerViewAdapter.OnClickListener { position ->
+                                if( !LoadingViewSingleton.isShow()) {
+                                    notificationsState.success[position]
 
-                                notificationsState.success[position]
-
-                                var action =  NotificationsFragmentDirections.actionNavNotificationsToNavNotification(position)
-                                root.findNavController().navigate(action)
+                                    var action =
+                                        NotificationsFragmentDirections.actionNavNotificationsToNavNotification(
+                                            position
+                                        )
+                                    root.findNavController().navigate(action)
+                                }
                             }
                         )
 
@@ -102,6 +109,9 @@ class NotificationsFragment : Fragment() {
                     }
                 }
 
+                val handler = Handler()
+                handler.postDelayed({ LoadingViewSingleton.hide() }, LoadingViewSingleton.time)
+
             }
 
         })
@@ -109,6 +119,11 @@ class NotificationsFragment : Fragment() {
 
 
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LoadingViewSingleton.show()
     }
 
 

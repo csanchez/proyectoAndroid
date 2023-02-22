@@ -15,7 +15,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.iis.app.R
 import com.iis.app.data.model.Reservation
-import com.iis.app.ui.TextRect
+import com.iis.app.ui.components.TextRect
 
 
 //class ReservationCustomView @JvmOverloads constructor( context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0 ) : View(context, attrs, defStyleAttr){
@@ -51,22 +51,19 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
         fillEvents(eventsList)
     }
 
+    //Transaltion https://blog.devgenius.io/canvas-translation-and-state-management-custom-views-on-android-part-2-1428171b4eef
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas.save()
         initPaints()
-        canvas.scale(scaleFactor, scaleFactor)//,initX,initY)
 
-        //if(canvasX > 0 && canvasY > 0)
-            canvas.translate(canvasX, canvasY)
+        canvas.scale(scaleFactor, scaleFactor)
+        canvas.translate(canvasX, canvasY)
 
 
-        drawLines(canvas )
+
         drawHours(canvas)
+        drawLines(canvas )
         drawEvents(canvas)
-
-        //canvas.translate(500F, 500F)
-        //canvas.restore()
 
     }
 
@@ -163,7 +160,7 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
     private fun drawLines(canvas: Canvas){
 
         drawableHours.forEach{
-            paint.color = ContextCompat.getColor(context, R.color.colorGray6)
+            paint.color = ContextCompat.getColor(context, R.color.textColor)
             canvas.drawLine(it.rect.left.toFloat(),it.rect.bottom.toFloat(),finalCanvasW.toFloat(),it.rect.bottom.toFloat(),paint)
 
         }
@@ -171,17 +168,18 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
     
     private fun drawHours(canvas: Canvas){
 
-        textPaint.color = ContextCompat.getColor(context, R.color.white)
+        textPaint.color = ContextCompat.getColor(context, R.color.textColor)
         textPaint.style = Paint.Style.FILL
         textPaint.textSize = 50F
         textPaint.textAlign = Paint.Align.CENTER
 
 
         drawableHours.forEach{
-            paint.color = ContextCompat.getColor(context, R.color.colorGray2)
+            paint.color = ContextCompat.getColor(context, R.color.contentBG2)
             canvas.drawRect(it.rect, paint)
-            paint.color = ContextCompat.getColor(context, R.color.white)
-            canvas.drawLine(it.rect.left.toFloat(),it.rect.bottom.toFloat(),it.rect.right.toFloat(),it.rect.bottom.toFloat(),paint)
+            //paint.color = ContextCompat.getColor(context, R.color.textColor)
+            //canvas.drawLine(it.rect.left.toFloat(),it.rect.bottom.toFloat(),it.rect.right.toFloat(),it.rect.bottom.toFloat(),paint)
+
             canvas.drawText(it.hour, it.rect.centerX().toFloat(), it.rect.centerY().toFloat() ,textPaint)
 
 
@@ -211,7 +209,7 @@ class ReservationCustomView @JvmOverloads constructor(val eventsList:  ArrayList
         textPaint.textSize = 30F
         textPaint.textAlign = Paint.Align.LEFT
 
-        //var drawnRectangles = ArrayList<ReservationCustomView.DrawableReservation>()
+        val padding =  10
 
         drawableReservations.forEach{
             paint.color = Color.parseColor(it.reservation.color.trim())

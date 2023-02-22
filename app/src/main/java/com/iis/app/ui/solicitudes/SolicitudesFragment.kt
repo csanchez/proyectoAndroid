@@ -2,6 +2,7 @@ package com.iis.app.ui.solicitudes
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.iis.app.R
 import com.iis.app.databinding.FragmentSolicitudesListBinding
+import com.iis.app.ui.LoadingViewSingleton
 
 /**
  * A fragment representing a list of Items.
@@ -82,9 +84,11 @@ class SolicitudesFragment : Fragment() {
                             SolicitudesRecyclerViewAdapter.OnClickListener { position ->
                                 //Toast.makeText(context, "Click en solicitud", Toast.LENGTH_SHORT).show()
 
+                                if( !LoadingViewSingleton.isShow()){
+                                    var action =  SolicitudesFragmentDirections.actionNavSolicitudesToNavSolicitud(position)
+                                    root.findNavController().navigate(action)
+                                }
 
-                                var action =  SolicitudesFragmentDirections.actionNavSolicitudesToNavSolicitud(position)
-                                root.findNavController().navigate(action)
 
 
                             }
@@ -94,12 +98,20 @@ class SolicitudesFragment : Fragment() {
                     }
                 }
 
+                val handler = Handler()
+                handler.postDelayed({ LoadingViewSingleton.hide() }, LoadingViewSingleton.time)
+
             }
 
         })
 
 
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LoadingViewSingleton.show()
     }
 
 
