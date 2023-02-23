@@ -114,7 +114,7 @@
         android:id="@+id/nav_my_reservtions"
         android:name="com.iis.app.ui.reservations.MyReservationsFragment"
         android:label="@string/navigation_my_reservations"
-        tools:layout="@layout/fragment_my_reservations">
+        tools:layout="@layout/fragment_my_reservations_list_item">
 
 
         <!-- <action

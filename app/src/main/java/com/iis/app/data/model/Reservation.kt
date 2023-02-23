@@ -29,7 +29,8 @@ data class Reservation(
     @SerializedName("with_youtube") var withYoutube: Boolean,
     @SerializedName("with_zoom") var withZoom: Boolean,
     @SerializedName("zoom_canal") var zoomCanal: String,
-    @SerializedName("status") var status: String
+    @SerializedName("status") var status: String,
+    @SerializedName("space_initials") var spaceInitials: String
 
 )
 

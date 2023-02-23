@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.iis.app.R
-import com.iis.app.databinding.FragmentMyReservationsBinding
+import com.iis.app.data.model.IisNotification
+import com.iis.app.data.model.Reservation
+
+import com.iis.app.databinding.FragmentMyReservationsListItemBinding
 
 import com.iis.app.ui.reservations.placeholder.PlaceholderContent.PlaceholderItem
 
@@ -15,13 +18,13 @@ import com.iis.app.ui.reservations.placeholder.PlaceholderContent.PlaceholderIte
  * TODO: Replace the implementation with code for your data type.
  */
 class MyReservationsRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val values: List<Reservation>
 ) : RecyclerView.Adapter<MyReservationsRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            FragmentMyReservationsBinding.inflate(
+            FragmentMyReservationsListItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -31,21 +34,25 @@ class MyReservationsRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        val reservation = values[position]
+        holder.reservationInitials.text = reservation.spaceInitials
+        holder.reservationName.text = reservation.name
+        holder.reservationSpaceAndDate.text = reservation.spaceName+": "+reservation.startDate+ " "+reservation.startTime
+
+
+
+
     }
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentMyReservationsBinding) :
+    inner class ViewHolder(binding: FragmentMyReservationsListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
+        val reservationInitials: TextView = binding.reservationInitials
+        val reservationName: TextView = binding.reservationName
+        val reservationSpaceAndDate: TextView = binding.reservationSpaceAndDate
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
-        }
+
     }
 
 }

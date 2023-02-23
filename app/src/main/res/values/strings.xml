@@ -28,75 +28,64 @@
     <string name="action_logout">Salir</string>
 
 
+    <!-- Strings related to menu -->
     <string name="menu_home">Inicio</string>
     <string name="menu_notifications">Notificaciones</string>
     <string name="menu_notification">Notificación</string>
-
     <string name="menu_spaces">Espacios</string>
     <string name="menu_calendar">Calendario</string>
     <string name="menu_my_reservations">Mis Reservaciones</string>
-
-
-
-
-
     <string name="menu_tramites">Trámites disponibles</string>
     <string name="menu_solicitudes">Solicitudes a Trámites</string>
     <string name="menu_tramites_personales">Personales</string>
     <string name="menu_tramites_institucionales">Institucionales</string>
 
 
-    <string name="welcome_text">Bienvenido</string>
-
-
+    <!-- Strings related to defaults -->
     <string name="saved_api_token">SavedApiToken</string>
+    <string name="saved_rfc">SavedRFC</string>
     <string name="saved_user_name">SavedUserName</string>
     <string name="saved_user_email">SavedUserEmail</string>
-
     <string name="saved_user_iis_role">SavedUserIisRole</string>
     <string name="saved_user_role">SavedUserRole</string>
-
     <string name="saved_user_picture_url">SavedUserPictureUrl</string>
     <string name="saved_user_user_type">SavedUserUserType</string>
-
-
     <string name="saved_user_logged_in">SavedUserLoggedIn</string>
     <string name="saved_fcm_token">SavedUserFCMToken</string>
 
 
     <!-- Strings related to tramite -->
-    <string name="tramite_descripcion">Detalles del trámite</string>
-    <string name="tramite_name">Nombre</string>
-    <string name="tramite_instructions">Instrucciones</string>
+    <string name="tramite_descripcion">  Detalles del trámite</string>
+    <string name="tramite_name">         Nombre</string>
+    <string name="tramite_instructions"> Instrucciones</string>
     <string name="tramite_addition_info">Información requerida</string>
-    <string name="register_to_tramite">Registrar solicitud al trámite</string>
+    <string name="register_to_tramite">  Registrar solicitud al trámite</string>
 
 
     <!-- Strings related to solicitudes -->
-    <string name="solicitudes_tramite_info">Descripción</string>
+    <string name="solicitudes_tramite_info">        Descripción</string>
     <string name="solicitudes_step_conditions_info">Condiciones de la solicitud</string>
-    <string name="solicitudes_progress">Avance de la solicitud</string>
+    <string name="solicitudes_progress">            Avance de la solicitud</string>
 
 
     <string name="tramite_status">Estado de la solicitud</string>
-    <string name="current_step">Etapa actual</string>
-    <string name="started_at">Fecha de registro</string>
+    <string name="current_step">  Etapa actual</string>
+    <string name="started_at">    Fecha de registro</string>
 
 
-    <string name="solicitud_current_step_name">Nombre</string>
+    <string name="solicitud_current_step_name">       Nombre</string>
     <string name="solicitud_current_step_description">Descripción</string>
 
 
-    <string name="zero_tramites">Sin Trámites para mostrar</string>
-    <string name="zero_solicitudes">Sin Solicitudes para mostrar</string>
+    <string name="zero_tramites">      Sin Trámites para mostrar</string>
+    <string name="zero_solicitudes">   Sin Solicitudes para mostrar</string>
     <string name="zero_notificaciones">Sin Notificaciones para mostrar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zero_reservations">  Sin Reservaciones para mostrar</string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
 
 
+    <string name="welcome_text">Bienvenido</string>
     <string name="back"><![CDATA[<-]]></string>
     <string name="forward"><![CDATA[->]]></string>
 

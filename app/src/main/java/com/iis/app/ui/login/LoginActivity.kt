@@ -297,12 +297,13 @@ class LoginActivity : AppCompatActivity() {
         //edit.putString(getString(R.string.saved_api_token),  model.apiToken);
         //edit.putBoolean(getString(R.string.saved_user_logged_in), true);
         //edit.commit();
-        Log.d(tag,"token ${model.apiToken}")
+        Log.d(tag,model.toString())
         with (sharedPref.edit()) {
             putString(getString(R.string.saved_api_token), model.apiToken)
             putString(getString(R.string.saved_user_email), model.email)
             putString(getString(R.string.saved_user_iis_role), model.iisRole)
             putString(getString(R.string.saved_user_role), model.role)
+            putString(getString(R.string.saved_rfc), model.rfc)
             putString(getString(R.string.saved_user_picture_url), model.pictureUrl)
             putString(getString(R.string.saved_user_user_type), model.userType)
             putString(getString(R.string.saved_user_name), model.firstName+ " "+model.lastName)

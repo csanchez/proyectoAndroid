@@ -16,6 +16,7 @@ data class LoggedInUser(
     @SerializedName("role") var role: String,
     @SerializedName("picture_url") var pictureUrl: String,
     @SerializedName("user_type") var userType: String,
+    @SerializedName("rfc") var rfc: String,
 
     var apiToken : String,
 

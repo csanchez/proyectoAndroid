@@ -7,14 +7,14 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/contentBG2"
-    tools:context=".ui.reservations.MyReservationsFragment"
+    tools:context="com.iis.app.ui.reservations.MyReservationsFragment"
     android:name="com.iis.app.ui.reservations.MyReservationsFragment">
 
 
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myReservations"
+        android:id="@+id/my_reservations"
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,16 +22,16 @@ android:background="@color/contentBG2"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
 
-        tools:listitem="@layout/fragment_my_reservations" />
+        tools:listitem="@layout/fragment_my_reservations_list_item" />
 
 
 
 
     <TextView
-        android:id="@+id/zero_tramites"
+        android:id="@+id/zero_reservations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/zero_tramites"
+        android:text="@string/zero_reservations"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
