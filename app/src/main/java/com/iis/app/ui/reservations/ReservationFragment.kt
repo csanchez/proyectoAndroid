@@ -1,15 +1,21 @@
 package com.iis.app.ui.reservations
 
 import android.content.Context
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.OvalShape
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.iis.app.R
 import com.iis.app.databinding.FragmentReservationBinding
 
@@ -64,6 +70,11 @@ class ReservationFragment : Fragment() {
                 sapceView.text = reservation.spaceName
                 dateView.text = reservation.startDate+" "+reservation.startTime+" - "+reservation.endTime
                 nameView.text = reservation.name
+
+                //Log.d("reservation", ContextCompat.getColorStateList(requireContext(), R.color.status_0).toString())
+
+
+
             }
 
         })
