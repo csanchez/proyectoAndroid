@@ -72,17 +72,16 @@ class MyReservationsFragment : Fragment() {
                 with(list) {
 
                     adapter = MyReservationsRecyclerViewAdapter(reservationsState.success,
-                        /*MyReservationsRecyclerViewAdapter.OnClickListener { position ->
+                        MyReservationsRecyclerViewAdapter.OnClickListener { position ->
                             if( !LoadingViewSingleton.isShow()) {
-                                reservationsState.success[position]
 
                                 var action =
-                                    NotificationsFragmentDirections.actionNavNotificationsToNavNotification(
+                                    MyReservationsFragmentDirections.actionNavMyReservtionsToNavReservation(
                                         position
                                     )
                                 root.findNavController().navigate(action)
                             }
-                        }*/
+                        }
                     )
 
 

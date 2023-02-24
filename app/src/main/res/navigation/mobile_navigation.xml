@@ -117,9 +117,20 @@
         tools:layout="@layout/fragment_my_reservations_list_item">
 
 
-        <!-- <action
-            android:id="@+id/action_nav_calendar_to_nav_calendar_day"
-            app:destination="@id/nav_calendar_day" /> -->
+        <action
+            android:id="@+id/action_nav_my_reservtions_to_nav_reservation"
+            app:destination="@id/nav_reservation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_reservation"
+        android:name="com.iis.app.ui.reservations.ReservationFragment"
+        android:label="@string/menu_reservation"
+        tools:layout="@layout/fragment_reservation">
+        <argument
+            android:name="reservationPosition"
+            app:argType="integer" />
+
     </fragment>
 
 

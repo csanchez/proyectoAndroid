@@ -10,6 +10,7 @@ import com.iis.app.data.model.IisNotification
 import com.iis.app.data.model.Reservation
 
 import com.iis.app.databinding.FragmentMyReservationsListItemBinding
+import com.iis.app.ui.notifications.NotificationRecyclerViewAdapter
 
 import com.iis.app.ui.reservations.placeholder.PlaceholderContent.PlaceholderItem
 
@@ -18,7 +19,7 @@ import com.iis.app.ui.reservations.placeholder.PlaceholderContent.PlaceholderIte
  * TODO: Replace the implementation with code for your data type.
  */
 class MyReservationsRecyclerViewAdapter(
-    private val values: List<Reservation>
+    private val values: List<Reservation>, private val onClickListener: MyReservationsRecyclerViewAdapter.OnClickListener
 ) : RecyclerView.Adapter<MyReservationsRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,6 +40,9 @@ class MyReservationsRecyclerViewAdapter(
         holder.reservationName.text = reservation.name
         holder.reservationSpaceAndDate.text = reservation.spaceName+": "+reservation.startDate+ " "+reservation.startTime
 
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(position)
+        }
 
 
 
@@ -53,6 +57,10 @@ class MyReservationsRecyclerViewAdapter(
         val reservationSpaceAndDate: TextView = binding.reservationSpaceAndDate
 
 
+    }
+
+    class OnClickListener(val clickListener: (position: Int) -> Unit) {
+        fun onClick(position: Int) = clickListener(position)
     }
 
 }

@@ -89,7 +89,7 @@ class NotificationsFragment : Fragment() {
                         adapter = NotificationRecyclerViewAdapter(notificationsState.success,
                             NotificationRecyclerViewAdapter.OnClickListener { position ->
                                 if( !LoadingViewSingleton.isShow()) {
-                                    notificationsState.success[position]
+
 
                                     var action =
                                         NotificationsFragmentDirections.actionNavNotificationsToNavNotification(
@@ -144,18 +144,4 @@ class NotificationsFragment : Fragment() {
     }
 
 
-        companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            NotificationsFragment().apply {
-                arguments = Bundle().apply {
-                    //putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
-    }
 }
