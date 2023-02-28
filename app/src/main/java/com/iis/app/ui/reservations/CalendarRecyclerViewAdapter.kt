@@ -37,6 +37,8 @@ internal class CalendarRecyclerViewAdapter(
     override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
         holder.dayOfMonth.setText(daysOfMonth[position])
 
+
+
         if(showDaysOfMonth.count() == 0){
             holder.cellDayDot.visibility = View.INVISIBLE
         }else{
@@ -44,10 +46,12 @@ internal class CalendarRecyclerViewAdapter(
             var hasEvents = false
 
             for (day in showDaysOfMonth) {
-                if(day == daysOfMonth[position])
-                    hasEvents = true
-            }
+                if(daysOfMonth[position].isNotEmpty())
+                    if (day.toInt() == daysOfMonth[position].toInt())
+                        hasEvents = true
 
+            }
+            Log.d("CALEnDARIO","DIA DEL MES "+ daysOfMonth[position]+" HAS EVENTS "+hasEvents.toString())
             if( hasEvents){
                 holder.cellDayDot.visibility = View.VISIBLE
             }else{

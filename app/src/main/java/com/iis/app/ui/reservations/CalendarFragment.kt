@@ -93,7 +93,7 @@ class CalendarFragment : Fragment(), CalendarRecyclerViewAdapter.OnItemListener 
             //Toast.makeText(context, "cambio de fechas manito", Toast.LENGTH_LONG).show()
             Log.d("calednar", selectedDate.toString())
             monthYearText!!.text = monthYearFromDate(selectedDate)
-            setMonthView()
+            //setMonthView()
 
 
             val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-d")
@@ -125,6 +125,7 @@ class CalendarFragment : Fragment(), CalendarRecyclerViewAdapter.OnItemListener 
                 setMonthView()
 
             }
+            setMonthView()
 
 
             val handler = Handler()

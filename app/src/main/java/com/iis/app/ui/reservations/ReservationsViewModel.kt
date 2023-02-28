@@ -125,6 +125,7 @@ class ReservationsViewModel(private val reservationsRepository: ReservationsRepo
         val showDayArray: ArrayList<String> = ArrayList(this.daysInMonthArray.count())
 
         reservationsResult.value?.success?.forEach{
+            Log.d("VIEWMODELS", it.startDate+"")
             showDayArray.add(it.startDate.substring(0,2))
             //Log.d("VIEWMODEL",it.startDate)
             //Log.d("VIEWMODEL",it.startDate.substring(0,2))
