@@ -1,10 +1,9 @@
 package com.iis.app.ui.tramites
 
 import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.ShapeDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -15,7 +14,10 @@ import com.google.android.material.shape.*
 import com.iis.app.R
 import com.iis.app.data.model.Tramite
 import com.iis.app.databinding.FragmentTramiteItemListBinding
+import com.iis.app.ui.components.ColorGenerator
+import com.iis.app.ui.components.TextDrawable
 import com.iis.app.ui.notifications.placeholder.PlaceholderContent.PlaceholderItem
+
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
@@ -78,7 +80,7 @@ class TramiteRecyclerViewAdapter(private val values: List<Tramite>,private val t
         //val statusView: TextView = binding.tramiteStatus
 
         val nameView: TextView = binding.tramiteName
-        val initialsTramite: TextView = binding.tramiteInitials
+        val initialsTramite: ImageView = binding.initialsView
 
         //val descripcionView: TextView = binding.tramiteDescripcion
 
@@ -94,7 +96,11 @@ class TramiteRecyclerViewAdapter(private val values: List<Tramite>,private val t
         fun bind(tramite: Tramite) {
             //statusView.text = tramite.status
             nameView.text = tramite.name
-            initialsTramite.text  = tramite.name.uppercase()[0].toString()
+
+            val generator = ColorGenerator.MATERIAL
+            val drawable = TextDrawable.builder().buildRound(tramite.name.uppercase()[0].toString(), generator!!.randomColor )
+            initialsTramite.setImageDrawable(drawable)
+
 
            // descripcionView.text = tramite.descripcion
             departmentsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)

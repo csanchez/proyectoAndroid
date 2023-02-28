@@ -8,40 +8,26 @@
     tools:context="com.iis.app.ui.notifications.NotificationFragment">
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
-        android:padding="10dp">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
             android:orientation="vertical">
 
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <RelativeLayout
-                    android:id="@+id/circle"
+
+                <ImageView
+                    android:id="@+id/initials_view"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/initials">
-
-                    <TextView
-                        android:id="@+id/reservation_initials"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="Dir"
-                        android:textAlignment="center"
-                        android:textColor="@color/black" />
-                </RelativeLayout>
-
+                    android:layout_gravity="center"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -82,7 +68,7 @@
 
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/divider"></LinearLayout>
@@ -118,7 +104,5 @@
 
 
 
-
-    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

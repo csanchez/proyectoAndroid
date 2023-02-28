@@ -1,9 +1,11 @@
 package com.iis.app.ui.solicitudes
 
 import android.content.Context
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -15,6 +17,7 @@ import com.google.android.material.shape.ShapeAppearanceModel
 import com.iis.app.R
 import com.iis.app.data.model.Solicitud
 import com.iis.app.databinding.FragmentSolicitudItemListBinding
+import com.iis.app.ui.components.TextDrawable
 
 import com.iis.app.ui.placeholder.PlaceholderContent.PlaceholderItem
 
@@ -54,6 +57,7 @@ class SolicitudesRecyclerViewAdapter(private val values: List<Solicitud>, privat
         val nameView = binding.name as TextView
         val startedAtView = binding.startedAt as TextView
         val numSolView = binding.numSol as TextView
+        val initialsView: ImageView = binding.solicitudInitials
         //val progressBar = binding.progressBar as ProgressBar
 
 
@@ -64,6 +68,9 @@ class SolicitudesRecyclerViewAdapter(private val values: List<Solicitud>, privat
             nameView.text = solicitud.tramiteName
             startedAtView.text = solicitud.startedAt
             numSolView.text = "Solicitud # "+solicitud.tramiteUserNumber
+
+            val drawable = TextDrawable.builder().buildRound(solicitud.tramiteName.uppercase()[0].toString(),   Color.parseColor(solicitud.color.trim()) )
+            initialsView.setImageDrawable(drawable)
 
             context?.   let {
                 val radius = it.resources.getDimension(R.dimen.status_corner_radius)

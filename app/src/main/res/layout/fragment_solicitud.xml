@@ -209,26 +209,13 @@
                     android:textColor="@color/textColor"
                     android:paddingBottom="20dp"/>
 
-                <RelativeLayout
-                    android:id="@+id/circle"
+
+
+                <ImageView
+                    android:id="@+id/solicitud_progress"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/circle_fill"
-
-                    >
-
-                    <TextView
-                        android:id="@+id/solicitud_progress"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="Dir"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        tools:ignore="RtlCompat" />
-
-                </RelativeLayout>
+                    android:layout_gravity="center"/>
 
                 <TextView
                     android:id="@+id/etapa_description"

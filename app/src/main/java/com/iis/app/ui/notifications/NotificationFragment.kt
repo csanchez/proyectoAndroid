@@ -2,17 +2,20 @@ package com.iis.app.ui.notifications
 
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.iis.app.R
 import com.iis.app.databinding.FragmentNotificationBinding
+import com.iis.app.ui.components.TextDrawable
 
 
 /**
@@ -60,7 +63,7 @@ class NotificationFragment : Fragment() {
 
             if (notificationsState.success != null) {
                 with(view) {
-                    val initialsView = view.findViewById(R.id.notification_initials) as TextView
+                    val initialsView = view.findViewById(R.id.notification_initials) as ImageView
                     val senderView = view.findViewById(R.id.notification_sender) as TextView
                     val dateView = view.findViewById(R.id.notification_date) as TextView
                     val titleView = view.findViewById(R.id.notification_title) as TextView
@@ -70,8 +73,10 @@ class NotificationFragment : Fragment() {
                     val notification =notificationsState.success[args.notificationPosition]
 
 
+                    val drawable = TextDrawable.builder().buildRound(notification.originInitials,   Color.parseColor(notification.color.trim()))
+                    initialsView.setImageDrawable(drawable)
 
-                    initialsView.text = notification.originInitials
+
                     senderView.text = notification.sender
                     dateView.text = notification.createdAt
                     titleView.text = notification.title

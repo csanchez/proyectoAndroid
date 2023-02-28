@@ -127,7 +127,7 @@ class TextDrawable private constructor(builder: Builder) : ShapeDrawable(builder
         return height
     }
 
-    inner class Builder private constructor() : IConfigBuilder, IShapeBuilder, IBuilder {
+    class Builder  constructor() : IConfigBuilder, IShapeBuilder, IBuilder {
          var text = ""
          var color: Int
          var borderThickness: Int
@@ -149,7 +149,7 @@ class TextDrawable private constructor(builder: Builder) : ShapeDrawable(builder
             height = -1
             shape = RectShape()
             font = Typeface.create("sans-serif-light", Typeface.NORMAL)
-            fontSize = -1
+            fontSize = 50
             isBold = false
             toUpperCase = false
         }
@@ -182,10 +182,7 @@ class TextDrawable private constructor(builder: Builder) : ShapeDrawable(builder
         }
 
 
-        /*override fun useFont(font: Typeface): IConfigBuilder {
-            this.font = font
-            return this
-        }*/
+
 
         override fun fontSize(size: Int): IConfigBuilder {
             fontSize = size
@@ -241,24 +238,30 @@ class TextDrawable private constructor(builder: Builder) : ShapeDrawable(builder
             return build(text, color)
         }
 
-        /*override fun buildRect(text: String, color: Int): TextDrawable {
-            rect()
-            return build(text, color)
-        }*/
 
-        override fun buildRoundRect(text: String, color: Int, radius: Int): TextDrawable {
+
+        override fun buildRoundRect(text: String?, color: Int, radius: Int): TextDrawable? {
             roundRect(radius)
             return build(text, color)
         }
 
-        override fun buildRound(text: String, color: Int): TextDrawable {
+
+
+
+
+
+        override fun buildRound(text: String?, color: Int): TextDrawable? {
             round()
             return build(text, color)
         }
 
-        override fun build(text: String, color: Int): TextDrawable {
+
+
+        override fun build(text: String?, color: Int): TextDrawable? {
             this.color = color
-            this.text = text
+            if (text != null) {
+                this.text = text
+            }
             return TextDrawable(this)
         }
     }

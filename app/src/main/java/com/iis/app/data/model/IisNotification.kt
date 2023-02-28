@@ -16,6 +16,7 @@ data class IisNotification (
     @SerializedName("originName") var originName: String,
     @SerializedName("originInitials") var originInitials: String,
     @SerializedName("sender") var sender: String,
+    @SerializedName("color") var color: String
 
 
 

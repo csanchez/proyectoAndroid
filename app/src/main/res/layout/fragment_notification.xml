@@ -25,22 +25,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/circle"
+
+
+            <ImageView
+                android:id="@+id/notification_initials"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:background="@drawable/initials">
-
-                <TextView
-                    android:id="@+id/notification_initials"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="Dir"
-                    android:textAlignment="center"
-                    android:textColor="@color/black" />
-            </RelativeLayout>
+                android:layout_gravity="center"/>
 
 
             <LinearLayout

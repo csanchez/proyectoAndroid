@@ -1,15 +1,19 @@
 package com.iis.app.ui.notifications
 
 import android.content.Context
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.iis.app.R
 import com.iis.app.data.model.IisNotification
 import com.iis.app.databinding.FragmentNotificationItemListBinding
+import com.iis.app.ui.components.ColorGenerator
+import com.iis.app.ui.components.TextDrawable
 import com.iis.app.ui.notifications.placeholder.PlaceholderContent.PlaceholderItem
 
 
@@ -64,7 +68,7 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
     inner class ViewHolder(binding: FragmentNotificationItemListBinding) : RecyclerView.ViewHolder(binding.root) {
 
         //val notificationTypeView: TextView = binding.notificationType
-        val initialsView: TextView = binding.notificationInitials
+        val initialsView: ImageView = binding.notificationInitials
         val senderView: TextView = binding.notificationSender
         val titleView: TextView = binding.notificationTitle
         //val messageView: TextView = binding.notificationMessage
@@ -75,7 +79,9 @@ class NotificationRecyclerViewAdapter(private val values: List<IisNotification>,
 
 
         fun bind(notification: IisNotification) {
-            initialsView.text = notification.originInitials
+            val drawable = TextDrawable.builder().buildRound(notification.originInitials,   Color.parseColor(notification.color.trim()) )
+            initialsView.setImageDrawable(drawable)
+
             titleView.text = notification.title
             //messageView.text = notification.message.substring(0,  100)+" ..."
             senderView.text = notification.sender

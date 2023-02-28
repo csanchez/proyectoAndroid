@@ -1,10 +1,12 @@
 package com.iis.app.ui.solicitudes
 
+import android.graphics.Color
 import com.iis.app.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -21,6 +23,8 @@ import com.iis.app.data.model.Condition
 import com.iis.app.data.model.Solicitud
 import com.iis.app.data.model.Step
 import com.iis.app.databinding.FragmentSolicitudBinding
+import com.iis.app.ui.components.ColorGenerator
+import com.iis.app.ui.components.TextDrawable
 
 
 /**
@@ -67,7 +71,9 @@ class SolicitudFragment : Fragment() {
                     val solicitudStatusView : TextView =  binding.status
                     val solicitudStartAtView : TextView =  binding.startedAt
                     val solicitudNumView : TextView =  binding.numSol
-                    val solicitudCurrentStepView : TextView =  binding.solicitudProgress
+                    val solicitudCurrentStepView : ImageView =  binding.solicitudProgress
+
+
 
                     val tramiteDepartmentsView:TextView = binding.departments
                     val tramiteNameView: TextView =  binding.tramiteName
@@ -76,7 +82,7 @@ class SolicitudFragment : Fragment() {
                     val dataList: RecyclerView =  binding.solicitudConditionsList
 
                     val emptyStep = Step("","","",listOf<Condition>())
-                    var solicitud = Solicitud(-1,"","","","","","","", emptyStep,0,0,0,"","","","")
+                    var solicitud = Solicitud(-1,"","","","","","","", emptyStep,0,0,0,"","","","","#FFFFFF")
 
 
 
@@ -91,7 +97,11 @@ class SolicitudFragment : Fragment() {
 
 
 
-                    solicitudCurrentStepView.text = ""+solicitud.currentStepNumber+" / "+solicitud.totalSteps
+
+
+                    val drawable = TextDrawable.builder().buildRound(""+solicitud.currentStepNumber+"/"+solicitud.totalSteps, Color.parseColor(solicitud.color.trim()))
+                    solicitudCurrentStepView.setImageDrawable(drawable)
+
 
                     solicitudStatusView.text = solicitud.statusName
                     solicitudStartAtView.text = solicitud.startedAt

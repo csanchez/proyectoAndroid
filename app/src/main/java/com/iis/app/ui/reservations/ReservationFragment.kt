@@ -1,6 +1,7 @@
 package com.iis.app.ui.reservations
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -18,6 +20,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.iis.app.R
 import com.iis.app.databinding.FragmentReservationBinding
+import com.iis.app.ui.components.TextDrawable
 
 
 /**
@@ -59,14 +62,18 @@ class ReservationFragment : Fragment() {
             val reservationsState = it ?: return@Observer
 
             if (reservationsState.success != null) {
-                val initialsView: TextView = binding.reservationInitials
+                val initialsView: ImageView = binding.initialsView
                 val sapceView: TextView = binding.reservationSpace
                 val dateView: TextView = binding.reservationDate
                 val nameView: TextView = binding.reservationName
 
                 val reservation =reservationsState.success[args.reservationPosition]
 
-                initialsView.text = reservation.spaceInitials
+
+                val drawable = TextDrawable.builder().buildRound(reservation.spaceInitials, Color.parseColor(reservation.color.trim()))
+                initialsView.setImageDrawable(drawable)
+
+
                 sapceView.text = reservation.spaceName
                 dateView.text = reservation.startDate+" "+reservation.startTime+" - "+reservation.endTime
                 nameView.text = reservation.name

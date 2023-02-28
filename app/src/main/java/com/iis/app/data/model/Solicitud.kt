@@ -20,8 +20,8 @@ data class Solicitud(
     @SerializedName("departments") var departments: String,
     @SerializedName("departmentInitial") var departmentInitial: String,
     @SerializedName("departmentColor") var departmentColor: String,
-    @SerializedName("tramiteUserNumber") var tramiteUserNumber: String
-
+    @SerializedName("tramiteUserNumber") var tramiteUserNumber: String,
+    @SerializedName("color") var color: String
 
 
 )
