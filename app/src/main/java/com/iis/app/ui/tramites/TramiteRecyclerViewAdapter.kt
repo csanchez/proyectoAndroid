@@ -97,8 +97,7 @@ class TramiteRecyclerViewAdapter(private val values: List<Tramite>,private val t
             //statusView.text = tramite.status
             nameView.text = tramite.name
 
-            val generator = ColorGenerator.MATERIAL
-            val drawable = TextDrawable.builder().buildRound(tramite.name.uppercase()[0].toString(), generator!!.randomColor )
+            val drawable = TextDrawable.builder().buildRound(tramite.name.uppercase()[0].toString(),  Color.parseColor(tramite.color.trim()))
             initialsTramite.setImageDrawable(drawable)
 
 

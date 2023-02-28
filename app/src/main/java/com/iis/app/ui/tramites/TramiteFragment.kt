@@ -1,8 +1,10 @@
 package com.iis.app.ui.tramites
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.iis.app.R
 import com.iis.app.data.model.Tramite
 import com.iis.app.databinding.FragmentTramiteBinding
+import com.iis.app.ui.components.TextDrawable
 
 
 /**
@@ -120,8 +123,11 @@ class TramiteFragment : Fragment() {
                             val tramite =tramitesState.success[args.tramitePosition]
                             val dataList = view.findViewById(R.id.tramiteData) as RecyclerView
 
+                            val initialsView = view.findViewById(R.id.tramite_initials) as ImageView
 
 
+                            val drawable = TextDrawable.builder().buildRound(tramite.name.uppercase()[0].toString(),    Color.parseColor(tramite.color.trim()))
+                            initialsView.setImageDrawable(drawable)
 
                             tramiteName.text = tramite.name
                             tramiteDescripcion.text = tramite.descripcion

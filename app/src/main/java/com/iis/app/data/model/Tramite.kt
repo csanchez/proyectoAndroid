@@ -13,8 +13,8 @@ data class Tramite (
     @SerializedName("tramite_type") var tramiteType: String,
     @SerializedName("status") var status: String,
     @SerializedName("data") var data: List<Data>,
-    @SerializedName("departments") var departments: List<Department>
-
+    @SerializedName("departments") var departments: List<Department>,
+    @SerializedName("color") var color: String
     )
 
 
